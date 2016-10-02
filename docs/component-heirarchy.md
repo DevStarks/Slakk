@@ -1,22 +1,24 @@
 
-### Component Hierarchy
+## Component Hierarchy
 
-- AuthFormContainer
+**AuthFormContainer**
   - AuthForm
 
-- CreateUserContainer
-  - CreateUser
+**SignUpFormContainer**
+  - SignUpForm
 
-- HomeContainer
+**HomeContainer**
   - Home
     - UserShow
     - SidebarContainer
       - Sidebar
+        - ChannelsIndex
+        - DirectMessagesIndex
         - ConversationContainer
           - Conversation
             - ConversationHeader
-            - MessageIndexContainer
-              - MessageIndex
+            - MessagesIndexContainer
+              - MessagesIndex
                 - Message
                   - MessageActionsContainer
                     - MessageActions
@@ -24,30 +26,37 @@
                   - EditMessage
             - MessageForm
 
-- NewDM
+**DirectMessageForm**
   - SearchBar
   - SearchResultsContainer
     - SearchResults
       - UserListItem
 
 
-- ChannelSearch    
+**ChannelSearch**
   - SearchBar
   - SearchResultsContainer
     - SearchResults
       - ChannelListItem
 
+**ChannelFormContainer**
+  - ChannelForm
+    - SearchBar
+    - SearchResultsContainer
+      - SearchResults
+        - UserListItem
 
-### Routes
 
+## Routes
 
-path='/signin' component='AuthFormContainer'
-path='/signup/username' component='CreateUserContainer'
-path='/signup/password' component='CreateUserContainer'
-
-path='/' component='HomeContainer'
-  path='/conversation/:id' component='ConversationContainer'
-    path='/users/:id' component='UserShow'
-
-path='/new-message' component='NewDM'
-path='/channel-search' component='ChannelSearch'
+|Path   | Component   |
+|-------|-------------|
+| "/sign-in"          | "AuthFormContainer"   |
+| "/sign-up/username" | "SignUpFormContainer" |
+| "/sign-up/password" | "SignUpFormContainer" |
+| "/"                 | "HomeContainer"       |
+| "/conversation/:id" | "ConversationContainer" |
+| "/conversation/:id/users/:username" | "UserShow" |
+| "/new-message"      | "DirectMessageForm" |
+| "/new-channel"      | "ChannelFormContainer"
+| "/channel-search"   | "ChannelSearch" |
