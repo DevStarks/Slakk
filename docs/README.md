@@ -1,19 +1,3 @@
-<!-- This is your Development README, which will:
-
-outline the architecture,
-show wireframes,
-describe features, and
-outline a development schedule for your application.
-
-
-
-
-api-endpoints.md
-component-heirarchy.md
-redux-structure.md
-sample-state.md
-schema.md -->
-
 # Slakk
 
 [Heroku link](https://slakk.herokuapp.com/)

@@ -67,9 +67,9 @@ the **components** that update as a result.
   0. `PATCH /api/channels/:id` is called.
   0. `receiveChannel` is set as the success callback.
 
-* `destroyChannel`
+* `leaveChannel`
   0. invoked from delete channel button `onClick`
-  0. `DELETE /api/channels/:id` is called.
+  0. `DELETE/api/channel_members/` is called.
   0. `removeChannel` is set as the success callback.
 
 ### Channel API Response Actions
@@ -100,9 +100,9 @@ the **components** that update as a result.
   0. `POST /api/direct_messages` is called.
   0. `receiveDirectMessage` is set as the callback.
 
-* `destroyDirectMessages`
+* `leaveDirectMessage`
   0. invoked from delete directMessage button `onClick`
-  0. `DELETE /api/conversation_members/?user_id={user_id}&?conversation_id={id}` is called.
+  0. `DELETE /api/direct_message_memberships/?with=params` is called.
   0. `removeDirectMessage` is set as the success callback.
 
 ### DirectMessages API Response Actions
