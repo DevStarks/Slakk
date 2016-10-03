@@ -9,7 +9,7 @@
 
 **HomeContainer**
   - Home
-    - UserShow
+    - UserProfile
     - SidebarContainer
       - Sidebar
         - ChannelsIndex
@@ -56,7 +56,7 @@
 | "/sign-up/password" | "SignUpFormContainer" |
 | "/"                 | "HomeContainer"       |
 | "/conversation/:id" | "ConversationContainer" |
-| "/conversation/:id/users/:username" | "UserShow" |
+| "/conversation/:id/users/:username" | "UserProfile" |
 | "/new-message"      | "DirectMessageForm" |
 | "/new-channel"      | "ChannelFormContainer"
 | "/channel-search"   | "ChannelSearch" |
