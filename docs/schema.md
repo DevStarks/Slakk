@@ -46,6 +46,7 @@ direct_message_id | integer   | not null, foreign key, indexed
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
+messageable     | references| polymorphic: true, index: true
 body            | text      | not null
 conversation_id | integer   | not null, foreign key, indexed
 author_id       | integer   | not null, foreign key, indexed
