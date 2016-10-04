@@ -24,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Allows static asset rendering with heroku
 gem 'rails_12factor', group: :production
 
+gem 'newrelic_rpm'
+
 gem 'bcrypt'
 
 

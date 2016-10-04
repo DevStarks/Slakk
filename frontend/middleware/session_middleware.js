@@ -1,9 +1,10 @@
 import { LOGIN, LOGOUT, SIGNUP } from '../actions/session_actions';
-import { login, logout, signup } from '../actions/session_actions';
+import { login, logout, signup, receiveCurrentUser } from '../actions/session_actions';
 
 
-const SessionMiddleware = (dispatch) => next => action => {
-  const success = dispatch(receiveCurrentUser);
+const SessionMiddleware = ({ dispatch }) => next => action => {
+  debugger
+  const success = dispatch(receiveCurrentUser());
   const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
 
   switch (action.type) {
