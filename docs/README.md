@@ -4,7 +4,7 @@
 
 ### Minimum Viable Product
 
-Slakc is a clone of Slack, a collaborative instant-messaging app. This app is built using Ruby on Rails and React/Redux.
+Slakk is a clone of Slack, a collaborative instant-messaging app. This app is built using Ruby on Rails and React/Redux.
 
 By 10/14, this app will demonstrate the following features with production-quality navigation, adequate seed data for a realistic experience, and appropriate CSS styling:
 
