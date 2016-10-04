@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ 
+ /*html, body, div, main, header, div, footer,
+ a, button, h1, p, input {
+   margin: 0;
+   border: 0;
+   outline: 0;
+   padding: 0;
+
+   text-decoration: inherit;
+   box-sizing: inherit;
+   vertical-align: inherit;
+   text-align: inherit;
+   color: black;
+   font: inherit;
+
+   background: transparent;
+ }*/

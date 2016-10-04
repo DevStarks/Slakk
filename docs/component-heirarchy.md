@@ -1,8 +1,8 @@
 
 ## Component Hierarchy
 
-**AuthFormContainer**
-  - AuthForm
+**LoginFormContainer**
+  - LoginForm
 
 **SignUpFormContainer**
   - SignUpForm
@@ -51,7 +51,7 @@
 
 |Path   | Component   |
 |-------|-------------|
-| "/sign-in"          | "AuthFormContainer"   |
+| "/sign-in"          | "LoginFormContainer"   |
 | "/sign-up/username" | "SignUpFormContainer" |
 | "/sign-up/password" | "SignUpFormContainer" |
 | "/"                 | "HomeContainer"       |
