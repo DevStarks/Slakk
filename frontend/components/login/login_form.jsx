@@ -17,18 +17,18 @@ class LoginForm extends React.Component {
   updateField(field) {
     return e => {
       this.setState({
-        [field]: e.currentTarget.Value
+        [field]: e.currentTarget.value
       });
     };
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.login(this.state);
   }
 
   render() {
+    console.log(this.state);
     return(
       <form onSubmit={this.handleSubmit}>
         <input

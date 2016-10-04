@@ -3,10 +3,10 @@ import { login, logout, signup, receiveCurrentUser } from '../actions/session_ac
 
 
 const SessionMiddleware = ({ dispatch }) => next => action => {
-  debugger
-  const success = dispatch(receiveCurrentUser());
-  const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
 
+  const success = user => dispatch(receiveCurrentUser(user));
+  const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
+  debugger
   switch (action.type) {
     case LOGIN:
       login(action.user, success, error);
