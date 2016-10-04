@@ -17,7 +17,7 @@ the **components** that update as a result.
   0. `POST /api/users` is called.
   0. `receiveCurrentUser` is set as the success callback.
 * `logIn`
-  0. invoked from `AuthForm` `onSubmit`
+  0. invoked from `LoginForm` `onSubmit`
   0. `POST /api/session` is called.
   0. `receiveCurrentUser` is set as the callback.
 * `logOut`
