@@ -6,7 +6,7 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
 
   const success = user => dispatch(receiveCurrentUser(user));
   const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
-
+  const ssignup = signup
   switch (action.type) {
     case LOGIN:
       login(action.user, success, error);
@@ -14,7 +14,8 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
     case LOGOUT:
       return logout(() => next(action));
     case SIGNUP:
-      signup(user, success, error);
+    debugger
+      signup(action.user, success, error);
       return next(action);
     case CHECK_USERNAME:
       checkUsername(action.username, error);

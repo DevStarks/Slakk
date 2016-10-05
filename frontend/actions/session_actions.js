@@ -4,6 +4,8 @@ export const SIGNUP = "SIGNUP";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CHECK_USERNAME = "CHECK_USERNAME";
+export const STORE_TEMP_USER = "STORE_TEMP_USER";
+
 
 export const login = user => ({
   type: LOGIN,
@@ -33,4 +35,9 @@ export const receiveErrors = errors => ({
 export const checkUsername = username => ({
   type: CHECK_USERNAME,
   username
+});
+
+export const storeTempUser = tempUser => ({
+  type: STORE_TEMP_USER,
+  tempUser
 });

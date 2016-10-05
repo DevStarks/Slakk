@@ -1,14 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import SignupFormContainer from './signup_form_container';
+
 
 class SignupPage extends React.Component {
-
   render () {
     return (
       <main>
         <aside className="login-main">
-          <SignupFormContainer />
+          {this.props.children}
         </aside>
 
         <section className={this.formTypeHelper() + "-side-display"}>
@@ -18,8 +17,10 @@ class SignupPage extends React.Component {
     );
   }
 
+
   formTypeHelper() {
-    if (this.props.location.hash.substr(1) === "input-username") {
+    // TODO check this. style all session stuff.......
+    if (window.location.hash.match(/create-username/)) {
       return "username";
     } else {
       return "password";
