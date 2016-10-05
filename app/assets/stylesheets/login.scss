@@ -50,7 +50,7 @@ main {
   margin-bottom: 20px;
 }
 
-.login-main p {
+.login-main .login-prompt {
   font-size: 16px;
   color: #555459;
   font-weight: 300;
@@ -106,4 +106,8 @@ b {
   background-color: #blue;
   bottom: 0;
   color: #2ab27b;
+}
+
+.error {
+  color: #cb5234;
 }

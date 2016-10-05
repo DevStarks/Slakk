@@ -12,7 +12,7 @@ const LoginPage = () => {
 
       <div className="login-main">
         <h1>Sign in to Slakk</h1>
-        <p>Enter your <b>email address</b> and <b>password</b>.</p>
+        <p className="login-prompt">Enter your <b>email address</b> and <b>password</b>.</p>
         <LoginFormContainer />
       </div>
 

@@ -26,3 +26,12 @@ export const logout = (success, error) => {
     error
   });
 };
+
+export const checkUsername = (username, error) => {
+  $.ajax({
+    method: 'GET',
+    url: 'api/users/check',
+    data: {username},
+    error
+  });
+};
