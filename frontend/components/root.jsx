@@ -11,11 +11,10 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
-        <Route path="/" component={App} />
-
-        <IndexRoute path="login" component={LoginPage}/>
-
-        <Route path="signup" component={SignupPage}/>
+        <Route path="/" component={App} >
+          <IndexRoute component={LoginPage} />
+          <Route path="/input-username" component={SignupPage} />
+        </Route>
       </Router>
     </Provider>
   );

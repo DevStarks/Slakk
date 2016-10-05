@@ -1,29 +1,30 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+import SignupFormContainer from './signup_form_container';
 
-import SignUpFormContainer from './signup_form_container';
+class SignupPage extends React.Component {
 
-const SignupPage = function() {
-  return (
-    <main>
-      <aside className="login-main">
-        <h1>What's your name?</h1>
-        <p>Your name will be displayed along with your messaged in Slakk.</p>
-        <SignupFormContainer />
-      </aside>
+  render () {
+    return (
+      <main>
+        <aside className="login-main">
+          <SignupFormContainer />
+        </aside>
 
-      <section className={formTypeHelper.call(this) + "-side-display"}>
-        <img alt="logo"></img>
-      </section>
-    </main>
-  );
-};
-
-const formTypeHelper = () => {
-  if (this.props.location.hash.substr(1) === "username") {
-    return "username";
-  } else {
-    return "password";
+        <section className={this.formTypeHelper() + "-side-display"}>
+          <img alt="logo"></img>
+        </section>
+      </main>
+    );
   }
-};
 
-export default SignupPage;
+  formTypeHelper() {
+    if (this.props.location.hash.substr(1) === "input-username") {
+      return "username";
+    } else {
+      return "password";
+    }
+  }
+}
+
+export default withRouter(SignupPage);
