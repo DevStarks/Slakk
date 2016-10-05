@@ -1,15 +1,17 @@
 import React from 'react';
 import {withRouter} from 'react-router';
 
-const HeaderAuthButton = ({ text, clickCallback }) => {
-  return (
-    <button className="signup-button" onClick={renderSignUp.bind(this)}>Sign Up</button>
-  )
-};
-
-const renderSignUp = function() {
-  return () => this.props.router.push("/signup");
+class HeaderAuthButton extends React.Component {
+  render() {
+    return (
+      <button className="signup-button" onClick={this.renderSignUp.bind(this)}>Sign Up</button>
+    );
+  }
+  renderSignUp() {
+    this.props.router.push("/signup");
+  }
 }
+
 
 
 export default withRouter(HeaderAuthButton);

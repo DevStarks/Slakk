@@ -9,6 +9,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def check
+    if User.find_by(username: params[:username])
+      render json: ["username not available"], status: 422
+    else
+      render json: {}
+    end
+  end
+
   def user_params
     params.require(:user).permit(
       :username,
@@ -18,5 +26,9 @@ class Api::UsersController < ApplicationController
       :password,
       :session_token
     )
+  end
+
+  def username_check_params
+    params.permit(:username)
   end
 end
