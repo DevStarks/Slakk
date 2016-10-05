@@ -6,7 +6,7 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
 
   const success = user => dispatch(receiveCurrentUser(user));
   const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
-  debugger
+
   switch (action.type) {
     case LOGIN:
       login(action.user, success, error);
