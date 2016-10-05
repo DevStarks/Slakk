@@ -1,5 +1,5 @@
-import { LOGIN, LOGOUT, SIGNUP } from '../actions/session_actions';
-import { login, logout, signup, receiveCurrentUser } from '../actions/session_actions';
+import { LOGIN, LOGOUT, SIGNUP, receiveCurrentUser, receiveErrors } from '../actions/session_actions';
+import { login, logout, signup } from '../utils/session_api_util';
 
 
 const SessionMiddleware = ({ dispatch }) => next => action => {

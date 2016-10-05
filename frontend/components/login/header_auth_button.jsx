@@ -3,7 +3,7 @@ import {withRouter} from 'react-router';
 
 const HeaderAuthButton = ({ text, clickCallback }) => {
   return (
-    <button onClick={renderSignUp.bind(this)}>Sign Up</button>
+    <button className="signup-button" onClick={renderSignUp.bind(this)}>Sign Up</button>
   )
 };
 
