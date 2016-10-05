@@ -8,10 +8,8 @@ class HeaderAuthButton extends React.Component {
     );
   }
   renderSignUp() {
-    this.props.router.push("/input-username");
+    this.props.router.push("/signup/create-username");
   }
 }
-
-
 
 export default withRouter(HeaderAuthButton);

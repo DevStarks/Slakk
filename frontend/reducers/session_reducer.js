@@ -1,13 +1,15 @@
 import {
   RECEIVE_CURRENT_USER,
   LOGOUT,
-  RECEIVE_ERRORS
+  RECEIVE_ERRORS,
+  STORE_TEMP_USER
 } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 const defaultSessionState = {
   currentUser: null,
-  errors: []
+  errors: [],
+  tempUser: null
 };
 
 const SessionReducer = (oldState = defaultSessionState, action) => {
@@ -18,6 +20,8 @@ const SessionReducer = (oldState = defaultSessionState, action) => {
       return merge({}, oldState, { errors: action.errors });
     case LOGOUT:
       return defaultSessionState;
+    case STORE_TEMP_USER:
+      return merge({}, oldState, { tempUser: action.tempUser });
     default:
       return oldState;
   }
