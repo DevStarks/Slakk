@@ -10,6 +10,11 @@ class LoginForm extends React.Component {
       password: ""
     };
 
+    this.defaultState = {
+      username: "username",
+      password: "password"
+    };
+
     this.updateField = this.updateField.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,21 +33,23 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form className="login-form" onSubmit={this.handleSubmit}>
         <input
+          placeholder="username"
+          direction="ltr"
           type="text"
           value={this.state.username}
           onChange={this.updateField("username")} />
 
 
         <input
+          placeholder="password"
           type="password"
           value={this.state.password}
           onChange={this.updateField("password")}>
         </input>
-
+        <br />
         <button type="submit">Sign In</button>
       </form>
     );

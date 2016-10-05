@@ -14,8 +14,8 @@
  *= require_self
  */
 
- 
- /*html, body, div, main, header, div, footer,
+
+ html, body, div, main, header, div, footer,
  a, button, h1, p, input {
    margin: 0;
    border: 0;
@@ -26,8 +26,16 @@
    box-sizing: inherit;
    vertical-align: inherit;
    text-align: inherit;
-   color: black;
+   color: inherit;
    font: inherit;
 
    background: transparent;
- }*/
+ }
+
+ body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  font-family: 'Lato', sans-serif;
+  line-height: normal;
+ }
