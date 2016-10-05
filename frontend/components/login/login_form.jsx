@@ -1,20 +1,14 @@
 import React from 'react';
+import Errors from '../errors';
 
 class LoginForm extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       username: "",
       password: ""
     };
-
-    this.defaultState = {
-      username: "username",
-      password: "password"
-    };
-
     this.updateField = this.updateField.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -35,9 +29,9 @@ class LoginForm extends React.Component {
   render() {
     return(
       <form className="login-form" onSubmit={this.handleSubmit}>
+        <Errors errorInfo={this.props.errors}/>
         <input
           placeholder="username"
-          direction="ltr"
           type="text"
           value={this.state.username}
           onChange={this.updateField("username")} />
