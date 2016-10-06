@@ -32,10 +32,16 @@
    background: transparent;
  }
 
+ html{
+    min-height:100%;
+    position:relative;
+  }
+
  body {
   box-sizing: border-box;
   font-family: sans-serif;
   background-color: #f9f9f9;
   font-family: 'Lato', sans-serif;
   line-height: normal;
+  min-height: 100%;
  }

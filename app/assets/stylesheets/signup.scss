@@ -1,0 +1,58 @@
+.signup-container {
+  margin: 0;
+  left: -2px;
+  top: -2px;
+  bottom: -2px;
+  width: 380px;
+  position: absolute;
+  float: left;
+  background-color: white;
+  padding: 40px;
+}
+
+.username-signup-display, .password-signup-display {
+  height: 100%;
+  background-color: #18be8c;
+}
+
+.signup-container form {
+  margin-top: 25%;
+  width: 100%;
+  text-align: left;
+}
+
+.signup-container input {
+  width: 90%;
+  margin-left: 0px;
+  padding: 9px;
+
+}
+
+.signup-container h1 {
+  font-weight: 300;
+  margin-bottom: 45px;
+}
+
+.signup-container p {
+  margin-bottom: 12px;
+  margin-top: 5px;
+}
+
+.signup-container button {
+  width: auto;
+  position: absolute;
+  left: 39%;
+  bottom: 15%;
+  text-shadow: none;
+  text-shadow: 0px 1px 1px #6b7074;
+}
+
+.signup-container .error {
+  display: block;
+  margin: 5px;
+  text-align: center;
+}
+
+.caption {
+  color: #c7c7c7;
+}

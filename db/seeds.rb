@@ -8,3 +8,10 @@ User.delete_all
     password: Faker::Internet.password(10, 20)
   )
 end
+
+User.create(
+  username: "GuestUser",
+  first_name: "Guest",
+  last_name: "User",
+  password: "password"
+)

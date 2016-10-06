@@ -51,7 +51,7 @@ class PasswordSignup extends React.Component {
           onChange={this.handleChange}
         />
 
-        <p>Passwords must be at least 6 characters long.</p>
+      <p className="caption">Passwords must be at least 6 characters long.</p>
 
         <Errors errorInfo={this.props.errors}/>
 

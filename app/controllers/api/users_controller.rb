@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
 
   def check
     if User.find_by(username: params[:username])
-      render json: ["username not available"], status: 422
+      render json: ["Sorry username not available..."], status: 422
     else
       render json: {}
     end
