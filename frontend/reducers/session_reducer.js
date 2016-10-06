@@ -2,7 +2,8 @@ import {
   RECEIVE_CURRENT_USER,
   LOGOUT,
   RECEIVE_ERRORS,
-  STORE_TEMP_USER
+  STORE_TEMP_USER,
+  CLEAR_SESSION_ERRORS
 } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
@@ -22,6 +23,8 @@ const SessionReducer = (oldState = defaultSessionState, action) => {
       return defaultSessionState;
     case STORE_TEMP_USER:
       return merge({}, oldState, { tempUser: action.tempUser });
+    case CLEAR_SESSION_ERRORS:
+      return merge({}, oldState, { errors: [] });
     default:
       return oldState;
   }

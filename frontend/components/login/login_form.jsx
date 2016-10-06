@@ -1,5 +1,7 @@
 import React from 'react';
 import Errors from '../errors';
+import { hashHistory } from 'react-router';
+
 
 class LoginForm extends React.Component {
 
@@ -13,11 +15,23 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn(){
+    if (this.props.currentUser) {
+      hashHistory.push("/");
+    }
+  }
+
+
   updateField(field) {
     return e => {
       this.setState({
         [field]: e.currentTarget.value
       });
+      this.props.clearSessionErrors();
     };
   }
 
