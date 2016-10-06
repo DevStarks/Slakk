@@ -19,6 +19,7 @@ class UsernameSignup extends React.Component {
   updateField(field) {
     return e => {
       this.setState({ [field]: e.currentTarget.value });
+      this.props.clearSessionErrors();
     };
   }
 

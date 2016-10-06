@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Home = ({ children }) => {
   return (
-    <h1>Home!</h1>
+    <main>
+      <h1>Slakk Home</h1>
+      {children}
+    </main>
   );
 };
 
