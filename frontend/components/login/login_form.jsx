@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
 
   render() {
     return(
-      <form className="login-form" onSubmit={this.handleSubmit}>
+      <form className="auth-form" onSubmit={this.handleSubmit}>
         <Errors errorInfo={this.props.errors}/>
         <input
           placeholder="username"

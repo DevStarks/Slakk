@@ -64,7 +64,7 @@ class UsernameSignup extends React.Component {
           value={this.state.username}
           onChange={this.handleUsernameChange}>
         </input>
-        <Errors errorInfo={this.props.errors}/>
+        <Errors className="error" errorInfo={this.props.errors}/>
 
         <button onClick={this.handleClick}>Next &#x279c;</button>
       </form>

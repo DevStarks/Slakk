@@ -5,14 +5,12 @@ import { withRouter } from 'react-router';
 class SignupPage extends React.Component {
   render () {
     return (
-      <main>
-        <aside className="login-main">
+      <main className={this.formTypeHelper() + "-signup-display"}>
+        <aside className="auth-main signup-container">
           {this.props.children}
         </aside>
 
-        <section className={this.formTypeHelper() + "-side-display"}>
-          <img alt="logo"></img>
-        </section>
+        <img alt="logo"></img>
       </main>
     );
   }

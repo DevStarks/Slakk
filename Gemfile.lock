@@ -169,7 +169,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  bcrypt
+  bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
   byebug
@@ -187,3 +187,6 @@ DEPENDENCIES
   spring
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.12.5
