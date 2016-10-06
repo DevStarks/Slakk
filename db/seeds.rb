@@ -15,3 +15,14 @@ User.create(
   last_name: "User",
   password: "password"
 )
+
+Message.delete_all
+
+User.all.each do |user|
+  3.times do
+    Message.create(
+      body: Faker::Hipster.sentences(rand(3) + 1).join(""),
+      author_id: user.id
+    )
+  end
+end

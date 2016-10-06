@@ -1,10 +1,12 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import UsernameSignup from './username_signup';
 import PasswordSignup from './password_signup';
-
-
-import { signup, checkUsername, storeTempUser } from '../../actions/session_actions';
+import {
+  signup,
+  checkUsername,
+  storeTempUser,
+  clearSessionErrors
+} from '../../actions/session_actions';
 
 
 const mapStateToProps = ({ session: { errors, tempUser, currentUser } }) => ({
@@ -15,10 +17,10 @@ const mapStateToProps = ({ session: { errors, tempUser, currentUser } }) => ({
 
 export const UsernameSignupContainer = connect(
   mapStateToProps,
-  { checkUsername, storeTempUser }
+  { checkUsername, storeTempUser, clearSessionErrors }
 )(UsernameSignup);
 
 export const PasswordSignupContainer = connect(
   mapStateToProps,
-  { checkUsername, signup }
+  { checkUsername, signup, clearSessionErrors }
 )(PasswordSignup);

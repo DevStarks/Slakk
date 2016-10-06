@@ -24,7 +24,7 @@ const SessionReducer = (oldState = defaultSessionState, action) => {
     case STORE_TEMP_USER:
       return merge({}, oldState, { tempUser: action.tempUser });
     case CLEAR_SESSION_ERRORS:
-      return merge({}, oldState, { errors: [] });
+      return Object.assign({}, oldState, { errors: [] });
     default:
       return oldState;
   }

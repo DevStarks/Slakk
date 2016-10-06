@@ -20,13 +20,14 @@ class PasswordSignup extends React.Component {
 
   redirectIfLoggedIn(){
     if (this.props.currentUser) {
-      hashHistory.push("/");
+      hashHistory.push("/home");
     }
   }
 
 
   handleChange(e) {
     this.setState({ password: e.currentTarget.value });
+    this.props.clearSessionErrors();
     this.disabled = this.handleButtonDisable();
   }
 
