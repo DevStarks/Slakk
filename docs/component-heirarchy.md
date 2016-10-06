@@ -1,11 +1,15 @@
 
 ## Component Hierarchy
 
-**LoginFormContainer**
-  - LoginForm
+**LoginPage**
+  - HeaderAuthButton
+  - LoginFormContainer
+    - LoginForm
 
-**SignUpFormContainer**
-  - SignUpForm
+**MasterSignupContainer**
+  - SignUpPage
+    - UsernameSignup
+    - PasswordSignup
 
 **HomeContainer**
   - Home
