@@ -21,8 +21,8 @@
         - ConversationContainer
           - Conversation
             - ConversationHeader
-            - MessagesIndexContainer
-              - MessagesIndex
+            - MessagesContainer
+              - Messages
                 - Message
                   - MessageActionsContainer
                     - MessageActions
