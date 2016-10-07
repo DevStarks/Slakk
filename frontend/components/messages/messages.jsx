@@ -34,7 +34,6 @@ class Messages extends React.Component {
 
   updateScroll() {
     const messages = this.refs.messages;
-    debugger
     messages.scrollTop = messages.scrollHeight;
   }
 
