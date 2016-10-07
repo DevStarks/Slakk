@@ -1,4 +1,5 @@
-```{
+```js
+{
   currentUser: {
     id: "1",
     username: "Devin"
@@ -48,4 +49,5 @@
     last_name: "Starks",
     picture_url: "/path/ccc.jpg"
   }
-}```
+}
+```
