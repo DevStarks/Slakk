@@ -13,9 +13,9 @@ import { UsernameSignupContainer, PasswordSignupContainer } from './signup/maste
 const Root = ({ store }) => {
 
   const _redirectIfLoggedIn = (nextState, replace) => {
-    // if (store.getState().session.currentUser) {
-    //   replace("/home")
-    // }
+    if (store.getState().session.currentUser) {
+      replace("/home")
+    }
   }
 
   const _ensureLoggedIn = (nextState, replace) => {
