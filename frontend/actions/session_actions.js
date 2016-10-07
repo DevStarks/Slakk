@@ -14,7 +14,7 @@ export const login = user => ({
 });
 
 export const logout = () => ({
-  type: LOGOUT
+  type: LOGOUT,
 });
 
 export const signup = user => ({
