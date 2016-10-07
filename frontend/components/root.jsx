@@ -20,7 +20,7 @@ const Root = ({ store }) => {
 
   const _ensureLoggedIn = (nextState, replace) => {
     if (!store.getState().session.currentUser) {
-      replace("/login")
+      replace("/")
     }
   }
 
@@ -36,7 +36,7 @@ const Root = ({ store }) => {
           </Route>
 
           <Route path="home" component={Home} onEnter={_ensureLoggedIn}>
-            <Route path="messages" component={MessagesContainer} />
+            <IndexRoute component={MessagesContainer} />
           </Route>
         </Route>
       </Router>
