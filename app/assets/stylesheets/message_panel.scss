@@ -1,0 +1,51 @@
+.home {
+  display: flex;
+}
+
+.message-panel {
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+
+}
+
+.message-sidebar {
+  height: 100%;
+  width: 250px;
+  background-color: #4d394b;
+
+}
+
+.message-sidebar h3 {
+  margin: 0;
+}
+
+.conversation-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.conversation-header h1 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.messages-display {
+
+  padding: 0 25px;
+  height: 88vh;
+}
+
+.messages-display ul {
+  overflow: auto;
+  height: inherit;
+}
+
+.message-form {
+  position: fixed;
+  bottom: 15px;
+}
+
+.author-thumbnail {
+  width: 36px;
+}

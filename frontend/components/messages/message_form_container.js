@@ -10,6 +10,7 @@ const mapStateToProps = ({ message: { messages }, session: { currentUser }}) => 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   createMessage: message => dispatch(createMessage(message)),
   editMessage: (message, cb) => dispatch(editMessage(message, cb)),
+  updateScroll: ownProps.updateScroll,
   type: ownProps.type,
   messageInfo: ownProps.messageInfo
 })

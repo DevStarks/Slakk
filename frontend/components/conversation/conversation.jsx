@@ -1,6 +1,6 @@
 import React from 'react';
-import Conversation from './conversation';
 import MessagesContainer from '../messages/messages_container';
+import ConversationHeader from './conversation_header';
 
 const Conversation = () => {
   return (
@@ -10,3 +10,5 @@ const Conversation = () => {
     </div>
   );
 };
+
+export default Conversation;

@@ -1,10 +1,10 @@
 import React from 'react';
+import MessagePanelContainer from './message_panel/message_panel_container';
 
 const Home = ({ children }) => {
   return (
-    <main>
-      <h1>Slakk Home</h1>
-      {children}
+    <main className="home">
+      <MessagePanelContainer />
     </main>
   );
 };
