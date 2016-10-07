@@ -1,44 +1,48 @@
 ```js
 {
-  currentUser: {
-    id: "1",
-    username: "Devin"
-  },
-  forms: {
-    signIn: {errors: ["Invalid credentials."]},
-    signUp: {errors: ["Username already taken."]},
-    createChannel: {errors: []},
+  session: {
+    currentUser: {
+      id: "1",
+      username: "Devin"
+    },
+    tempUser: null,
+    errors: ["Invalid credentials."],
   },
   channels: {
     1: {
       id: "1",
       name: "channel-name"
-    }
+    },
+    errors: ["Channel name can't be blank."],
   },
   directMessages: {
     1: {
       id: "1",
     }
   },
-  conversationMessages: {
-    1: {
-      id: "1",
-      body: "first message",
-      author: {
-        username: "author1",
-        first_name: "Tommy",
-        last_name: "Pickles",
-        picture_url: "/assets/aaa.jpg"
-      }
-    },
-    2: {
-      id: "1",
-      body: "second message",
-      author: {
-        username: "author2",
-        first_name: "Dill",
-        last_name: "Pickles",
-        picture_url: "/path/bbb.jpg"
+  message: {
+    messages: {
+      1: {
+        id: "1",
+        body: "first message",
+        author: {
+          username: "author1",
+          first_name: "Tommy",
+          last_name: "Pickles",
+          picture_url: "/assets/aaa.jpg"
+        },
+        created_at: "03:24:12 PM GMT"
+      },
+      2: {
+        id: "1",
+        body: "second message",
+        author: {
+          username: "author2",
+          first_name: "Dill",
+          last_name: "Pickles",
+          picture_url: "/path/bbb.jpg"
+        },
+        created_at: "03:24:12 PM GMT"
       }
     }
   },
