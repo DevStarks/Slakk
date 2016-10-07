@@ -1,51 +1,68 @@
 .home {
-  display: flex;
+
 }
 
 .message-panel {
   background-color: #ffffff;
   width: 100%;
-  display: flex;
+
 
 }
 
 .message-sidebar {
-  height: 100%;
-  width: 250px;
-  background-color: #4d394b;
+  // height: 100%;
+  // width: 250px;
+  // background-color: #4d394b;
 
 }
 
 .message-sidebar h3 {
-  margin: 0;
+  // margin: 0;
+}
+
+.conversation {
+  // width: 100%;
+  // position: absolute;
+  // bottom: 0;
+  // top: 0;
+
 }
 
 .conversation-header {
-  padding: 12px 20px;
-  border-bottom: 1px solid #c5c5c5;
+  // padding: 12px 20px;
+  // border-bottom: 1px solid #c5c5c5;
 }
 
 .conversation-header h1 {
-  font-size: 20px;
-  font-weight: 800;
+  // font-size: 20px;
+  // font-weight: 800;
 }
 
 .messages-display {
-
-  padding: 0 25px;
-  height: 88vh;
+  // padding-left: 25px;
+  // height: 95%;
+  // width: 100%;
+  //
+  // position: absolute;
 }
 
 .messages-display ul {
-  overflow: auto;
-  height: inherit;
+  // overflow-y: auto;
+  // height: inherit;
+  // width: 100%;
 }
 
-.message-form {
-  position: fixed;
-  bottom: 15px;
+.message-form input{
+  // position: absolute;
+  // border: 2px solid #c5c5c5;
+  // left: 16px;
+  // bottom: 23px;
+  // width: 85%;
+  // background-color: #ffffff;
+  // border-radius: 5px;
+  // padding: 8px;
 }
 
 .author-thumbnail {
-  width: 36px;
+  // width: 36px;
 }

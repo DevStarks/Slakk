@@ -39,7 +39,7 @@
    bottom: 0;
    left: 0;
    right: 0;
- }    
+ }
 
 
  body {
@@ -49,6 +49,8 @@
   font-family: 'Lato', sans-serif;
   line-height: normal;
   min-height: 100%;
+  width: 100%;
+  overflow: hidden
  }
 
  ul {

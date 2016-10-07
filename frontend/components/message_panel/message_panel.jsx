@@ -12,16 +12,17 @@ class MessagePanel extends React.Component {
     this.usernameHelper = this.usernameHelper.bind(this);
   }
 
-  componentWillUpdate() {
-    this.redirectUnlessLoggedIn();
-  }
+  // componentWillUpdate() {
+  //   this.redirectUnlessLoggedIn();
+  // }
+  //
+  // redirectUnlessLoggedIn(){
+  //   if (!this.props.currentUser) {
+  //     hashHistory.push("/");
+  //   }
+  // }
 
-  redirectUnlessLoggedIn(){
-    if (!this.props.currentUser) {
-      hashHistory.push("/");
-    }
-  }
-
+  // TODO fix hacky stuff on line 44
   handleLogout() {
     this.props.logout();
   }
@@ -30,6 +31,7 @@ class MessagePanel extends React.Component {
     if (this.props.currentUser) {
       return this.props.currentUser.username;
     } else {
+      hashHistory.push("/");
       return "";
     }
   }
