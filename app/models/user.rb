@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"#TODO
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "assets/images/avatar1.png"#TODO
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   after_initialize :ensure_session_token

@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux';
-import { getMessages } from "../../actions/message_actions";
+import { getMessages, deleteMessage } from "../../actions/message_actions";
 import Messages from './messages';
 
 const mapStateToProps = ({ message: { messages }, session: { errors } }) => ({
@@ -10,5 +10,5 @@ const mapStateToProps = ({ message: { messages }, session: { errors } }) => ({
 
 export default connect(
   mapStateToProps,
-  { getMessages }
+  { getMessages, deleteMessage }
 )(Messages);

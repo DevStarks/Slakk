@@ -16,3 +16,22 @@ export const createMessage = (message, success, error) => {
     error
   });
 };
+
+export const deleteMessage = (messageId, success, error) => {
+  $.ajax({
+    method: 'DELETE',
+    url: `api/messages/${messageId}`,
+    success,
+    error
+  });
+};
+
+export const editMessage = (message, success, error) => {
+  $.ajax({
+    method: 'PATCH',
+    url: `api/messages/${message.id}`,
+    data: { message },
+    success,
+    error
+  });
+};

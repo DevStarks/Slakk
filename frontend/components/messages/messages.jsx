@@ -2,6 +2,7 @@ import React from 'react';
 import Message from './message';
 import MessageFormContainer from './message_form_container';
 import Errors from '../errors';
+import { hashToArray } from '../../utils/helpers';
 
 class Messages extends React.Component {
 
@@ -30,7 +31,7 @@ class Messages extends React.Component {
           {this.allMessages()}
         </ul>
 
-        <MessageFormContainer />
+        <MessageFormContainer type="new"/>
 
         <Errors errorInfo={this.props.errors}/>
       </div>
@@ -38,8 +39,8 @@ class Messages extends React.Component {
   }
 
   allMessages() {
-    return this.props.messages.map( message => {
-      return <Message key={message.id} info={message} />;
+    return hashToArray(this.props.messages).map( message => {
+      return <Message key={message.id} info={message} deleteMessage={this.props.deleteMessage}/>;
     });
   }
 }

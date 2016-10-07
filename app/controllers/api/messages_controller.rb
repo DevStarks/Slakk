@@ -17,7 +17,7 @@ class Api::MessagesController < ApplicationController
 
   def update
     @message = Message.find(params[:id])
-    if @message.update
+    if @message.update(message_params)
       render :show
     else
       render @message.errors.full_messages, status: 422

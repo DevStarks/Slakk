@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
 
   redirectIfLoggedIn(){
     if (this.props.currentUser) {
-      hashHistory.push("/");
+      hashHistory.push("/home");
     }
   }
 

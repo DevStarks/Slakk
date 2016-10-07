@@ -14,7 +14,6 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
     case LOGOUT:
       return logout(() => next(action));
     case SIGNUP:
-    debugger
       signup(action.user, success, error);
       return next(action);
     case CHECK_USERNAME:

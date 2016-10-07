@@ -14,7 +14,7 @@ const Root = ({ store }) => {
 
   const _redirectIfLoggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser) {
-      replace("/home")
+      replace("/home/messages")
     }
   }
 
@@ -29,7 +29,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path="/" component={App} >
-          <Route path="login" component={LoginPage} onEnter={_redirectIfLoggedIn} />
+          <IndexRoute component={LoginPage} onEnter={_redirectIfLoggedIn} />
           <Route path="signup" component={SignupPage} onEnter={_redirectIfLoggedIn}>
             <Route path="create-username" component={UsernameSignupContainer} />
             <Route path="create-password" component={PasswordSignupContainer} />
