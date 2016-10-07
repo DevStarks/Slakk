@@ -15,27 +15,32 @@
  */
 
 
- html, body, div, main, header, div, footer,
- a, button, h1, p, input {
-   margin: 0;
-   border: 0;
-   outline: 0;
-   padding: 0;
+  html, body, div, main, header, div, footer,
+  a, ul, li, img, section, article, aside, button,
+  h1, h2, h3, h4, h5, p, input {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    padding: 0;
 
-   text-decoration: inherit;
-   box-sizing: inherit;
-   vertical-align: inherit;
-   text-align: inherit;
-   color: inherit;
-   font: inherit;
+    text-decoration: inherit;
+    box-sizing: inherit;
+    vertical-align: inherit;
+    text-align: inherit;
+    color: inherit;
+    font: inherit;
 
-   background: transparent;
+    background: transparent;
  }
 
- html{
-    min-height:100%;
-    position:relative;
-  }
+ html {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+ }    
+
 
  body {
   box-sizing: border-box;

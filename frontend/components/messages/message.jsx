@@ -36,7 +36,7 @@ class Message extends React.Component {
 
     if (this.state.type === "show") {
       return (
-        <div className="message-content">
+        <article className="message-content">
           <img className="author-thumbnail" src={author.image_url}></img>
           <h3>{author.username} {timeFromDateObj(created_at)}</h3>
           <p>{body}</p>
@@ -45,7 +45,7 @@ class Message extends React.Component {
             <li onClick={this.handleEditClick}>Edit message</li>
             <li onClick={this.handleDeleteClick}>Delete message</li>
           </ul>
-        </div>
+        </article>
       );
     } else if (this.state.type === "edit") {
       return (

@@ -1,23 +1,23 @@
-import { LOGIN, LOGOUT, SIGNUP, CHECK_USERNAME, receiveCurrentUser, receiveErrors } from '../actions/session_actions';
-import { login, logout, signup, checkUsername } from '../utils/session_api_util';
+import * as ACT from '../actions/session_actions';
+import * as API from '../utils/session_api_util';
 
 
 const SessionMiddleware = ({ dispatch }) => next => action => {
 
-  const success = user => dispatch(receiveCurrentUser(user));
-  const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
-  const ssignup = signup
+  const success = user => dispatch(ACT.receiveCurrentUser(user));
+  const error = xhr => dispatch(ACT.receiveErrors(xhr.responseJSON));
+
   switch (action.type) {
-    case LOGIN:
-      login(action.user, success, error);
+    case ACT.LOGIN:
+      API.login(action.user, success, error);
       return next(action);
-    case LOGOUT:
-      return logout(() => next(action));
-    case SIGNUP:
-      signup(action.user, success, error);
+    case ACT.LOGOUT:
+      return API.logout(() => next(action));
+    case ACT.SIGNUP:
+      API.signup(action.user, success, error);
       return next(action);
-    case CHECK_USERNAME:
-      checkUsername(action.username, error);
+    case ACT.CHECK_USERNAME:
+      API.checkUsername(action.username, error);
       return next(action);
     default:
       next(action);

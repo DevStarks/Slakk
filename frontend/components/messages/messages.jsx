@@ -18,24 +18,12 @@ class Messages extends React.Component {
     channel.bind('message_created', function(data) {
       getMessages();
     });
+
+    this.updateScroll();
   }
 
   componentWillUnmount() {
     this.pusher.unsubscribe('slakk_messages');
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.allMessages()}
-        </ul>
-
-        <MessageFormContainer type="new"/>
-
-        <Errors errorInfo={this.props.errors}/>
-      </div>
-    );
   }
 
   allMessages() {
@@ -43,6 +31,30 @@ class Messages extends React.Component {
       return <Message key={message.id} info={message} deleteMessage={this.props.deleteMessage}/>;
     });
   }
+
+  updateScroll() {
+    const messages = this.refs.messages;
+    debugger
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  render() {
+    return (
+      <div className="messages-display">
+        <ul ref="messages">
+          {this.allMessages()}
+        </ul>
+
+        <MessageFormContainer
+          updateScroll={this.updateScroll.bind(this)}
+          type="new"
+        />
+
+        <Errors errorInfo={this.props.errors}/>
+      </div>
+    );
+  }
+
 }
 
 export default Messages;
