@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { createMessage, editMessage } from "../../actions/message_actions";
-import MessageForm from './message_form';
+
+import Conversation from './conversation';
 
 const mapStateToProps = ({ message: { messages }, session: { currentUser }}) => ({
   currentUser,
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessageForm);
+)(Conversation);

@@ -20,7 +20,7 @@ class PasswordSignup extends React.Component {
 
   redirectIfLoggedIn(){
     if (this.props.currentUser) {
-      hashHistory.push("/home");
+      hashHistory.push("/");
     }
   }
 
