@@ -7,6 +7,7 @@ import {
 } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
+
 const defaultSessionState = {
   currentUser: null,
   errors: [],

@@ -1,7 +1,7 @@
 import React from 'react';
 import Errors from '../errors';
 import merge from 'lodash/merge';
-import { withRouter, hashHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 
 class PasswordSignup extends React.Component {
