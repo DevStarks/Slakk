@@ -28,6 +28,7 @@ gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
 
 gem 'figaro'
+gem 'aws-sdk', '>= 2.0'
 
 
 # Use ActiveModel has_secure_password

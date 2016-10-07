@@ -14,8 +14,8 @@
 **HomeContainer**
   - Home
     - UserProfile
-    - SidebarContainer
-      - Sidebar
+    - MessagePanelContainer
+      - MessagePanel
         - ChannelsIndex
         - DirectMessagesIndex
         - ConversationContainer
