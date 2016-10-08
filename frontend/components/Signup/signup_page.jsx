@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+
 
 
 class SignupPage extends React.Component {
@@ -17,7 +17,7 @@ class SignupPage extends React.Component {
 
 
   formTypeHelper() {
-    // TODO check this. style all session stuff.......
+
     if (window.location.hash.match(/create-username/)) {
       return "username";
     } else {
@@ -26,4 +26,4 @@ class SignupPage extends React.Component {
   }
 }
 
-export default withRouter(SignupPage);
+export default SignupPage;
