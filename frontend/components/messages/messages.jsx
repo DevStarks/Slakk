@@ -4,6 +4,10 @@ import MessageFormContainer from './message_form_container';
 import Errors from '../errors';
 import { hashToArray } from '../../utils/helpers';
 
+
+
+
+
 class Messages extends React.Component {
 
   componentDidMount() {
@@ -18,12 +22,15 @@ class Messages extends React.Component {
     channel.bind('message_created', function(data) {
       getMessages();
     });
-
-    this.updateScroll();
   }
 
   componentWillUnmount() {
     this.pusher.unsubscribe('slakk_messages');
+  }
+
+  componentDidUpdate() {
+    // setTimeout(this.updateScroll(), 0);
+    this.updateScroll();
   }
 
   allMessages() {
@@ -35,6 +42,7 @@ class Messages extends React.Component {
   updateScroll() {
     const messages = this.refs.messages;
     messages.scrollTop = messages.scrollHeight;
+    debugger
   }
 
   render() {
@@ -43,7 +51,6 @@ class Messages extends React.Component {
         <ul ref="messages">
           {this.allMessages()}
           <article className="message-content-spacer"></article>
-          //for extra space at bottom of message scrollbar
         </ul>
 
         <MessageFormContainer
