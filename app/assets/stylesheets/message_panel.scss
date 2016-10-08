@@ -63,8 +63,9 @@
 }
 
 .message-content {
-  margin: 5px;
+  margin: 12px;
   position: relative;
+  padding-right: 20px;
 }
 
 .message-content img {
@@ -88,7 +89,8 @@
 
 .message-content p {
   font-size: 14px;
-  color: #4b4f54;
+  color: black;
+  line-height: 1.6;
 }
 
 .edit-message-form {
@@ -133,6 +135,15 @@
   color: #2c2d30;
 }
 
+.message-actions li {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.message-actions li:hover {
+  background-color: #3aa3e3;
+}
+
 .message-content button {
   display: none;
   position: absolute;
@@ -147,21 +158,12 @@
 
 .message-content button:hover {
   box-shadow: 0 5px 10px rgba(0,0,0,.12);
+  border-color: #949090;
 }
 .message-content:hover button {
   display: block;
   color: #439fe0;
 }
-
-.message-actions li {
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.message-actions li:hover {
-  background-color: #3aa3e3;
-}
-
 
 .message-content:hover {
   background-color: #ededed;
@@ -169,6 +171,10 @@
 
 .message-content:hover .message-actions {
   display: block;
+}
+
+.message-content-spacer {
+  height: 24px;
 }
 
 .author-thumbnail {
