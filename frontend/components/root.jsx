@@ -14,15 +14,15 @@ const Root = ({ store }) => {
 
   const _redirectIfLoggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser) {
-      replace("/home")
+      replace("/home");
     }
-  }
+  };
 
   const _ensureLoggedIn = (nextState, replace) => {
     if (!store.getState().session.currentUser) {
-      replace("/")
+      replace("/");
     }
-  }
+  };
 
 
   return (
