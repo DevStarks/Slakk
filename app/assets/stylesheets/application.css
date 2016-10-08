@@ -50,9 +50,14 @@
   line-height: normal;
   min-height: 100%;
   width: 100%;
-  overflow: hidden
  }
 
  ul {
   list-style: none;
+ }
+
+ .group:after {
+   content: "";
+   display: block;
+   clear: both;
  }

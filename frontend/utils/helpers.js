@@ -8,7 +8,7 @@ export const timeFromDateObj = dateObj => {
   } else {
     period = "AM";
   }
-  return `${hours}:${minutes} ${period}`;
+  return `${hours % 12}:${minutes} ${period}`;
 };
 
 export const arrayToHash = arr => {
