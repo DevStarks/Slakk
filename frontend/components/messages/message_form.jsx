@@ -24,13 +24,16 @@ class MessageForm extends React.Component {
     }
   }
 
+  componentDidReceiveProps() {
+    this.props.updateScroll();
+  }
+
   handleSubmit() {
     if (this.state.body.length > 0) {
       console.log(this.props.type);
       if (this.props.type === "new") {
         this.setState({ body: "" });
         this.props.createMessage(this.state);
-        this.updateScroll();
       } else if (this.props.type === "edit") {
         this.props.editMessage(
           Object.assign({}, this.props.messageInfo, this.state),
