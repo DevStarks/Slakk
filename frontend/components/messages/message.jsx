@@ -13,7 +13,7 @@ class Message extends React.Component {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.unmountEdit = this.unmountEdit.bind(this);
-    this.menuToggle = this.menuToggle.bind(this);
+    this.menuOn = this.menuOn.bind(this);
 
     this.state = {
       type: "show"
@@ -21,7 +21,6 @@ class Message extends React.Component {
   }
 
   componentDidMount() {
-
     this.refs.messageActions.style.display = "none";
   }
 
@@ -37,9 +36,13 @@ class Message extends React.Component {
     this.setState({ type: "show" });
   }
 
-  menuToggle() {
-
+  menuOn() {
     this.refs.messageActions.style.display = "block";
+    this.refs.actionsButton.style.display = "block";
+    $('body').on("click", () => {
+      this.refs.messageActions.style.display = "none";
+      this.refs.actionsButton.style.display = "none";
+    });
   }
 
   render() {
@@ -53,7 +56,7 @@ class Message extends React.Component {
           <span>{timeFromDateObj(created_at)}</span>
           <br/>
           <p>{body}</p>
-          <button onClick={this.menuToggle}>...</button>
+          <button ref="actionsButton" onClick={this.menuOn}>...</button>
           <ul ref="messageActions" className="message-actions">
             <li onClick={this.handleEditClick}>Edit message</li>
             <li onClick={this.handleDeleteClick}>Delete message</li>

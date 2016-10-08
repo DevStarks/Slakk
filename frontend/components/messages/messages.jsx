@@ -42,6 +42,8 @@ class Messages extends React.Component {
       <div className="messages-display">
         <ul ref="messages">
           {this.allMessages()}
+          <article className="message-content-spacer"></article>
+          //for extra space at bottom of message scrollbar
         </ul>
 
         <MessageFormContainer
