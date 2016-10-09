@@ -10,22 +10,22 @@ const MessageMiddleware = ({ dispatch }) => next => action => {
 
   switch (action.type) {
     case ACT.GET_MESSAGES:
-      API.getMessages(getMessagesSuccess, error);
+      API.getMessages(action.conversationID, getMessagesSuccess, error);
       return next(action);
     case ACT.CREATE_MESSAGE:
       API.createMessage(action.message, getMessageSuccess, error);
       return next(action);
     case ACT.DELETE_MESSAGE:
-      return API.deleteMessage(action.messageId, () => next(action), error);
+      return API.deleteMessage(action.messageID, () => next(action), error);
     case ACT.EDIT_MESSAGE:
       const editMessageSuccess = messageData => {
         dispatch(ACT.receiveMessages(messageData));
-        action.callback
-      }
+        action.callback(); //TODO changed this from action.callback
+      };
       return API.editMessage(action.message, getMessageSuccess, error);
     default:
-      next(action)
+      next(action);
   }
-}
+};
 
 export default MessageMiddleware;

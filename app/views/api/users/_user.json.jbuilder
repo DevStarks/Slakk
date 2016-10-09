@@ -4,7 +4,8 @@ json.last_name user.last_name
 json.username user.username
 json.image_url asset_path(user.image.url)
 json.channels do
-  user.channels.each do |channel|
+  json.array! user.channels do |channel|
+    json.id channel.id
     json.name channel.name
     json.purpose channel.purpose
   end

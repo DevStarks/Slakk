@@ -1,5 +1,6 @@
 import React from 'react';
 import ConversationContainer from '../conversation/conversation_container';
+import ChannelsContainer from '../channels/channels_container';
 import { hashHistory } from 'react-router';
 
 
@@ -12,7 +13,7 @@ class MessagePanel extends React.Component {
     this.usernameHelper = this.usernameHelper.bind(this);
   }
 
-  // componentWillUpdate() {
+  // componentWillMount() {
   //   this.redirectUnlessLoggedIn();
   // }
   //
@@ -22,7 +23,6 @@ class MessagePanel extends React.Component {
   //   }
   // }
 
-  // TODO fix hacky stuff on line 44
   handleLogout() {
     this.props.logout();
   }
@@ -40,9 +40,9 @@ class MessagePanel extends React.Component {
     return (
       <section className="message-panel">
         <aside className="message-sidebar">
-          <h3>sidebar</h3>
           <h3>signed in as {this.usernameHelper()}</h3>
           <button onClick={this.handleLogout}>Log out</button>
+          <ChannelsContainer />
         </aside>
         <section className="conversation">
           <ConversationContainer />

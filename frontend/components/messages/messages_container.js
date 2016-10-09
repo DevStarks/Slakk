@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { getMessages, deleteMessage } from "../../actions/message_actions";
 import Messages from './messages';
 
-const mapStateToProps = ({ message: { messages }, session: { errors } }) => ({
+const mapStateToProps = ({
+    message: { messages },
+    session: { errors },
+    channel: { channels }
+  }) => ({
   messages,
-  errors
+  errors,
+  channels
 });
 
 export default connect(
