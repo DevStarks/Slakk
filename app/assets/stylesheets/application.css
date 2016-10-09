@@ -61,3 +61,11 @@
    display: block;
    clear: both;
  }
+
+ .visible {
+   display: block;
+ }
+
+ .hidden {
+   display: none;
+ }

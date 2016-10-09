@@ -20,10 +20,6 @@ class Message extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.refs.messageActions.style.display = "none";
-  }
-
   handleEditClick() {
     this.setState({ type: "edit" });
   }
@@ -37,11 +33,15 @@ class Message extends React.Component {
   }
 
   menuOn() {
-    this.refs.messageActions.style.display = "block";
-    this.refs.actionsButton.style.display = "block";
+    this.refs.messageActions.className = "message-actions visible";
+    this.refs.actionsButton.className = "visible";
     $('body').on("click", () => {
-      this.refs.messageActions.style.display = "none";
-      this.refs.actionsButton.style.display = "none";
+      if (this.state.type === "show") {
+        this.refs.messageActions.className = "message-actions hidden";
+        this.refs.actionsButton.style.className = "hidden";
+      } else {
+        this.unmountEdit();
+      }
     });
   }
 
@@ -57,7 +57,7 @@ class Message extends React.Component {
           <br/>
           <p>{body}</p>
           <button ref="actionsButton" onClick={this.menuOn}>...</button>
-          <ul ref="messageActions" className="message-actions">
+          <ul ref="messageActions" className="message-actions hidden">
             <li onClick={this.handleEditClick}>Edit message</li>
             <li onClick={this.handleDeleteClick}>Delete message</li>
           </ul>

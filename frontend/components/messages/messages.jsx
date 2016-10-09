@@ -19,30 +19,47 @@ class Messages extends React.Component {
     });
 
     const channel = this.pusher.subscribe('slakk_messages');
-    channel.bind('message_created', function(data) {
+    channel.bind('message_created', () => {
       getMessages();
     });
+
+    setTimeout(this.updateScroll(), 50);
   }
 
   componentWillUnmount() {
     this.pusher.unsubscribe('slakk_messages');
   }
 
+  componentWillUpdate() {
+    const messages = this.refs.messages;
+    this.shouldScrollBottom = (
+      messages.scrollTop +
+      messages.offsetHeight ===
+      messages.scrollHeight
+    );
+  }
+
   componentDidUpdate() {
-    // setTimeout(this.updateScroll(), 0);
-    this.updateScroll();
+    if (this.shouldScrollBottom) {
+      this.updateScroll();
+    }
   }
 
   allMessages() {
     return hashToArray(this.props.messages).map( message => {
-      return <Message key={message.id} info={message} deleteMessage={this.props.deleteMessage}/>;
+      return (
+        <Message
+          key={message.id}
+          info={message}
+          deleteMessage={this.props.deleteMessage}
+        />
+      );
     });
   }
 
   updateScroll() {
     const messages = this.refs.messages;
     messages.scrollTop = messages.scrollHeight;
-    debugger
   }
 
   render() {

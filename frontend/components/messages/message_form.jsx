@@ -8,7 +8,6 @@ class MessageForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
     this.buttons = this.buttons.bind(this);
   }
 
@@ -24,16 +23,12 @@ class MessageForm extends React.Component {
     }
   }
 
-  componentDidReceiveProps() {
-    this.props.updateScroll();
-  }
-
   handleSubmit() {
     if (this.state.body.length > 0) {
-      console.log(this.props.type);
       if (this.props.type === "new") {
         this.setState({ body: "" });
         this.props.createMessage(this.state);
+        this.props.updateScroll();
       } else if (this.props.type === "edit") {
         this.props.editMessage(
           Object.assign({}, this.props.messageInfo, this.state),
@@ -56,7 +51,11 @@ class MessageForm extends React.Component {
 
   render() {
     return (
-      <form ref="messageForm" className={this.props.type + "-message-form"} onSubmit={this.handleSubmit}>
+      <form
+        ref="messageForm"
+        className={this.props.type + "-message-form"}
+        onSubmit={this.handleSubmit}
+      >
         <input
           type="text"
           value={this.state.body}

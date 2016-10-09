@@ -12,7 +12,7 @@ class UsernameSignup extends React.Component {
       last_name: "",
       type: "username"
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
   }
 
@@ -36,7 +36,7 @@ class UsernameSignup extends React.Component {
     }, 200);
   }
 
-  handleClick(e) {
+  handleSubmit(e) {
     e.preventDefault();
     this.props.storeTempUser(this.state);
     this.props.router.push("signup/create-password");
@@ -44,7 +44,7 @@ class UsernameSignup extends React.Component {
 
   render() {
     return (
-      <form className="name-form">
+      <form className="name-form" onSubmit={this.handleSubmit}>
         <h1>What's your name?</h1>
         <p>Your name will be displayed along with your messages in Slakk.</p>
         <input
@@ -67,7 +67,7 @@ class UsernameSignup extends React.Component {
         </input>
         <Errors className="error" errorInfo={this.props.errors}/>
 
-        <button onClick={this.handleClick}>Next &#x279c;</button>
+        <button type="submit">Next &#x279c;</button>
       </form>
     );
   }
