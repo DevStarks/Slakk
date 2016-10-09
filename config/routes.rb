@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/users/check/', to: 'users#check'
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
+    resources :channels, only: [:create, :update, :destroy]
     resources :messages, only: [:create, :update, :destroy, :index, :show]
   end
 end

@@ -2,15 +2,19 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  first_name      :string           not null
-#  last_name       :string           not null
-#  picture_url     :string
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  username           :string           not null
+#  first_name         :string           not null
+#  last_name          :string           not null
+#  picture_url        :string
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
@@ -25,7 +29,9 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :messages, class_name: :Message, foreign_key: :author_id
+  has_many :messages, class_name: :Message, foreign_key: :author_id, dependent: :destroy
+  has_many :channel_memberships, dependent: :destroy
+  has_many :channels, through: :channel_memberships
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
