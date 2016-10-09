@@ -1,7 +1,7 @@
 class Api::MessagesController < ApplicationController
 
   def index
-    @messages = Message.all.includes(:author)
+    @messages = Message.where(messageable_id: params[:message][:conversation_id]).includes(:author)
   end
 
   def create
@@ -33,6 +33,6 @@ class Api::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :conversation_id)
   end
 end

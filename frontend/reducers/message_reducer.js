@@ -1,6 +1,7 @@
 import { RECEIVE_MESSAGES, RECEIVE_MESSAGE, RECEIVE_ERRORS, DELETE_MESSAGE } from '../actions/message_actions';
 import { arrayToHash } from '../utils/helpers';
 import merge from 'lodash/merge';
+
 const defaultMessagesState = {
   errors: [],
   messages: {}
@@ -20,7 +21,7 @@ const MessageReducer = (oldState = defaultMessagesState, action) => {
       return Object.assign({}, oldState, { errors: action.errors });
     case DELETE_MESSAGE:
       newMessages = merge({}, oldState.messages);
-      delete newMessages[action.messageId];
+      delete newMessages[action.messageID];
       return { errors: oldState.errors, messages: newMessages };
     default:
       return oldState;

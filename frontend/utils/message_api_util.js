@@ -1,7 +1,8 @@
-export const getMessages = (success, error) => {
+export const getMessages = (conversation_id, success, error) => {
   $.ajax({
     method: 'GET',
     url: 'api/messages',
+    data: { message: { conversation_id }},
     success,
     error
   });
@@ -17,10 +18,10 @@ export const createMessage = (message, success, error) => {
   });
 };
 
-export const deleteMessage = (messageId, success, error) => {
+export const deleteMessage = (messageID, success, error) => {
   $.ajax({
     method: 'DELETE',
-    url: `api/messages/${messageId}`,
+    url: `api/messages/${messageID}`,
     success,
     error
   });

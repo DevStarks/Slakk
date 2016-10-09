@@ -9,8 +9,9 @@ export const EDIT_MESSAGE = "EDIT_MESSAGE";
 
 
 
-export const getMessages = () => ({
-  type: GET_MESSAGES
+export const getMessages = conversationID => ({
+  type: GET_MESSAGES,
+  conversationID
 });
 
 export const receiveErrors = errors => ({
@@ -33,9 +34,9 @@ export const createMessage = message => ({
   message
 });
 
-export const deleteMessage = messageId => ({
+export const deleteMessage = messageID => ({
   type: DELETE_MESSAGE,
-  messageId
+  messageID
 });
 
 export const editMessage = (message, callback) => ({
