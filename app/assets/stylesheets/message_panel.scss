@@ -50,7 +50,7 @@
 
 }
 
-.new-message-form {
+.new-message-form input {
   display: block;
   position: fixed;
   border: 2px solid #c5c5c5;
@@ -114,6 +114,7 @@
 .edit-message-form button {
   background-color: #2ab27b;
   padding: 6px 10px;
+  margin-right: 6px;
   border-radius: 5px;
   color: #fff;
 }
@@ -126,7 +127,7 @@
   position: absolute;
   right: 125px;
   bottom: 20px;
-
+  display: none;
   background-color: #ffffff;
   box-shadow: 0 5px 10px rgba(0,0,0,.12);
   padding: 12px;
@@ -159,22 +160,18 @@
 .message-content button:hover {
   box-shadow: 0 5px 10px rgba(0,0,0,.12);
   border-color: #949090;
+  color: #439fe0;
 }
 .message-content:hover button {
   display: block;
-  color: #439fe0;
 }
 
 .message-content:hover {
   background-color: #ededed;
 }
 
-.message-content:hover .message-actions {
-  display: block;
-}
-
 .message-content-spacer {
-  height: 24px;
+  height: 35px;
 }
 
 .author-thumbnail {
