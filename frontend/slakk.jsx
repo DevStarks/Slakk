@@ -4,6 +4,7 @@ import Root from './components/root';
 import * as API from './utils/session_api_util';
 import configureStore from './store/store';
 import { arrayToHash } from './utils/helpers';
+import Modal from 'react-modal';
 
 document.addEventListener("DOMContentLoaded", () => {
   const rootNode = document.getElementById('root');
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-
+  Modal.setAppElement(document.body);
   window.store = store;
   ReactDOM.render(<Root store={store} />, rootNode);
 });

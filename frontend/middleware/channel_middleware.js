@@ -1,4 +1,4 @@
-import { CREATE_CHANNEL, receiveChannel } from '../actions/channel_actions';
+import { CREATE_CHANNEL, receiveChannel, receiveErrors } from '../actions/channel_actions';
 import { createChannel } from '../utils/channel_api_util';
 
 

@@ -33,7 +33,7 @@ Message.delete_all
 User.all.each do |user|
   3.times do
     user.channels.sample.messages.create(
-      body: Faker::Hipster.sentences(rand(4) + 1).join(""),
+      body: Faker::Hipster.sentences(rand(4) + 1).join(" "),
       author_id: user.id
     )
   end
