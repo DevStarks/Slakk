@@ -35,14 +35,16 @@ class Message extends React.Component {
   menuOn() {
     this.refs.messageActions.className = "message-actions visible";
     this.refs.actionsButton.className = "visible";
-    $('body').on("click", () => {
-      if (this.state.type === "show") {
-        this.refs.messageActions.className = "message-actions hidden";
-        this.refs.actionsButton.style.className = "hidden";
+    const that = this;
+    $('body').on("click", (e) => {
+      if (that.state.type === "show") {
+        that.refs.messageActions.className = "message-actions hidden";
+        that.refs.actionsButton.style.className = "hidden";
       } else {
-        this.unmountEdit();
+        that.unmountEdit();
       }
     });
+    // TODO use clickoutside library to fix edit clickoutside bug
   }
 
   render() {
