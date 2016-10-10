@@ -20,6 +20,14 @@ class Message extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    if (this.state.type === "edit") {
+      $('.edit-message-form').on("click", e => {
+        e.stopPropagation();
+      });
+    }
+  }
+
   handleEditClick() {
     this.setState({ type: "edit" });
   }
@@ -36,16 +44,15 @@ class Message extends React.Component {
     this.refs.messageActions.className = "message-actions visible";
     this.refs.actionsButton.className = "visible";
 
-    // const that = this;
-    // $('body').on("click", (e) => {
-    //   if (that.state.type === "show") {
-    //     that.refs.messageActions.className = "message-actions hidden";
-    //     that.refs.actionsButton.style.className = "hidden";
-    //   } else {
-    //     that.unmountEdit();
-    //   }
-    // });
-    // TODO use clickoutside library to fix edit clickoutside bug
+    const messageComponent = this;
+    $('body').on("click", (e) => {
+      if (messageComponent.state.type === "show") {
+        messageComponent.refs.messageActions.className = "message-actions hidden";
+        messageComponent.refs.actionsButton.style.className = "hidden";
+      } else {
+        messageComponent.unmountEdit();
+      }
+    });
   }
 
   render() {
