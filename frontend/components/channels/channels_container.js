@@ -6,7 +6,8 @@ const mapStateToProps = ({ channel: { channels }}) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  changeConversation: ownProps.changeConversation
+  changeConversation: ownProps.changeConversation,
+  currentConversation: ownProps.currentConversation
 });
 
 export default connect(

@@ -5,7 +5,10 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.new(message_params)
+    channel = Channel.find(params[:message][:conversation_id])
+    @message = channel.messages.new(message_params)
+    @message.author = current_user
+
     if @message.save
       #TODO change channel for Channel implementation
       Pusher.trigger('slakk_messages', 'message_created', {})
@@ -33,6 +36,6 @@ class Api::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body, :conversation_id)
+    params.require(:message).permit(:body)
   end
 end

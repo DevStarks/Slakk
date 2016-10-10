@@ -29,9 +29,10 @@ export const receiveMessage = message => ({
   message
 });
 
-export const createMessage = message => ({
+export const createMessage = (message, conversationID) => ({
   type: CREATE_MESSAGE,
-  message
+  message,
+  conversationID
 });
 
 export const deleteMessage = messageID => ({

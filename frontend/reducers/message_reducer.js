@@ -12,7 +12,7 @@ const MessageReducer = (oldState = defaultMessagesState, action) => {
   switch (action.type) {
     case RECEIVE_MESSAGES:
       newMessages = arrayToHash(action.messages);
-      return merge({}, oldState, { messages: newMessages });
+      return Object.assign({}, oldState, { messages: newMessages });
     case RECEIVE_MESSAGE:
       const newMessage = { [action.message.id]: action.message };
       const newMessageState = { messages: merge({}, oldState.messages, newMessage)};

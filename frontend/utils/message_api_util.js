@@ -8,7 +8,11 @@ export const getMessages = (conversation_id, success, error) => {
   });
 };
 
-export const createMessage = (message, success, error) => {
+export const createMessage = ({ body }, conversation_id, success, error) => {
+  const message = {
+    body,
+    conversation_id
+  };
   $.ajax({
     method: 'POST',
     url: 'api/messages',
