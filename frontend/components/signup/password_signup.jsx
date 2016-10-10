@@ -56,7 +56,13 @@ class PasswordSignup extends React.Component {
 
         <Errors errorInfo={this.props.errors}/>
 
-        <button type="submit" disabled={this.handleButtonDisable()}>Next &#x279c;</button>
+        <button
+          type="submit"
+          onClick={this.handleSubmit}
+          disabled={this.handleButtonDisable()}
+        >
+          Next &#x279c;
+        </button>
       </form>
     );
 

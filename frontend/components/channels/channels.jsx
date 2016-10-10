@@ -11,6 +11,7 @@ class Channels extends React.Component {
     return (
       <section className="channels">
         <h2>CHANNELS ({channelArr.length})</h2>
+        <img src='assets/new.png' />
         <ul>
           {this.allChannels(channelArr)}
         </ul>

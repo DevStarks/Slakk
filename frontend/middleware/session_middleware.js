@@ -4,7 +4,9 @@ import * as API from '../utils/session_api_util';
 
 const SessionMiddleware = ({ dispatch }) => next => action => {
 
-  const success = user => dispatch(ACT.receiveCurrentUser(user));
+  const success = user => {
+    dispatch(ACT.receiveCurrentUser(user))
+  };
   const error = xhr => dispatch(ACT.receiveErrors(xhr.responseJSON));
 
   switch (action.type) {
@@ -14,6 +16,7 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
     case ACT.LOGOUT:
       return API.logout(() => next(action));
     case ACT.SIGNUP:
+    debugger
       API.signup(action.user, success, error);
       return next(action);
     case ACT.CHECK_USERNAME:

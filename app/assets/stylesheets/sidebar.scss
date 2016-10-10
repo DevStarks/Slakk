@@ -34,14 +34,14 @@
   top: 42px;
   background-color: #ffffff;
   box-shadow: 0 5px 10px rgba(0,0,0,.12);
-  padding: 8px;
+  padding: 6px;
   border-radius: 5px;
   z-index: 2;
   color: #2c2d30;
 }
 
 .sidebar-menu li {
-  padding: 6px 10px;
+  padding: 3px 10px 4px 10px;
   border-radius: 5px;
   font-weight: 400;
 }
@@ -59,10 +59,11 @@
   font-size: 13px;
   font-weight: 400;
   margin: 4px 16px;
+  display: inline-block;
 }
 
 .channels li {
-  padding: 2.5px 20px;
+  padding: 2.5px 20px 5px 20px;
   border-radius: 0px 5px 5px 0px;
   font-size: 16px;
   font-weight: 300;
@@ -72,16 +73,29 @@
   background-color: #3e313c;
 }
 
-.selected {
-  background-color: #4c9689;
-  color: #fff;
-}
 
 .channels .selected:hover {
   background-color: #4c9689;
 }
 
+.channels img {
+  height: 16px;
+  position: relative;
+  top: 4px;
+  left: 62px;
+  filter: invert(63%);
+}
+
+.channels img:hover {
+  filter: invert(90%);
+}
+
 .channels span {
   color: #6b6363;
   font-size: 14px;
+}
+
+.selected {
+  background-color: #4c9689;
+  color: #fff;
 }
