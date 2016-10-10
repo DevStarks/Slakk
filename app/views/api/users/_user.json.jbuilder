@@ -4,9 +4,14 @@ json.last_name user.last_name
 json.username user.username
 json.image_url asset_path(user.image.url)
 json.channels do
-  json.array! user.channels do |channel|
-    json.id channel.id
-    json.name channel.name
-    json.purpose channel.purpose
+  json.array! user
+    .channels
+    .select("channels.*, count(users.id) as user_count")
+    .joins(:users)
+    .group("channels.id") do |channel|
+      json.id channel.id
+      json.name channel.name
+      json.purpose channel.purpose
+      json.memberCount channel.user_count
   end
 end

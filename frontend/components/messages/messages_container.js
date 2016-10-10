@@ -13,6 +13,12 @@ const mapStateToProps = ({
   channels
 });
 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  getMessages: () => dispatch(getMessages(ownProps.currentConversation.id)),
+  deleteMessage: () => dispatch(deleteMessage()),
+  currentConversation: ownProps.currentConversation
+});
+
 export default connect(
   mapStateToProps,
   { getMessages, deleteMessage }

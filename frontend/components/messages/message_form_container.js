@@ -18,7 +18,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   messageInfo: ownProps.messageInfo
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MessageForm);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);

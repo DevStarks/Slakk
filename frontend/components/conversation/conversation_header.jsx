@@ -1,9 +1,13 @@
 import React from 'react';
 
-const ConversationHeader = () => {
+const ConversationHeader = ({
+  currentConversation: { name, purpose, memberCount}
+}) => {
   return (
     <header className="conversation-header">
-      <h1>convo header</h1>
+      <h1>{name}</h1>
+      <br />
+      <p>{memberCount}&nbsp;members&nbsp;&nbsp;{purpose}</p>
     </header>
   );
 };
