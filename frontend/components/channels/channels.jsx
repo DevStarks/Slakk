@@ -19,13 +19,13 @@ class Channels extends React.Component {
 
   allChannels(channels) {
     return channels.map( channel => {
-      return <li key={channel.id} onClick={this.handleClick(channel.id)}># {channel.name}</li>;
+      return <li key={channel.id} onClick={this.handleClick(channel)}># {channel.name}</li>;
     });
   }
 
-  handleClick(channelID) {
+  handleClick(channel) {
     return () => {
-      this.props.getMessages(channelID);
+      this.props.changeConversation(channel);
     };
   }
 }

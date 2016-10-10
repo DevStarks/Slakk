@@ -12,7 +12,7 @@ class Messages extends React.Component {
 
   componentDidMount() {
     const getMessages = this.props.getMessages.bind(this);
-    getMessages(this.props.channels[Object.keys(this.props.channels)[0]].id);
+    getMessages();
 
     this.pusher = new Pusher('2283e10f108057ca0b00', {
       encrypted: true
