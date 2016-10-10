@@ -33,7 +33,7 @@ class ChannelForm extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="base-form group" id="channel-form">
         <h1>Create a channel</h1>
 
         <label>Name
@@ -49,11 +49,11 @@ class ChannelForm extends React.Component {
             onChange={this.updateField("purpose")}
             value={this.state.purpose}
           />
-          <span>What's this channel about?</span>
+        <span className="form-instruction">What's this channel about?</span>
         </label>
 
-        <button onClick={this.handleCancel}>Cancel</button>
         <button onClick={this.handleCreate}>Create Channel</button>
+        <button onClick={this.handleCancel}>Cancel</button>
       </form>
     );
   }

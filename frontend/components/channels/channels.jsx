@@ -7,7 +7,7 @@ class Channels extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { modalOpen: false };
+    this.state = { modalOpen: true };
 
     this.openNewChannelForm = this.openNewChannelForm.bind(this);
     this.closeNewChannelForm = this.closeNewChannelForm.bind(this);
@@ -63,8 +63,17 @@ class Channels extends React.Component {
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeNewChannelForm}
+          style={{
+            overlay: {},
+            content: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0
+            }
+          }}
         >
-          im a modal
           <ChannelFormContainer closeNewChannelForm={this.closeNewChannelForm}/>
         </Modal>
       </section>
