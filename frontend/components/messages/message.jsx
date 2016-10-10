@@ -35,6 +35,7 @@ class Message extends React.Component {
   menuOn() {
     this.refs.messageActions.className = "message-actions visible";
     this.refs.actionsButton.className = "visible";
+
     // const that = this;
     // $('body').on("click", (e) => {
     //   if (that.state.type === "show") {
