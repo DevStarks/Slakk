@@ -38,6 +38,7 @@ gem 'pusher'
 
 gem 'paperclip', '~> 5.0.0.beta1'
 
+gem 'faker'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -51,7 +52,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'faker'
 end
 
 group :development do
