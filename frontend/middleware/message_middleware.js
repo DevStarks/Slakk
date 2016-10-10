@@ -13,7 +13,7 @@ const MessageMiddleware = ({ dispatch }) => next => action => {
       API.getMessages(action.conversationID, getMessagesSuccess, error);
       return next(action);
     case ACT.CREATE_MESSAGE:
-      API.createMessage(action.message, getMessageSuccess, error);
+      API.createMessage(action.message, action.conversationID, getMessageSuccess, error);
       return next(action);
     case ACT.DELETE_MESSAGE:
       return API.deleteMessage(action.messageID, () => next(action), error);

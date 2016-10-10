@@ -5,9 +5,10 @@ const ConversationHeader = ({
 }) => {
   return (
     <header className="conversation-header">
-      <h1>{name}</h1>
-      <br />
-      <p>{memberCount}&nbsp;members&nbsp;&nbsp;{purpose}</p>
+      <h2>#{name}</h2>
+      <span className="member-count">{memberCount}&nbsp;members</span>
+      <span className="divider">|</span>
+      <p>{purpose}</p>
     </header>
   );
 };

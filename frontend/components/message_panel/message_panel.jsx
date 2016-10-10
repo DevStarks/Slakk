@@ -15,6 +15,7 @@ class MessagePanel extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.usernameHelper = this.usernameHelper.bind(this);
     this.changeConversation = this.changeConversation.bind(this);
+    this.menuOn = this.menuOn.bind(this);
   }
 
   componentWillMount() {
@@ -42,14 +43,38 @@ class MessagePanel extends React.Component {
     this.setState({ currentConversation: conversation });
   }
 
+  menuOn() {
+    const sidebarMenu = this.refs.sidebarMenu;
+    sidebarMenu.className = "sidebar-menu";
+
+    $('sidebar-menu').on('click', e => e.stopPropagation());
+    $('body').on('click', () => {
+      sidebarMenu.className = "sidebar-menu hidden";
+    });
+  }
+
   render() {
     return (
       <section className="message-panel">
         <aside className="message-sidebar">
-          <h3>signed in as {this.usernameHelper()}</h3>
-          <button onClick={this.handleLogout}>Log out</button>
-          <ChannelsContainer changeConversation={this.changeConversation}/>
+
+          <section className="sidebar-menu-button" onClick={this.menuOn}>
+            <h1>{this.usernameHelper()}<span>&or;</span></h1>
+          </section>
+
+          <ul
+            className="sidebar-menu hidden"
+            ref="sidebarMenu"
+          >
+            <li onClick={this.handleLogout}>Log out</li>
+          </ul>
+
+          <ChannelsContainer
+            changeConversation={this.changeConversation}
+            currentConversation={this.state.currentConversation}
+            />
         </aside>
+
         <section className="conversation">
           <Conversation
             currentConversation={this.state.currentConversation}

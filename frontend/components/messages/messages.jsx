@@ -71,6 +71,7 @@ class Messages extends React.Component {
         </ul>
 
         <MessageFormContainer
+          currentConversation={this.props.currentConversation}
           updateScroll={this.updateScroll.bind(this)}
           type="new"
         />

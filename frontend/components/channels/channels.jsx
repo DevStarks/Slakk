@@ -9,17 +9,35 @@ class Channels extends React.Component {
   render() {
     const channelArr = hashToArray(this.props.channels);
     return (
-      <ul className="channels">
+      <section className="channels">
         <h2>CHANNELS ({channelArr.length})</h2>
-        {this.allChannels(channelArr)}
-      </ul>
+        <ul>
+          {this.allChannels(channelArr)}
+        </ul>
+      </section>
     );
+  }
+
+  classNameHelper(channel) {
+    if (channel === this.props.currentConversation) {
+      return "selected";
+    } else {
+      return "";
+    }
   }
 
 
   allChannels(channels) {
     return channels.map( channel => {
-      return <li key={channel.id} onClick={this.handleClick(channel)}># {channel.name}</li>;
+      return (
+        <li
+          className={this.classNameHelper(channel)}
+          key={channel.id}
+          onClick={this.handleClick(channel)}
+        >
+          <span>#</span> {channel.name}
+        </li>
+      );
     });
   }
 

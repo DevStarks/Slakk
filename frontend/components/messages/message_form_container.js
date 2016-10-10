@@ -11,7 +11,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  createMessage: message => dispatch(createMessage(message)),
+  createMessage: message => dispatch(createMessage(message, ownProps.currentConversation.id)),
   editMessage: (message, cb) => dispatch(editMessage(message, cb)),
   updateScroll: ownProps.updateScroll,
   type: ownProps.type,
