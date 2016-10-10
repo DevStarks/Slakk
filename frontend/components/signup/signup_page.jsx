@@ -6,7 +6,7 @@ class SignupPage extends React.Component {
   render () {
     return (
       <main className={this.formTypeHelper() + "-signup-display"}>
-        <aside className="auth-main signup-container">
+        <aside className="base-form signup-container">
           {this.props.children}
         </aside>
 

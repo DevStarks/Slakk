@@ -10,7 +10,7 @@ const LoginPage = () => {
         <HeaderAuthButton />
       </header>
 
-      <div className="auth-main">
+      <div className="base-form">
         <LoginFormContainer />
       </div>
 

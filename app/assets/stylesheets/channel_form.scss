@@ -1,0 +1,39 @@
+#channel-form {
+  margin: 0;
+  padding: 25px;
+  text-align: left;
+  margin: 5vh auto;
+  border: 0;
+  box-shadow: none;
+}
+
+#channel-form h1 {
+  color: #000000;
+  font-weight: 700;
+}
+
+#channel-form input {
+  width: calc(100% - 40px);
+  margin: 5px 0;
+}
+
+#channel-form button {
+  width: auto;
+  float: right;
+}
+
+#channel-form label {
+  display: block;
+  margin: 15px 0;
+}
+
+#channel-form span {
+  color: #b0b0b0;
+  font-weight: 300;
+}
+
+.form-instruction {
+  display: block;
+  font-size: 14px;
+  text-align: left;
+}

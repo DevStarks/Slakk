@@ -32,7 +32,7 @@ main {
   color: #555459;
 }
 
-.auth-main {
+.base-form {
   margin: 147px auto;
   background-color: #ffffff;
   width: 635px;
@@ -43,21 +43,21 @@ main {
   text-align: center;
 }
 
-.auth-main h1 {
+.base-form h1 {
   font-size: 34px;
   font-weight: 500;
   color: #555459;
   margin-bottom: 20px;
 }
 
-.auth-main .auth-prompt {
+.base-form .auth-prompt {
   font-size: 16px;
   color: #555459;
   font-weight: 300;
 }
 
 
-.auth-main input {
+.base-form input {
   background-color: #ffffff;
   border: 1px solid #c5c5c5;
   border-radius: 5px;
@@ -71,7 +71,7 @@ main {
   text-align: left;
 }
 
-.auth-main input:hover, .auth-main input:focus, {
+.base-form input:hover, .base-form input:focus, {
   border-color: #2780f8;
 }
 
@@ -79,7 +79,7 @@ main {
   margin: 15px;
 }
 
-.auth-main button {
+.base-form button {
   border-radius: 5px;
   margin: 8px;
   padding: 12px;
@@ -87,10 +87,10 @@ main {
   width: 367px;
   color: #fff;
   font-size: 20px;
-  text-shadow: 0px 1px 3px #1e1c1c;
+  // text-shadow: 0px 0.5px 0.3px #1e1c1c;
 }
 
-.auth-main button:hover {
+.base-form button:hover {
   box-shadow: 0px 1px 0px 1px #9b9a9a;
 }
 
