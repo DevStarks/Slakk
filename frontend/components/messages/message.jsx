@@ -33,6 +33,7 @@ class Message extends React.Component {
   }
 
   handleDeleteClick() {
+    debugger
     this.props.deleteMessage(this.props.info.id);
   }
 
@@ -55,6 +56,14 @@ class Message extends React.Component {
     });
   }
 
+  buttonHelper() {
+    if (this.props.currentUser.id === this.props.info.author.id) {
+      return (
+        <button ref="actionsButton" onClick={this.menuOn}>...</button>
+      );
+    }
+  }
+
   render() {
     const { info: { body, created_at, author } } = this.props;
 
@@ -66,7 +75,8 @@ class Message extends React.Component {
           <span>{timeFromDateObj(created_at)}</span>
           <br/>
           <p>{body}</p>
-          <button ref="actionsButton" onClick={this.menuOn}>...</button>
+          {this.buttonHelper()}
+
           <ul ref="messageActions" className="message-actions hidden">
             <li onClick={this.handleEditClick}>Edit message</li>
             <li onClick={this.handleDeleteClick}>Delete message</li>

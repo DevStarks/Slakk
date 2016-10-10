@@ -5,13 +5,13 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    channel = Channel.find(params[:message][:conversation_id])
+    conversation_id = params[:message][:conversation_id]
+    channel = Channel.find(conversation_id)
     @message = channel.messages.new(message_params)
     @message.author = current_user
 
     if @message.save
-      #TODO change channel for Channel implementation
-      Pusher.trigger('slakk_messages', 'message_created', {})
+      Pusher.trigger("conversation-#{conversation_id}", 'message_created', {})
       render :show
     else
       render json: @message.errors.full_messages, status: 422
