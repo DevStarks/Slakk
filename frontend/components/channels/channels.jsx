@@ -7,10 +7,15 @@ class Channels extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { channelFormOpen: false };
+    this.state = {
+      channelFormOpen: false,
+      channelBrowseOpen: false
+    };
 
     this.openNewChannelForm = this.openNewChannelForm.bind(this);
     this.closeNewChannelForm = this.closeNewChannelForm.bind(this);
+    this.openChannelBrowse = this.openChannelBrowse.bind(this);
+    this.closeChannelBrowse = this.closeChannelBrowse.bind(this);
   }
 
   componentWillMount() {
@@ -61,12 +66,26 @@ class Channels extends React.Component {
     this.setState({ channelFormOpen: false });
   }
 
+  openChannelBrowse() {
+    this.setState({ channelBrowseOpen: true });
+  }
+
+  closeChannelBrowse() {
+    this.setState({ channelBrowseOpen: false });
+  }
+
   render() {
     const channelArr = hashToArray(this.props.userChannels);
     return (
       <section className="channels">
-        <h2>CHANNELS ({this.props.channelCount})</h2>
+        <h2 onClick={this.openChannelBrowse}>CHANNELS
+          <span>
+            ({this.props.channelCount})
+          </span>
+        </h2>
+
         <img onClick={this.openNewChannelForm} src='assets/new.png' />
+
         <ul>
           {this.allChannels(channelArr)}
         </ul>
@@ -87,6 +106,28 @@ class Channels extends React.Component {
         >
           <ChannelFormContainer closeNewChannelForm={this.closeNewChannelForm} />
         </Modal>
+
+
+        <Modal
+          isOpen={this.state.channelBrowseOpen}
+          onRequestClose={this.closeChannelBrowse}
+          style={{
+            overlay: {},
+            content: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0
+            }
+          }}
+        >
+
+          <ChannelFormContainer closeNewChannelForm={this.closeNewChannelForm} />
+
+        </Modal>
+
+
       </section>
     );
   }
