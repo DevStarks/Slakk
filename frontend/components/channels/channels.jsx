@@ -7,12 +7,17 @@ class Channels extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { modalOpen: false };
+    this.state = { channelFormOpen: false };
 
     this.openNewChannelForm = this.openNewChannelForm.bind(this);
     this.closeNewChannelForm = this.closeNewChannelForm.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    const channels = hashToArray(newProps.channels);
+    const newConversation = channels[channels.length - 1];
+    this.props.changeConversation(newConversation);
+  }
 
   classNameHelper(channel) {
     if (channel === this.props.currentConversation) {
@@ -43,11 +48,11 @@ class Channels extends React.Component {
   }
 
   openNewChannelForm() {
-    this.setState({ modalOpen: true });
+    this.setState({ channelFormOpen: true });
   }
 
   closeNewChannelForm() {
-    this.setState({ modalOpen: false });
+    this.setState({ channelFormOpen: false });
   }
 
   render() {
@@ -61,7 +66,7 @@ class Channels extends React.Component {
         </ul>
 
         <Modal
-          isOpen={this.state.modalOpen}
+          isOpen={this.state.channelFormOpen}
           onRequestClose={this.closeNewChannelForm}
           style={{
             overlay: {},
@@ -74,7 +79,7 @@ class Channels extends React.Component {
             }
           }}
         >
-          <ChannelFormContainer closeNewChannelForm={this.closeNewChannelForm}/>
+          <ChannelFormContainer closeNewChannelForm={this.closeNewChannelForm} />
         </Modal>
       </section>
     );

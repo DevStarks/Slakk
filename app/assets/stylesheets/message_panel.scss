@@ -33,7 +33,7 @@
 .messages-display > ul {
   overflow-y: auto;
   width: 100%;
-  height: calc(98vh - 64px);
+  height: calc(100vh - 84px);
 }
 
 .new-message-form input {
@@ -74,7 +74,7 @@
 }
 
 .message-content div {
-
+  margin-left: 69px;
 }
 
 .message-content p {

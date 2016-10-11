@@ -14,5 +14,5 @@ class Channel < ActiveRecord::Base
 
   has_many :channel_memberships, dependent: :destroy
   has_many :users, through: :channel_memberships
-  has_many :messages, as: :messageable
+  has_many :messages, as: :messageable, dependent: :destroy
 end

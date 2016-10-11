@@ -3,6 +3,10 @@ import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { arrayToHash } from '../utils/helpers';
 import merge from 'lodash/merge';
 
+const defaultChannelState = {
+  userChannels: {},
+  allChannels: {}
+};
 
 const ChannelReducer = (oldState = {}, action) => {
   switch (action.type) {

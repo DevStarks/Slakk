@@ -8,7 +8,7 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
 
   switch (action.type) {
     case ACT.CREATE_CHANNEL:
-      createChannel(channel, success, error);
+      createChannel(action.channel, success, error);
       return next(action);
     default:
       next(action);
