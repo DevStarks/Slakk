@@ -1,4 +1,5 @@
 import React from 'react';
+import Errors from '../errors';
 
 class ChannelForm extends React.Component {
 
@@ -40,7 +41,7 @@ class ChannelForm extends React.Component {
         </div>
 
         <h1>Create a channel</h1>
-
+        <Errors errorInfo={this.props.errors}/>
         <label>Name
           <input
             placeholder="# e.g. jokes"

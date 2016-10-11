@@ -4,10 +4,10 @@ import { getMessages } from '../../actions/message_actions';
 
 import MessagePanel from './message_panel';
 
-const mapStateToProps = ({
-  session: { currentUser },
-  channel: { channels }
-}) => ({ currentUser, channels });
+const mapStateToProps = (store) => ({
+  currentUser: store.session.currentUser,
+  channels: store.channels
+});
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Channels from './channels';
 
-const mapStateToProps = ({ channel: { channels }}) => ({
+const mapStateToProps = ({ channels }) => ({
   channels
 });
 

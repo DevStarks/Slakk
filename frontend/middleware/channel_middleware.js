@@ -1,15 +1,13 @@
-import { CREATE_CHANNEL, receiveChannel, receiveErrors } from '../actions/channel_actions';
+import * as ACT from '../actions/channel_actions';
 import { createChannel } from '../utils/channel_api_util';
 
 
 const ChannelMiddleware = ({ dispatch }) => next => action => {
-
-  const error = xhr => dispatch(receiveErrors(xhr.responseJSON));
-  const success = messageData => dispatch(receiveChannel(messageData));
-
+  const error = xhr => dispatch(ACT.receiveChannelErrors(xhr.responseJSON));
+  const success = messageData => dispatch(ACT.receiveChannel(messageData));
 
   switch (action.type) {
-    case CREATE_CHANNEL:
+    case ACT.CREATE_CHANNEL:
       createChannel(channel, success, error);
       return next(action);
     default:

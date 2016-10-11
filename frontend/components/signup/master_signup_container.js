@@ -9,10 +9,10 @@ import {
 } from '../../actions/session_actions';
 
 
-const mapStateToProps = ({ session: { errors, tempUser, currentUser } }) => ({
-  errors,
-  tempUser,
-  currentUser
+const mapStateToProps = ({ errors, session }) => ({
+  errors: errors.sessionErrors,
+  tempUser: session.tempUser,
+  currentUser: session.currentUser
 });
 
 export const UsernameSignupContainer = connect(

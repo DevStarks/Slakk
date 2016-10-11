@@ -7,14 +7,14 @@ import Home from './home';
 
 import LoginPage from './login/login_page';
 import SignupPage from './signup/signup_page';
-import MessagesContainer from './messages/messages_container';
+import MessagePanelContainer from './message_panel/message_panel_container';
 import { UsernameSignupContainer, PasswordSignupContainer } from './signup/master_signup_container';
 
 const Root = ({ store }) => {
 
   const _redirectIfLoggedIn = (nextState, replace) => {
     if (store.getState().session.currentUser) {
-      replace("/home");
+      replace("home");
     }
   };
 
@@ -23,7 +23,6 @@ const Root = ({ store }) => {
       replace("/");
     }
   };
-
 
   return (
     <Provider store={store}>
@@ -36,7 +35,7 @@ const Root = ({ store }) => {
           </Route>
 
           <Route path="home" component={Home} onEnter={_ensureLoggedIn}>
-            <IndexRoute component={MessagesContainer} />
+            <IndexRoute component={MessagePanelContainer} />
           </Route>
         </Route>
       </Router>

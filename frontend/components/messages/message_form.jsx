@@ -1,4 +1,5 @@
 import React from 'react';
+import Errors from '../errors';
 
 class MessageForm extends React.Component {
   constructor(props) {
@@ -23,11 +24,12 @@ class MessageForm extends React.Component {
     }
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     if (this.state.body.length > 0) {
       if (this.props.type === "new") {
         this.setState({ body: "" });
-        this.props.createMessage(this.state);
+        this.props.createMessage(this.state, this.props.currentConversation.id);
         this.props.updateScroll();
       } else if (this.props.type === "edit") {
         this.props.editMessage(
@@ -62,6 +64,7 @@ class MessageForm extends React.Component {
           placeholder="Message"
           onChange={this.handleChange}
         />
+        <Errors errorInfo={this.props.errors}/>
         {this.buttons()}
       </form>
     );

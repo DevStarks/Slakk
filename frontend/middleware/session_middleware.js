@@ -7,7 +7,7 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
   const success = user => {
     dispatch(ACT.receiveCurrentUser(user))
   };
-  const error = xhr => dispatch(ACT.receiveErrors(xhr.responseJSON));
+  const error = xhr => dispatch(ACT.receiveSessionErrors(xhr.responseJSON));
 
   switch (action.type) {
     case ACT.LOGIN:
@@ -16,7 +16,6 @@ const SessionMiddleware = ({ dispatch }) => next => action => {
     case ACT.LOGOUT:
       return API.logout(() => next(action));
     case ACT.SIGNUP:
-    debugger
       API.signup(action.user, success, error);
       return next(action);
     case ACT.CHECK_USERNAME:

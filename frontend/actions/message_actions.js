@@ -1,6 +1,7 @@
 export const GET_MESSAGES = "GET_MESSAGES";
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_MESSAGE_ERRORS = "RECEIVE_MESSAGE_ERRORS";
+export const CLEAR_MESSAGE_ERRORS = "CLEAR_MESSAGE_ERRORS";
 
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
@@ -14,9 +15,13 @@ export const getMessages = conversationID => ({
   conversationID
 });
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
+export const receiveMessageErrors = errors => ({
+  type: RECEIVE_MESSAGE_ERRORS,
   errors
+});
+
+export const clearMessageErrors = () => ({
+  type: CLEAR_MESSAGE_ERRORS
 });
 
 export const receiveMessages = messages => ({
