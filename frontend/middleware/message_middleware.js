@@ -4,7 +4,6 @@ import * as API from "../utils/message_api_util";
 const MessageMiddleware = ({ dispatch }) => next => action => {
 
   const error = xhr => {
-    debugger
     dispatch(ACT.receiveMessageErrors(xhr.responseJSON))
   };
   const getMessagesSuccess = messageData => dispatch(ACT.receiveMessages(messageData));

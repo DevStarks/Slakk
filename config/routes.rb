@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :channels, only: [:create, :update, :destroy]
     get '/channels/count/', to: 'channels#count'
+    get '/channels/search/', to: 'channels#search'
+    post '/channels/connect/', to: 'channels#connect'
     resources :messages, only: [:create, :update, :destroy, :index, :show]
   end
 end

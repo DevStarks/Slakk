@@ -2,6 +2,7 @@ import React from 'react';
 import { hashToArray } from '../../utils/helpers';
 import Modal from 'react-modal';
 import ChannelFormContainer from './channel_form_container';
+import ChannelBrowseContainer from './channel_browse_container';
 
 class Channels extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Channels extends React.Component {
   }
 
   classNameHelper(channel) {
-    if (channel === this.props.currentConversation) {
+    if (channel.id === this.props.currentConversation.id) {
       return "selected";
     } else {
       return "";
@@ -122,9 +123,10 @@ class Channels extends React.Component {
             }
           }}
         >
-
-          <ChannelFormContainer closeNewChannelForm={this.closeNewChannelForm} />
-
+          <ChannelBrowseContainer
+            closeChannelBrowse={this.closeChannelBrowse}
+            changeConversation={this.props.changeConversation}
+          />
         </Modal>
 
 
