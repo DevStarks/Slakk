@@ -7,3 +7,12 @@ export const createChannel = (channel, success, error) => {
     error
   });
 };
+
+export const getChannelCount = (success, error) => {
+  $.ajax({
+    method: 'GET',
+    url: 'api/channels/count',
+    success,
+    error
+  });
+};

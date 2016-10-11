@@ -13,10 +13,16 @@ class Channels extends React.Component {
     this.closeNewChannelForm = this.closeNewChannelForm.bind(this);
   }
 
+  componentWillMount() {
+    this.props.getChannelCount();
+  }
+
   componentWillReceiveProps(newProps) {
-    const channels = hashToArray(newProps.channels);
-    const newConversation = channels[channels.length - 1];
-    this.props.changeConversation(newConversation);
+    if (this.props.userChannels !== newProps.userChannels) {
+      const channels = hashToArray(newProps.userChannels);
+      const newConversation = channels[channels.length - 1];
+      this.props.changeConversation(newConversation);
+    }
   }
 
   classNameHelper(channel) {
@@ -56,10 +62,10 @@ class Channels extends React.Component {
   }
 
   render() {
-    const channelArr = hashToArray(this.props.channels);
+    const channelArr = hashToArray(this.props.userChannels);
     return (
       <section className="channels">
-        <h2>CHANNELS ({channelArr.length})</h2>
+        <h2>CHANNELS ({this.props.channelCount})</h2>
         <img onClick={this.openNewChannelForm} src='assets/new.png' />
         <ul>
           {this.allChannels(channelArr)}
