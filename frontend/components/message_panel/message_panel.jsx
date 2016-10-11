@@ -37,7 +37,6 @@ class MessagePanel extends React.Component {
 
   redirectUnlessLoggedIn(props){
     if (!props.currentUser) {
-      debugger
       hashHistory.push("/");
     }
   }
@@ -46,7 +45,6 @@ class MessagePanel extends React.Component {
     if (this.props.currentUser) {
       return this.props.currentUser.username;
     } else {
-      debugger
       hashHistory.push("/");
       return "";
     }

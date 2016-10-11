@@ -28,14 +28,16 @@ class ChannelForm extends React.Component {
     this.props.closeNewChannelForm();
   }
 
-  handleCreate() {
+  handleCreate(e) {
+    e.preventDefault();
     this.props.createChannel(this.state);
+    this.props.closeNewChannelForm();
   }
 
   render() {
     return (
-      <form className="base-form group" id="channel-form">
-        <div>
+      <form onSubmit={this.handleCreate} className="base-form group" id="channel-form">
+        <div onClick={this.handleCancel}>
           <img src="assets/exit.png" />
           <p>esc</p>
         </div>
@@ -58,7 +60,7 @@ class ChannelForm extends React.Component {
           <span className="form-instruction">What's this channel about?</span>
         </label>
 
-        <button onClick={this.handleCreate}>Create Channel</button>
+        <button type="submit">Create Channel</button>
         <button onClick={this.handleCancel}>Cancel</button>
       </form>
     );

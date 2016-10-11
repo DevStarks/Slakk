@@ -9,6 +9,7 @@
 
 #channel-form img {
   width: 30px;
+  filter: invert(63%);
 }
 
 #channel-form div {
@@ -17,9 +18,23 @@
   top: 55px;
   right: 55px;
   text-align: center;
-  border-radius: 39px;
+  border-radius: 31px;
   padding: 6px 16px;
   font-size: 14px;
+  color: #9a9a9a;
+}
+
+#channel-form div:hover img {
+  filter: invert(25%);
+}
+
+#channel-form div:hover {
+  background-color: #e8e8e8;
+  color: #5b5a5f;
+}
+
+#channel-form div p {
+  margin-top: -5px;
 }
 
 
