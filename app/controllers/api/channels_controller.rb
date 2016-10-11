@@ -5,7 +5,7 @@ class Api::ChannelsController < ApplicationController
     if @channel.save
       render :show
     else
-      render @channel.errors.full_messages, status: 422
+      render json: @channel.errors.full_messages, status: 422
     end
   end
 
@@ -14,7 +14,7 @@ class Api::ChannelsController < ApplicationController
     if @channel.update(channel_params)
       render :show
     else
-      render @channel.errors.full_messages, status: 422
+      render json: @channel.errors.full_messages, status: 422
     end
   end
 
@@ -22,6 +22,10 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
     @channel.destroy
     render :show
+  end
+
+  def count
+    render json: Channel.count
   end
 
   private

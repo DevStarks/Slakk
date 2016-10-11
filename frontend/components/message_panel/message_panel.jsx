@@ -51,6 +51,7 @@ class MessagePanel extends React.Component {
   }
 
   changeConversation(conversation) {
+    debugger
     this.setState({ currentConversation: conversation });
   }
 

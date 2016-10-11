@@ -6,7 +6,7 @@ import MessagePanel from './message_panel';
 
 const mapStateToProps = (store) => ({
   currentUser: store.session.currentUser,
-  channels: store.channels
+  channels: store.channels.userChannels
 });
 
 const mapDispatchToProps = (dispatch) => ({
