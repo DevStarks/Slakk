@@ -7,7 +7,7 @@ class Channels extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { modalOpen: true };
+    this.state = { modalOpen: false };
 
     this.openNewChannelForm = this.openNewChannelForm.bind(this);
     this.closeNewChannelForm = this.closeNewChannelForm.bind(this);
