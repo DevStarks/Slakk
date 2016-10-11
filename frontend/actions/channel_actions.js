@@ -1,6 +1,7 @@
 export const CREATE_CHANNEL = "CREATE_CHANNEL";
 export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_CHANNEL_ERRORS = "RECEIVE_CHANNEL_ERRORS";
+export const CLEAR_CHANNEL_ERRORS = "CLEAR_CHANNEL_ERRORS";
 
 
 export const createChannel = channel => ({
@@ -13,7 +14,11 @@ export const receiveChannel = channel => ({
   channel
 });
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
+export const receiveChannelErrors = errors => ({
+  type: RECEIVE_CHANNEL_ERRORS,
   errors
+});
+
+export const clearChannelErrors = () => ({
+  type: CLEAR_CHANNEL_ERRORS
 });

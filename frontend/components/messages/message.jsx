@@ -33,7 +33,6 @@ class Message extends React.Component {
   }
 
   handleDeleteClick() {
-    debugger
     this.props.deleteMessage(this.props.info.id);
   }
 
@@ -74,7 +73,9 @@ class Message extends React.Component {
           <h3>{author.username} </h3>
           <span>{timeFromDateObj(created_at)}</span>
           <br/>
-          <p>{body}</p>
+          <div>
+            <p>{body}</p>
+          </div>
           {this.buttonHelper()}
 
           <ul ref="messageActions" className="message-actions hidden">

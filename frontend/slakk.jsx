@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       session: {
         currentUser: window.currentUser
       },
-      channel: {
-        channels: arrayToHash(window.currentUser.channels)
-      }
+      channels: arrayToHash(window.currentUser.channels)
     };
     store = configureStore(initialState);
   } else {

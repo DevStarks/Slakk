@@ -3,21 +3,19 @@ import { connect } from 'react-redux';
 import { getMessages, deleteMessage } from "../../actions/message_actions";
 import Messages from './messages';
 
-const mapStateToProps = ({
-    message: { messages },
-    session: { errors },
-    channel: { channels }
-  }) => ({
-  messages,
-  errors,
-  channels
+const mapStateToProps = (store) => ({
+  messages: store.messages,
+  errors: store.errors.messageErrors,
+  channels: store.channels
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  getMessages: () => dispatch(getMessages(ownProps.currentConversation.id)),
-  deleteMessage: () => dispatch(deleteMessage()),
-  currentConversation: ownProps.currentConversation
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getMessages: conversationID => dispatch(getMessages(conversationID)),
+    deleteMessage: () => dispatch(deleteMessage()),
+    currentConversation: ownProps.currentConversation
+  };
+};
 
 export default connect(
   mapStateToProps,

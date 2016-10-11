@@ -10,7 +10,7 @@ class Home extends React.Component {
   render() {
     return (
       <main className="home">
-        <MessagePanelContainer />
+        {this.props.children}
       </main>
     );
   }

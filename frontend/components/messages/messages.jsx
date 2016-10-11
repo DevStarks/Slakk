@@ -1,7 +1,6 @@
 import React from 'react';
 import MessageContainer from './message_container';
 import MessageFormContainer from './message_form_container';
-import Errors from '../errors';
 import { hashToArray } from '../../utils/helpers';
 
 
@@ -15,7 +14,7 @@ class Messages extends React.Component {
   }
 
   componentDidMount() {
-    this.getMessages();
+    this.getMessages(this.props.currentConversation.id);
     setTimeout(this.updateScroll(), 0);
   }
 
@@ -23,7 +22,9 @@ class Messages extends React.Component {
     this.pusher = new Pusher('2283e10f108057ca0b00', { encrypted: true });
     const conversationID = props.currentConversation.id;
     const channel = this.pusher.subscribe(`conversation-${conversationID}`);
-    channel.bind('message_created', () => { this.getMessages(); });
+    channel.bind('message_created', () => {
+      this.getMessages(this.props.currentConversation.id);
+    });
   }
 
   componentWillUnmount() {
@@ -38,11 +39,14 @@ class Messages extends React.Component {
       messages.scrollHeight
     );
 
+    const conversationID = this.props.currentConversation.id;
     if (this.pusher) {
-      const conversationID = this.props.currentConversation.id;
       this.pusher.unsubscribe(`conversation-${conversationID}`);
     }
-    this.subscribeToPusher(newProps);
+
+    if (conversationID !== newProps.currentConversation.id) {
+      this.subscribeToPusher(newProps);
+    }
   }
 
   componentDidUpdate() {
@@ -75,8 +79,6 @@ class Messages extends React.Component {
           updateScroll={this.updateScroll.bind(this)}
           type="new"
         />
-
-        <Errors errorInfo={this.props.errors}/>
       </div>
     );
   }
