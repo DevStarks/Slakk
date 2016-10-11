@@ -28,6 +28,20 @@ class Api::ChannelsController < ApplicationController
     render json: Channel.count
   end
 
+  def search
+    @channels = Channel.where("channels.name LIKE ?", "%#{params[:search_data]}%")
+      .select("channels.*, count(users.id) as user_count")
+      .joins(:users)
+      .group("channels.id")
+    render :index
+  end
+
+  def connect
+    @channel = Channel.find(params[:channel_id])
+    @channel.users << current_user
+    render :show
+  end
+
   private
 
   def channel_params
