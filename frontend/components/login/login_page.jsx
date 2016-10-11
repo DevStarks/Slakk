@@ -4,7 +4,7 @@ import LoginFormContainer from './login_form_container';
 
 const LoginPage = () => {
   return (
-    <main>
+    <main className="login">
       <header className="auth-header">
         <a className="logo">I'm a logo</a>
         <HeaderAuthButton />

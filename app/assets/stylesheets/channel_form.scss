@@ -1,18 +1,16 @@
-#channel-form {
-  margin: 0;
-  padding: 25px;
+
+.base-form .channel-form {
   text-align: left;
-  margin: 5vh auto;
-  border: 0;
-  box-shadow: none;
+  margin: 9vh auto;
+  width: calc(85vw - 100px);
 }
 
-#channel-form img {
+.base-form .channel-form img {
   width: 30px;
   filter: invert(63%);
 }
 
-#channel-form div {
+.base-form .channel-form div {
   float: right;
   position: absolute;
   top: 55px;
@@ -24,46 +22,46 @@
   color: #9a9a9a;
 }
 
-#channel-form div:hover img {
+.base-form .channel-form div:hover img {
   filter: invert(25%);
 }
 
-#channel-form div:hover {
+.base-form .channel-form div:hover {
   background-color: #e8e8e8;
   color: #5b5a5f;
 }
 
-#channel-form div p {
+.base-form .channel-form div p {
   margin-top: -5px;
 }
 
 
-#channel-form h1 {
+.base-form .channel-form h1 {
   color: #000000;
   font-weight: 700;
 }
 
-#channel-form input {
+.base-form .channel-form input {
   width: calc(100% - 40px);
   margin: 5px 0;
 }
 
-#channel-form button {
+.base-form .channel-form button {
   width: auto;
   float: right;
 }
 
-#channel-form label {
+.base-form .channel-form label {
   display: block;
   margin: 15px 0;
 }
 
-#channel-form span {
+.base-form .channel-form span {
   color: #b0b0b0;
   font-weight: 300;
 }
 
-.form-instruction {
+.base-form .channel-form .form-instruction {
   display: block;
   font-size: 14px;
   text-align: left;

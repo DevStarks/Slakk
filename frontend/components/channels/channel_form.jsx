@@ -36,33 +36,35 @@ class ChannelForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleCreate} className="base-form group" id="channel-form">
-        <div onClick={this.handleCancel}>
-          <img src="assets/exit.png" />
-          <p>esc</p>
-        </div>
+      <div className="base-form">
+        <form onSubmit={this.handleCreate} className="channel-form group" >
+          <div onClick={this.handleCancel}>
+            <img src="assets/exit.png" />
+            <p>esc</p>
+          </div>
 
-        <h1>Create a channel</h1>
-        <Errors errorInfo={this.props.errors}/>
-        <label>Name
-          <input
-            placeholder="# e.g. jokes"
-            onChange={this.updateField("name")}
-            value={this.state.name}
-          />
-        </label>
+          <h1>Create a channel</h1>
+          <Errors errorInfo={this.props.errors}/>
+          <label>Name
+            <input
+              placeholder="# e.g. jokes"
+              onChange={this.updateField("name")}
+              value={this.state.name}
+            />
+          </label>
 
-        <label>Purpose <span>(optional)</span>
-          <input
-            onChange={this.updateField("purpose")}
-            value={this.state.purpose}
-          />
-          <span className="form-instruction">What's this channel about?</span>
-        </label>
+          <label>Purpose <span>(optional)</span>
+            <input
+              onChange={this.updateField("purpose")}
+              value={this.state.purpose}
+            />
+            <span className="form-instruction">What's this channel about?</span>
+          </label>
 
-        <button type="submit">Create Channel</button>
-        <button onClick={this.handleCancel}>Cancel</button>
-      </form>
+          <button type="submit">Create Channel</button>
+          <button onClick={this.handleCancel}>Cancel</button>
+        </form>
+      </div>
     );
   }
 }
