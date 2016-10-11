@@ -7,6 +7,22 @@
   box-shadow: none;
 }
 
+#channel-form img {
+  width: 30px;
+}
+
+#channel-form div {
+  float: right;
+  position: absolute;
+  top: 55px;
+  right: 55px;
+  text-align: center;
+  border-radius: 39px;
+  padding: 6px 16px;
+  font-size: 14px;
+}
+
+
 #channel-form h1 {
   color: #000000;
   font-weight: 700;
