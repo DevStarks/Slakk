@@ -25,7 +25,6 @@ class DirectMessages extends React.Component {
     const newDirectMessages = Object.keys(nextProps.directMessages);
 
     if (oldDirectMessages.length < newDirectMessages.length) {
-      debugger
       this.props.getDirectMessageNames(Object.keys(nextProps.directMessages));
     }
   }

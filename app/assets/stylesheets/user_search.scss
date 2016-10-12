@@ -76,10 +76,13 @@ article.search-item.user-data-item {
 
 .base-form .channel-form button {
   float: left;
-  height: 33px;
-  width: 33px;
   text-align: center;
   margin-top: 0;
+}
+
+#dm-create-button {
+  height: 33px;
+  width: 33px;
 }
 
 .inactive {
