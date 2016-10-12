@@ -84,7 +84,7 @@
 }
 
 .edit-message-form {
-  border: 2px solid #c5c5c5;
+  border: 1px solid #c5c5c5;
   border-radius: 5px;
   padding: 8px;
   background-color: #ffffff;
@@ -92,12 +92,13 @@
 }
 
 .edit-message-form input {
-  border: 2px solid #c5c5c5;
+  border: 1px solid #c5c5c5;
   border-radius: 5px;
   padding: 8px;
   background-color: #ffffff;
   margin-right: 25px;
   margin-bottom: 8px;
+  font-size: 14px;
   width: calc(100% - 21px);}
 
 
@@ -110,7 +111,18 @@
 }
 
 .edit-message-form button:hover {
-  box-shadow: 0px 1px 0px 1px #9b9a9a;
+  box-shadow: inset 0px -1px 3px #525050;
+}
+
+button.cancel {
+  background-color: #fbfbfa;
+  color: #555459;
+  border: 1px solid #c7cacd;
+}
+
+button.cancel:hover {
+  color: #3aa3e3;
+  box-shadow: none;
 }
 
 .message-actions {

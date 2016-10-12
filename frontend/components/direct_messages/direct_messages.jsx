@@ -16,8 +16,18 @@ class DirectMessages extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getDirectMessageNames(Object.keys(this.props.directMessages));
     this.props.getUserCount();
+    this.props.getDirectMessageNames(Object.keys(this.props.directMessages));
+  }
+
+  componentWillUpdate(nextProps) {
+    const oldDirectMessages = Object.keys(this.props.directMessages);
+    const newDirectMessages = Object.keys(nextProps.directMessages);
+
+    if (oldDirectMessages.length < newDirectMessages.length) {
+      debugger
+      this.props.getDirectMessageNames(Object.keys(nextProps.directMessages));
+    }
   }
 
   classNameHelper(dMessage) {
