@@ -14,27 +14,58 @@ class DirectMessageForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.selectUser = this.selectUser.bind(this);
     this.searchResults = this.searchResults.bind(this);
+    this.placeholderHelper = this.placeholderHelper.bind(this);
+    this.classNameHelper = this.classNameHelper.bind(this);
+    this.selectedUsersSnippets = this.selectedUsersSnippets.bind(this);
+    this.removeSelectedFromResults = this.removeSelectedFromResults.bind(this);
   }
 
   componentWillMount() {
     this.props.searchUsers(this.state);
   }
 
+
+
   handleChange(e) {
-    this.setState({ searchData: e.currentTarget.value });
+    const newState = { searchData: e.currentTarget.value };
+    this.setState(newState);
+    this.props.searchUsers(newState);
   }
 
   selectUser(user) {
     return () => {
       const selectedUsers = this.state.selectedUsers;
-      selectedUsers.push(<UserSnippet key={user.id} info={user}/>);
+      selectedUsers.push(user);
       this.setState({ selectedUsers });
     };
   }
 
+  placeholderHelper() {
+    if (!this.state.selectedUsers.length) {
+      return "Find or start a conversation";
+    } else {
+      return "";
+    }
+  }
+
+  classNameHelper() {
+    if (!this.state.selectedUsers.length) {
+      return "";
+    } else {
+      return "shortened-input";
+    }
+  }
+
+  removeSelectedFromResults(userResults) {
+    return userResults.filter( result => {
+      return this.state.selectedUsers.indexOf(result) === -1;
+    });
+  }
+
   searchResults() {
     if (this.props.searchResults) {
-      return this.props.searchResults.map( user => {
+      const results = this.props.searchResults;
+      return this.removeSelectedFromResults(results).map( user => {
         return (
           <UserResultItem
             key={user.id}
@@ -44,6 +75,12 @@ class DirectMessageForm extends React.Component {
         );
       });
     }
+  }
+
+  selectedUsersSnippets() {
+    return this.state.selectedUsers.map( user => {
+      return <UserSnippet key={user.id} info={user}/>;
+    });
   }
 
 
@@ -56,15 +93,19 @@ class DirectMessageForm extends React.Component {
             <p>esc</p>
           </div>
           <h1>Direct Messages</h1>
-          <section>
-            {this.state.selectedUsers}
-            <input
-              placeholder="Find or start a conversation"
-              value={this.state.searchData}
-              onChange={this.handleChange}
-              />
+          <section className="user-search-bar">
+            <ul>
+              {this.selectedUsersSnippets()}
+              <input
+                className={this.classNameHelper()}
+                placeholder={this.placeholderHelper()}
+                value={this.state.searchData}
+                onChange={this.handleChange}
+                />
+            </ul>
           </section>
-          <ul>
+          <button>Go</button>
+          <ul className="user-search-results">
             <h4>Users that can be added to the message</h4>
             {this.searchResults()}
           </ul>

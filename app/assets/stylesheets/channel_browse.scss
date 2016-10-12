@@ -1,4 +1,4 @@
-.channel-item {
+.search-item {
   float: none;
 }
 
@@ -14,15 +14,25 @@
   width: 96%;
 }
 
-.search article {
+.search .search-item {
   position: relative;
   border-top: 1px solid #e8e8e8;
   padding: 10px 8px;
   line-height: 1.5;
 }
 
+.search-item:hover {
+  border-radius: 5px;
+  border: 1px solid #d3ecfa;
+  background-color: #edf7fd;
+}
+
+.search-item:hover + .search-item {
+  border-top: 0;
+}
 .search h4 {
   padding: 10px 8px;
+  clear:both;
 }
 
 .search article h3 {
