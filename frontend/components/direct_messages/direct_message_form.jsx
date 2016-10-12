@@ -1,5 +1,6 @@
 import React from 'react';
 import UserResultItem from './user_result_item';
+import UserSnippet from './user_snippet';
 
 class DirectMessageForm extends React.Component {
   constructor(props) {
@@ -19,15 +20,16 @@ class DirectMessageForm extends React.Component {
     this.props.searchUsers(this.state);
   }
 
-
   handleChange(e) {
     this.setState({ searchData: e.currentTarget.value });
   }
 
   selectUser(user) {
-    const selectedUsers = this.state.selectedUsers;
-    selectedUsers.push(user);
-    this.setState({ selectedUsers });
+    return () => {
+      const selectedUsers = this.state.selectedUsers;
+      selectedUsers.push(<UserSnippet key={user.id} info={user}/>);
+      this.setState({ selectedUsers });
+    };
   }
 
   searchResults() {
@@ -44,6 +46,7 @@ class DirectMessageForm extends React.Component {
     }
   }
 
+
   render() {
     return (
       <div className="base-form search">
@@ -53,11 +56,14 @@ class DirectMessageForm extends React.Component {
             <p>esc</p>
           </div>
           <h1>Direct Messages</h1>
-          <input
-            placeholder="Find or start a conversation"
-            value={this.state.searchData}
-            onChange={this.handleChange}
-          />
+          <section>
+            {this.state.selectedUsers}
+            <input
+              placeholder="Find or start a conversation"
+              value={this.state.searchData}
+              onChange={this.handleChange}
+              />
+          </section>
           <ul>
             <h4>Users that can be added to the message</h4>
             {this.searchResults()}
