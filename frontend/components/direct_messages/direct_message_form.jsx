@@ -121,7 +121,7 @@ class DirectMessageForm extends React.Component {
                 />
             </ul>
           </section>
-          <button type="submit">Go</button>
+          <button type="submit" id="dm-create-button">Go</button>
           <ul className="user-search-results">
             <h4>Users that can be added to the message</h4>
             {this.searchResults()}
