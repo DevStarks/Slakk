@@ -12,6 +12,7 @@ class DirectMessageForm extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.selectUser = this.selectUser.bind(this);
     this.searchResults = this.searchResults.bind(this);
     this.placeholderHelper = this.placeholderHelper.bind(this);
@@ -24,12 +25,17 @@ class DirectMessageForm extends React.Component {
     this.props.searchUsers(this.state);
   }
 
-
-
   handleChange(e) {
     const newState = { searchData: e.currentTarget.value };
     this.setState(newState);
     this.props.searchUsers(newState);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const selectedIDs = this.state.selectedUsers.map(user => user.id);
+    this.props.createChannel({ user_ids: selectedIDs, direct_message: true });
+    this.props.closeDirectMessageForm();
   }
 
   selectUser(user) {
@@ -77,9 +83,20 @@ class DirectMessageForm extends React.Component {
     }
   }
 
+  deselect(userToRemove) {
+    return () => {
+      const newSelectedUsers = this.state.selectedUsers.filter( user => {
+        return user !== userToRemove;
+      });
+      this.setState({ selectedUsers: newSelectedUsers });
+    };
+  }
+
   selectedUsersSnippets() {
     return this.state.selectedUsers.map( user => {
-      return <UserSnippet key={user.id} info={user}/>;
+      return (
+        <UserSnippet key={user.id} deselect={this.deselect(user)} info={user}/>
+      );
     });
   }
 
@@ -87,7 +104,7 @@ class DirectMessageForm extends React.Component {
   render() {
     return (
       <div className="base-form search">
-        <form className="channel-form group" >
+        <form className="channel-form group" onSubmit={this.handleSubmit}>
           <div onClick={this.props.closeDirectMessageForm}>
             <img src="assets/exit.png" />
             <p>esc</p>
@@ -104,12 +121,12 @@ class DirectMessageForm extends React.Component {
                 />
             </ul>
           </section>
-          <button>Go</button>
+          <button type="submit">Go</button>
           <ul className="user-search-results">
             <h4>Users that can be added to the message</h4>
             {this.searchResults()}
           </ul>
-          </form>
+        </form>
       </div>
     );
   }

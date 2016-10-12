@@ -1,8 +1,8 @@
 import React from 'react';
 
-const UserSnippet = ({ info }) => {
+const UserSnippet = ({ info, deselect }) => {
   return (
-    <li className="user-snippet">
+    <li className="user-snippet" onClick={deselect}>
       <img src={info.image_url}/>
       <p>{info.username}</p>
       <span>╳</span>

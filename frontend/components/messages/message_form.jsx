@@ -44,7 +44,7 @@ class MessageForm extends React.Component {
     if (this.props.type === "edit") {
       return (
         <div className="editButtons">
-          <button onClick={this.props.unmount}>Cancel</button>
+          <button onClick={this.props.unmount} className="cancel">Cancel</button>
           <button onClick={this.handleSubmit}>Save Changes</button>
         </div>
       );
