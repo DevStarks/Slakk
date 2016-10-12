@@ -20,7 +20,11 @@
   font-weight: 600;
   flex: 0 0 100%;
   color: #000;
-}
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(96vw - 230px);
+ }
 
 .conversation-header .divider {
   color: #c5c5c5;

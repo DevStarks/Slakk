@@ -11,6 +11,7 @@ const RootMiddleware = applyMiddleware(
   SessionMiddleware,
   MessageMiddleware,
   ChannelMiddleware,
+  DirectMessageMiddleware,
   LoggerMiddleware
 );
 

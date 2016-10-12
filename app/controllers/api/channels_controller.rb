@@ -48,8 +48,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def dm_names
-    debugger
-    Channel.get_direct_message_names(params[:direct_message_ids])
+    render json: Channel.get_direct_message_names(params[:direct_message_ids])
   end
 
   private

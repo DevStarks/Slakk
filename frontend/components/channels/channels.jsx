@@ -81,7 +81,7 @@ class Channels extends React.Component {
       <section className="channels">
         <h2 onClick={this.openChannelBrowse}>CHANNELS
           <span>
-            ({this.props.channelCount})
+            &nbsp;({this.props.channelCount})
           </span>
         </h2>
 
