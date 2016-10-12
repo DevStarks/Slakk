@@ -18,6 +18,21 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def count
+    render json: User.count
+  end
+
+  def search
+    searchData = params[:searchData]
+    t = User.arel_table
+    @users = User.where(
+      t[:username].matches("%#{searchData}%")
+      .or(t[:first_name].matches("%#{searchData}%"))
+      .or(t[:last_name].matches("%#{searchData}%"))
+    )
+    render :search_results
+  end
+
   def user_params
     params.require(:user).permit(
       :username,

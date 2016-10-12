@@ -7,7 +7,6 @@ const DirectMessageMiddleware = ({ dispatch }) => next => action => {
   };
   switch (action.type) {
     case ACT.GET_DIRECT_MESSAGE_NAMES:
-    debugger
       const success = directMessageNames => {
         dispatch(ACT.receiveDirectMessageNames(directMessageNames));
       };
