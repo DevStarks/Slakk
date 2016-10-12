@@ -1,6 +1,7 @@
 import React from 'react';
 import Conversation from '../conversation/conversation';
 import ChannelsContainer from '../channels/channels_container';
+import DirectMessagesContainer from '../direct_messages/direct_messages_container';
 import { hashToArray } from '../../utils/helpers';
 import { hashHistory } from 'react-router';
 
@@ -83,7 +84,12 @@ class MessagePanel extends React.Component {
           <ChannelsContainer
             changeConversation={this.changeConversation}
             currentConversation={this.state.currentConversation}
-            />
+          />
+
+          <DirectMessagesContainer
+            changeConversation={this.changeConversation}
+            currentConversation={this.state.currentConversation}
+          />
         </aside>
 
         <section className="conversation">

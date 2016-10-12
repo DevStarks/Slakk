@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  def direct_messages
+    self.channels.where(direct_message: true)
+  end
+
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end

@@ -1,7 +1,12 @@
 class Api::ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
+
     @channel.users << current_user
+    # if params[:channel][:direct_message]
+    #   # @channel.user_ids += params[:channel][:user_ids]
+    # end
+
     if @channel.save
       render :show
     else
@@ -25,7 +30,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def count
-    render json: Channel.count
+    render json: Channel.where(direct_message: false).count
   end
 
   def search
@@ -42,9 +47,14 @@ class Api::ChannelsController < ApplicationController
     render :show
   end
 
+  def dm_names
+    debugger
+    Channel.get_direct_message_names(params[:direct_message_ids])
+  end
+
   private
 
   def channel_params
-    params.require(:channel).permit(:name, :purpose)
+    params.require(:channel).permit(:name, :purpose, :direct_message, user_ids: [])
   end
 end
