@@ -38,7 +38,7 @@ class ChannelForm extends React.Component {
     return (
       <div className="base-form">
         <form onSubmit={this.handleCreate} className="channel-form group" >
-          <div onClick={this.handleCancel}>
+          <div onClick={this.handleCancel} >
             <img src="assets/exit.png" />
             <p>esc</p>
           </div>

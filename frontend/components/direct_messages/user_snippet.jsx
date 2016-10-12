@@ -2,11 +2,11 @@ import React from 'react';
 
 const UserSnippet = ({ info }) => {
   return (
-    <div>
+    <li className="user-snippet">
       <img src={info.image_url}/>
       <p>{info.username}</p>
-      <button>✕</button>
-    </div>
+      <span>╳</span>
+    </li>
   )
 };
 
