@@ -3,6 +3,7 @@ import SessionMiddleware from './session_middleware';
 import MessageMiddleware from './message_middleware';
 import ChannelMiddleware from './channel_middleware';
 import DirectMessageMiddleware from './direct_message_middleware';
+import UserBaseMiddleware from './user_base_middleware';
 import createLogger from 'redux-logger';
 
 const LoggerMiddleware = createLogger();
@@ -12,6 +13,7 @@ const RootMiddleware = applyMiddleware(
   MessageMiddleware,
   ChannelMiddleware,
   DirectMessageMiddleware,
+  UserBaseMiddleware,
   LoggerMiddleware
 );
 
