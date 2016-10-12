@@ -11,13 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let store;
   if (window.currentUser) {
+    debugger
     const initialState = {
       session: {
         currentUser: window.currentUser
       },
       channels: {
         userChannels: arrayToHash(window.currentUser.channels)
-      }
+      },
+      directMessages: arrayToHash(window.currentUser.direct_messages)
     };
     store = configureStore(initialState);
   } else {

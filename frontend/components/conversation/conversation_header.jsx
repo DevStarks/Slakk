@@ -1,12 +1,11 @@
 import React from 'react';
 
 const ConversationHeader = ({
-  currentConversation: { name, purpose, memberCount}
-}) => {
+  currentConversation: { name, purpose, memberCount} }) => {
   return (
     <header className="conversation-header">
       <h2>#{name}</h2>
-      {memberCountHelper()}
+      {memberCountHelper(memberCount)}
       <span className="divider">|</span>
       <p>{purpose}</p>
     </header>

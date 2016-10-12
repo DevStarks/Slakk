@@ -5,6 +5,8 @@ c2 = Channel.create(name: "random", purpose: "A place for non-work-related flimf
 c3 = Channel.create(name: "other", purpose: "Another channel that only some users belong to.")
 
 
+
+
 User.delete_all
 
 12.times do
@@ -27,6 +29,9 @@ guest = User.create(
 
 guest.channel_ids += [c1.id, c2.id, c3.id]
 
+
+c4 = Channel.create(direct_message: true, user_ids: [1,2,3])
+c5 = Channel.create(direct_message: true, user_ids: [4,5,6,13])
 
 Message.delete_all
 
