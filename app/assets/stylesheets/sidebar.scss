@@ -67,6 +67,9 @@
   border-radius: 0px 5px 5px 0px;
   font-size: 16px;
   font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .channels li:hover {
@@ -79,10 +82,10 @@
 }
 
 .channels img {
-  height: 16px;
+  height: 16px; 
+  float: right;
   position: relative;
-  top: 4px;
-  left: 62px;
+  top: 5px;
   filter: invert(63%);
 }
 

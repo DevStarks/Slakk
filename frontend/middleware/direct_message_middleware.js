@@ -5,9 +5,9 @@ const DirectMessageMiddleware = ({ dispatch }) => next => action => {
   const error = xhr => {
     dispatch(ACT.receiveDirectMessageErrors(xhr.responseJSON))
   };
-  debugger
   switch (action.type) {
     case ACT.GET_DIRECT_MESSAGE_NAMES:
+    debugger
       const success = directMessageNames => {
         dispatch(ACT.receiveDirectMessageNames(directMessageNames));
       };

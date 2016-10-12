@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let store;
   if (window.currentUser) {
-    debugger
     const initialState = {
       session: {
         currentUser: window.currentUser

@@ -17,7 +17,7 @@ class Channel < ActiveRecord::Base
   def self.get_direct_message_names(ids)
     direct_message_names = {}
     ids.each do |id|
-      direct_message = Channel.find(id).join(:users)
+      direct_message = Channel.find(id)
       usernames = direct_message.users.map { |user| user.username }.join(", ")
       direct_message_names[id] = { name: usernames }
     end

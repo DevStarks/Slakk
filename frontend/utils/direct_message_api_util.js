@@ -1,4 +1,4 @@
-const getDirectMessageNames = (directMessageIDs, success, error) => {
+export const getDirectMessageNames = (directMessageIDs, success, error) => {
   $.ajax({
     method: 'GET',
     url: 'api/channels/dm-names',

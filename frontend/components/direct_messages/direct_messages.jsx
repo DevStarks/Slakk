@@ -15,9 +15,9 @@ class DirectMessages extends React.Component {
 
   classNameHelper(dMessage) {
     if (dMessage.id === this.props.currentConversation.id) {
-      return "selected";
+      return "direct-message selected";
     } else {
-      return "";
+      return "direct-message";
     }
   }
 
