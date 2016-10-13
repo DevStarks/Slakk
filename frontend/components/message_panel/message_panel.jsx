@@ -29,7 +29,9 @@ class MessagePanel extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.getMessages(this.state.currentConversation.id);
+    if (this.props.currentUser) {
+      this.props.getMessages(this.state.currentConversation.id);
+    }
   }
 
   handleLogout() {
