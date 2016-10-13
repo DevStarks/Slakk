@@ -33,6 +33,7 @@ class ChannelBrowse extends React.Component {
       if (this.props.userChannels[channel.id]) {
         this.props.changeConversation(channel);
       } else {
+        debugger
         this.props.connectToChannel(channel.id);
       }
       this.props.closeChannelBrowse();
@@ -40,7 +41,7 @@ class ChannelBrowse extends React.Component {
   }
 
   searchResults() {
-    if (this.props.searchResults) {
+    if (Object.keys(this.props.searchResults).length) {
       return this.props.searchResults.map( channel => {
         return (
           <ChannelItem

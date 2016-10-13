@@ -9,7 +9,7 @@ const ChannelItem = ({ channelData, selectChannel }) => {
       <span className="other-info">{channelData.purpose}</span>
       <span className="member-count">{channelData.memberCount}</span>
     </article>
-  )
+  );
 };
 
 export default ChannelItem;
