@@ -13,6 +13,7 @@ class DirectMessages extends React.Component {
     this.classNameHelper = this.classNameHelper.bind(this);
     this.openDirectMessageForm = this.openDirectMessageForm.bind(this);
     this.closeDirectMessageForm = this.closeDirectMessageForm.bind(this);
+    this.handleDisconnect = this.handleDisconnect.bind(this);
   }
 
   componentWillMount() {
@@ -26,18 +27,20 @@ class DirectMessages extends React.Component {
 
     if (oldDirectMessages.length < newDirectMessages.length) {
       this.props.getDirectMessageNames(Object.keys(nextProps.directMessages));
-    }
-
-
-    if (
-      Object.keys(this.props.directMessages).length !==
-      Object.keys(nextProps.directMessages).length
-    ) {
       const directMessages = hashToArray(nextProps.directMessages);
       const newConversation = directMessages[directMessages.length - 1];
       this.props.changeConversation(newConversation);
+    } else if (oldDirectMessages.length > newDirectMessages.length) {
+      this.changeToLastConversation(nextProps);
     }
+  }
 
+  changeToLastConversation(props) {
+    const directMessages = hashToArray(props.directMessages);
+    const channels = hashToArray(props.userChannels);
+    const allConversations = channels.concat(directMessages);
+    const lastConversation = allConversations[allConversations.length - 1];
+    props.changeConversation(lastConversation);
   }
 
   classNameHelper(dMessage) {
@@ -54,6 +57,13 @@ class DirectMessages extends React.Component {
     };
   }
 
+  handleDisconnect(id) {
+    return (e) => {
+      this.props.disconnectChannel(id);
+      e.stopPropagation();
+    };
+  }
+
   allDirectMessages() {
     return hashToArray(this.props.directMessages).map( dMessage => {
       return (
@@ -63,7 +73,10 @@ class DirectMessages extends React.Component {
           onClick={this.handleClick(dMessage)}
         >
           <span>#</span> {dMessage.name}
-          <button></button>
+          <img
+            src={window.slakkAssets.delete}
+            onClick={this.handleDisconnect(dMessage.id)}
+          />
         </li>
       );
     });

@@ -36,3 +36,12 @@ export const connectToChannel = ( channelID, success, error) => {
     error
   });
 };
+
+export const disconnectChannel = ( channelID, success) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/channels/disconnect',
+    data: { channel_id: channelID },
+    success
+  });
+};

@@ -1,5 +1,5 @@
 import * as ACT from '../actions/channel_actions';
-import { createChannel, getChannelCount, searchChannels, connectToChannel } from '../utils/channel_api_util';
+import { createChannel, getChannelCount, searchChannels, connectToChannel, disconnectChannel } from '../utils/channel_api_util';
 import { receiveDirectMessage } from '../actions/direct_message_actions';
 
 
@@ -9,7 +9,6 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
   switch (action.type) {
     case ACT.CREATE_CHANNEL:
       let success;
-      debugger
       if (action.channel.direct_message) {
         success = messageData => dispatch(receiveDirectMessage(messageData));
       } else {
@@ -33,7 +32,13 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
         dispatch(ACT.receiveChannel(channel));
         return next(action);
       };
-      connectToChannel(action.channelID, connectSuccess, error);
+      return connectToChannel(action.channelID, connectSuccess, error);
+    case ACT.DISCONNECT_CHANNEL:
+      const disconnectSuccess = channel => {
+        dispatch(ACT.removeChannel(channel));
+        return next(action);
+      };
+      return disconnectChannel(action.channelID, disconnectSuccess);
     default:
       next(action);
   }
