@@ -22,6 +22,6 @@ const memberCountHelper = (memberCount) => {
       <span className="member-count">1&nbsp;member</span>
     );
   }
-}
+};
 
 export default ConversationHeader;

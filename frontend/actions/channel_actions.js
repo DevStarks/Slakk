@@ -7,6 +7,8 @@ export const GET_CHANNEL_COUNT = "GET_CHANNEL_COUNT";
 export const SEARCH_CHANNELS = "SEARCH_CHANNELS";
 export const RECEIVE_CHANNEL_RESULTS = "RECEIVE_CHANNEL_RESULTS";
 export const CONNECT_TO_CHANNEL = "CONNECT_TO_CHANNEL";
+export const DISCONNECT_CHANNEL = "DISCONNECT_CHANNEL";
+export const REMOVE_CHANNEL = "REMOVE_CHANNEL";
 
 
 export const createChannel = channel => ({
@@ -50,4 +52,14 @@ export const receiveChannelResults = channelResults => ({
 export const connectToChannel = channelID => ({
   type: CONNECT_TO_CHANNEL,
   channelID
+});
+
+export const disconnectChannel = channelID => ({
+  type: DISCONNECT_CHANNEL,
+  channelID
+});
+
+export const removeChannel = channel => ({
+  type: REMOVE_CHANNEL,
+  channel
 });
