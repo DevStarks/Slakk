@@ -17,7 +17,7 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
       createChannel(action.channel, success, error);
       return next(action);
     case ACT.GET_CHANNEL_COUNT:
-      const channelCountSuccess = count => dispatch(ACT.receiveChannelCount(count))
+      const channelCountSuccess = count => dispatch(ACT.receiveChannelCount(count));
 
       getChannelCount(channelCountSuccess, error);
       return next(action);
@@ -26,7 +26,7 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
         dispatch(ACT.receiveChannelResults(channels));
         // return next(action);
       };
-      searchChannels(action.searchData, searchSuccess, error);
+      return searchChannels(action.searchData, searchSuccess, error);
     case ACT.CONNECT_TO_CHANNEL:
       const connectSuccess = channel => {
         dispatch(ACT.receiveChannel(channel));
@@ -36,6 +36,6 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
     default:
       next(action);
   }
-}
+};
 
 export default ChannelMiddleware;
