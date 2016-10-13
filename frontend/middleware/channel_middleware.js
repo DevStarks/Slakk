@@ -9,10 +9,11 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
   switch (action.type) {
     case ACT.CREATE_CHANNEL:
       let success;
-      if (action.channel.directMessage) {
-        success = messageData => dispatch(ACT.receiveChannel(messageData));
-      } else {
+      debugger
+      if (action.channel.direct_message) {
         success = messageData => dispatch(receiveDirectMessage(messageData));
+      } else {
+        success = messageData => dispatch(ACT.receiveChannel(messageData));
       }
       createChannel(action.channel, success, error);
       return next(action);
