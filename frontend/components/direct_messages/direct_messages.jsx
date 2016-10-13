@@ -17,6 +17,7 @@ class DirectMessages extends React.Component {
 
   componentWillMount() {
     this.props.getUserCount();
+    // this.props.getDirectMessages();
     this.props.getDirectMessageNames(Object.keys(this.props.directMessages));
   }
 
@@ -27,7 +28,17 @@ class DirectMessages extends React.Component {
     if (oldDirectMessages.length < newDirectMessages.length) {
       this.props.getDirectMessageNames(Object.keys(nextProps.directMessages));
     }
+
+
   }
+
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.userChannels !== newProps.userChannels) {
+  //     const channels = hashToArray(newProps.userChannels);
+  //     const newConversation = channels[channels.length - 1];
+  //     this.props.changeConversation(newConversation);
+  //   }
+  // }
 
   classNameHelper(dMessage) {
     if (dMessage.id === this.props.currentConversation.id) {

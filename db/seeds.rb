@@ -1,3 +1,5 @@
+require 'open-uri'
+
 Channel.delete_all
 
 c1 = Channel.create(name: "general", purpose: "This channel is for team-wide communication and announcements. All team members are in this channel.")
@@ -9,7 +11,7 @@ c3 = Channel.create(name: "other", purpose: "Another channel that only some user
 
 User.delete_all
 
-12.times do
+13.times do
   user = User.create(
     username: Faker::Internet.user_name,
     first_name: Faker::Name.first_name,
@@ -18,6 +20,11 @@ User.delete_all
   )
   user.channel_ids += [c1.id, c2.id]
   user.channel_ids += [c3.id] if rand(2) == 1
+  # user.image = open("https://api.adorable.io/avatars/285/#{user.username}a.png")
+
+
+  user.image = File.open("app/assets/images/avatar#{rand(11) + 1}.png")
+  user.save!
 end
 
 guest = User.create(
@@ -30,13 +37,13 @@ guest = User.create(
 guest.channel_ids += [c1.id, c2.id, c3.id]
 
 
-c4 = Channel.create(direct_message: true, user_ids: [1,2,3])
-c5 = Channel.create(direct_message: true, user_ids: [4,5,6,13])
+c4 = Channel.create(direct_message: true, user_ids: [1,2,3,guest.id])
+c5 = Channel.create(direct_message: true, user_ids: [4,5,6,guest.id])
 
 Message.delete_all
 
-User.all.each do |user|
-  3.times do
+User.all.shuffle.each do |user|
+  6.times do
     user.channels.sample.messages.create(
       body: Faker::Hipster.sentences(rand(4) + 1).join(" "),
       author_id: user.id
