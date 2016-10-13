@@ -29,21 +29,16 @@ class DirectMessages extends React.Component {
     }
 
 
-    if (Object.keys(this.props.directMessages).length !== Object.keys(nextProps.directMessages).length) {
+    if (
+      Object.keys(this.props.directMessages).length !==
+      Object.keys(nextProps.directMessages).length
+    ) {
       const directMessages = hashToArray(nextProps.directMessages);
       const newConversation = directMessages[directMessages.length - 1];
       this.props.changeConversation(newConversation);
     }
 
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.directMessages !== nextProps.directMessages) {
-  //     const directMessages = hashToArray(nextProps.directMessages);
-  //     const newConversation = directMessages[directMessages.length - 1];
-  //     this.props.changeConversation(newConversation);
-  //   }
-  // }
 
   classNameHelper(dMessage) {
     if (dMessage.id === this.props.currentConversation.id) {
@@ -68,6 +63,7 @@ class DirectMessages extends React.Component {
           onClick={this.handleClick(dMessage)}
         >
           <span>#</span> {dMessage.name}
+          <button></button>
         </li>
       );
     });
