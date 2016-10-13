@@ -7,7 +7,6 @@ import { hashHistory } from 'react-router';
 
 
 class MessagePanel extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -23,9 +22,7 @@ class MessagePanel extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.currentUser) {
-      hashHistory.push("/");
-    }
+    if (!nextProps.currentUser) { hashHistory.push("/"); }
   }
 
   usernameHelper() {
