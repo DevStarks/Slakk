@@ -28,16 +28,18 @@ class PasswordSignup extends React.Component {
   handleChange(e) {
     this.setState({ password: e.currentTarget.value });
     this.props.clearSessionErrors();
-    this.disabled = this.handleButtonDisable();
+    // this.disabled = this.validPassword();
   }
 
-  handleButtonDisable() {
-    return this.state.password.length < 6;
+  validPassword() {
+    return this.state.password.length >= 6;
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(merge(this.props.tempUser, this.state));
+    if (this.validPassword()) {
+      this.props.signup(merge(this.props.tempUser, this.state));
+    }
   }
 
   render() {
@@ -59,7 +61,8 @@ class PasswordSignup extends React.Component {
         <button
           type="submit"
           onClick={this.handleSubmit}
-          disabled={this.handleButtonDisable()}
+          disabled={!this.validPassword()}
+          className={this.validPassword() ? "" : "disabled"}
         >
           Next &#x279c;
         </button>
