@@ -85,7 +85,7 @@ class Channels extends React.Component {
           </span>
         </h2>
 
-        <img onClick={this.openNewChannelForm} src='assets/new.png' />
+        <img onClick={this.openNewChannelForm} src='/assets/new.png' />
 
         <ul>
           {this.allChannels(channelArr)}

@@ -13,48 +13,28 @@ class MessagePanel extends React.Component {
 
     this.state = { currentConversation: null };
 
-    this.handleLogout = this.handleLogout.bind(this);
     this.usernameHelper = this.usernameHelper.bind(this);
     this.changeConversation = this.changeConversation.bind(this);
     this.menuOn = this.menuOn.bind(this);
-    this.redirectUnlessLoggedIn = this.redirectUnlessLoggedIn.bind(this);
   }
 
   componentWillMount() {
-    this.setState({ currentConversation: hashToArray(this.props.channels)[0] });
+    this.changeConversation(hashToArray(this.props.channels)[0]);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.redirectUnlessLoggedIn(nextProps);
-  }
-
-  componentDidUpdate() {
-    if (this.props.currentUser) {
-      this.props.getMessages(this.state.currentConversation.id);
-    }
-  }
-
-  handleLogout() {
-    this.props.logout();
-  }
-
-  redirectUnlessLoggedIn(props){
-    if (!props.currentUser) {
+    if (!nextProps.currentUser) {
       hashHistory.push("/");
     }
   }
 
   usernameHelper() {
-    if (this.props.currentUser) {
-      return this.props.currentUser.username;
-    } else {
-      hashHistory.push("/");
-      return "";
-    }
+    return this.props.currentUser ? this.props.currentUser.username : "";
   }
 
   changeConversation(conversation) {
     this.setState({ currentConversation: conversation });
+    this.props.getMessages(conversation.id);
   }
 
   menuOn() {
@@ -80,7 +60,7 @@ class MessagePanel extends React.Component {
             className="sidebar-menu hidden"
             ref="sidebarMenu"
           >
-            <li onClick={this.handleLogout}>Log out</li>
+            <li onClick={this.props.logout}>Log out</li>
           </ul>
 
           <ChannelsContainer
