@@ -14,7 +14,7 @@ class Messages extends React.Component {
   }
 
   componentDidMount() {
-    this.getMessages(this.props.currentConversation.id);
+    this.props.getMessages(this.props.currentConversation.id);
     setTimeout(this.updateScroll(), 0);
     this.subscribeToPusher(this.props);
   }
@@ -24,7 +24,7 @@ class Messages extends React.Component {
     const conversationID = props.currentConversation.id;
     const channel = this.pusher.subscribe(`conversation-${conversationID}`);
     channel.bind('message_created', () => {
-      this.sages(this.props.currentConversation.id);
+      props.getMessages(props.currentConversation.id);
     });
   }
 
@@ -42,11 +42,8 @@ class Messages extends React.Component {
     );
 
     const conversationID = this.props.currentConversation.id;
-    if (this.pusher) {
-      this.pusher.unsubscribe(`conversation-${conversationID}`);
-    }
-
     if (conversationID !== newProps.currentConversation.id) {
+      this.pusher.unsubscribe(`conversation-${conversationID}`);
       this.subscribeToPusher(newProps);
     }
   }

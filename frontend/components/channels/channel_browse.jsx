@@ -40,7 +40,7 @@ class ChannelBrowse extends React.Component {
   }
 
   searchResults() {
-    if (Object.keys(this.props.searchResults).length) {
+    if (this.props.searchResults) {
       return this.props.searchResults.map( channel => {
         return (
           <ChannelItem
@@ -50,7 +50,7 @@ class ChannelBrowse extends React.Component {
           />
         );
       });
-    }
+    } 
   }
 
   render() {
