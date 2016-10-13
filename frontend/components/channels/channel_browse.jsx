@@ -33,7 +33,6 @@ class ChannelBrowse extends React.Component {
       if (this.props.userChannels[channel.id]) {
         this.props.changeConversation(channel);
       } else {
-        debugger
         this.props.connectToChannel(channel.id);
       }
       this.props.closeChannelBrowse();
@@ -59,7 +58,7 @@ class ChannelBrowse extends React.Component {
       <div className="base-form search">
         <form className="channel-form group" >
           <div onClick={this.props.closeChannelBrowse}>
-            <img src="assets/exit.png" />
+            <img src={slakkAssets.escSign} />
             <p>esc</p>
           </div>
           <h1>Browse all {this.props.channelCount} channels</h1>

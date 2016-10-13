@@ -106,7 +106,7 @@ class DirectMessageForm extends React.Component {
       <div className="base-form search">
         <form className="channel-form group" onSubmit={this.handleSubmit}>
           <div onClick={this.props.closeDirectMessageForm}>
-            <img src="assets/exit.png" />
+            <img src={slakkAssets.escSign} />
             <p>esc</p>
           </div>
           <h1>Direct Messages</h1>

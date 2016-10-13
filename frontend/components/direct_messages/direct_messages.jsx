@@ -74,7 +74,7 @@ class DirectMessages extends React.Component {
           </span>
         </h2>
 
-        <img src='assets/new.png' />
+        <img onClick={this.openDirectMessageForm} src={slakkAssets.newSign} />
 
         <ul>
           {this.allDirectMessages()}

@@ -14,11 +14,12 @@ class Channel < ActiveRecord::Base
   has_many :users, through: :channel_memberships
   has_many :messages, as: :messageable, dependent: :destroy
 
-  def self.get_direct_message_names(ids)
+  def self.get_direct_message_names(current_user_id, direct_message_ids)
     direct_message_names = {}
-    ids.each do |id|
+    direct_message_ids.each do |id|
       direct_message = Channel.find(id)
-      usernames = direct_message.users.map { |user| user.username }.join(", ")
+      other_users = direct_message.users.where.not(id: current_user_id)
+      usernames = other_users.map { |user| user.username }.join(", ")
       direct_message_names[id] = { name: usernames }
     end
     direct_message_names

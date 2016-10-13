@@ -61,7 +61,7 @@ class MessageForm extends React.Component {
         <input
           type="text"
           value={this.state.body}
-          placeholder="Message"
+          placeholder={"Message #" + this.props.currentConversation.name}
           onChange={this.handleChange}
         />
         <Errors errorInfo={this.props.errors}/>
