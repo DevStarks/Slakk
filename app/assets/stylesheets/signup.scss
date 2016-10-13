@@ -59,3 +59,11 @@
 .caption {
   color: #c7c7c7;
 }
+
+.base-form button.disabled {
+  background-color: #b8b9b9;
+}
+
+.base-form button.disabled:hover {
+  box-shadow: none;
+}

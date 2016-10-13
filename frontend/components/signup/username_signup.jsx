@@ -14,6 +14,11 @@ class UsernameSignup extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.buttonEnabled = this.buttonEnabled.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.clearSessionErrors();
   }
 
   updateField(field) {
@@ -38,8 +43,27 @@ class UsernameSignup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.storeTempUser(this.state);
-    this.props.router.push("signup/create-password");
+    if (!this.formIncomplete()) {
+      this.props.storeTempUser(this.state);
+      this.props.router.push("signup/create-password");
+    }
+  }
+
+  formIncomplete() {
+    return (
+      this.state.first_name === "" ||
+      this.state.last_name === "" ||
+      this.state.username === "" ||
+      this.props.errors.length
+    );
+  }
+
+  buttonEnabled() {
+    if (this.formIncomplete()) {
+      return "disabled";
+    } else {
+      return "";
+    }
   }
 
   render() {
@@ -67,7 +91,13 @@ class UsernameSignup extends React.Component {
         </input>
         <Errors className="error" errorInfo={this.props.errors}/>
 
-        <button type="submit">Next &#x279c;</button>
+        <button
+          type="submit"
+          className={this.buttonEnabled()}
+          disabled={this.formIncomplete()}
+        >
+          Next &#x279c;
+        </button>
       </form>
     );
   }
