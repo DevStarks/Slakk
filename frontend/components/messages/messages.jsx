@@ -16,6 +16,7 @@ class Messages extends React.Component {
   componentDidMount() {
     this.getMessages(this.props.currentConversation.id);
     setTimeout(this.updateScroll(), 0);
+    this.subscribeToPusher(this.props);
   }
 
   subscribeToPusher(props) {
@@ -23,12 +24,13 @@ class Messages extends React.Component {
     const conversationID = props.currentConversation.id;
     const channel = this.pusher.subscribe(`conversation-${conversationID}`);
     channel.bind('message_created', () => {
-      this.getMessages(this.props.currentConversation.id);
+      this.sages(this.props.currentConversation.id);
     });
   }
 
   componentWillUnmount() {
-    this.pusher.unsubscribe('slakk_messages');
+    const conversationID = this.props.currentConversation.id;
+    this.pusher.unsubscribe(`conversation-${conversationID}`);
   }
 
   componentWillReceiveProps(newProps) {
