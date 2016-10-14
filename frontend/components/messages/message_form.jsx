@@ -10,6 +10,7 @@ class MessageForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.buttons = this.buttons.bind(this);
+    this.placeholderHelper = this.placeholderHelper.bind(this);
   }
 
   handleChange(e) {
@@ -51,6 +52,14 @@ class MessageForm extends React.Component {
     }
   }
 
+  placeholderHelper() {
+    if (this.props.type === "edit") {
+      return "";
+    } else {
+      return "Message #" + this.props.currentConversation.name;
+    }
+  }
+
   render() {
     return (
       <form
@@ -61,7 +70,7 @@ class MessageForm extends React.Component {
         <input
           type="text"
           value={this.state.body}
-          placeholder={"Message #" + this.props.currentConversation.name}
+          placeholder={this.placeholderHelper()}
           onChange={this.handleChange}
         />
         <Errors errorInfo={this.props.errors}/>
