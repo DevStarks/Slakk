@@ -2,6 +2,7 @@ import React from 'react';
 import MessageContainer from './message_container';
 import MessageFormContainer from './message_form_container';
 import { hashToArray } from '../../utils/helpers';
+import { hashHistory } from 'react-router';
 
 
 
@@ -34,6 +35,7 @@ class Messages extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+
     const messages = this.refs.messages;
     this.shouldScrollBottom = (
       messages.scrollTop +
