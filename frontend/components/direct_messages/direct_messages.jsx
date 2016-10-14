@@ -72,7 +72,7 @@ class DirectMessages extends React.Component {
           key={dMessage.id}
           onClick={this.handleClick(dMessage)}
         >
-          <span>#</span> {dMessage.name}
+          <span>{dMessage.memberCount}</span> {dMessage.name}
           <img
             className="delete"
             src={window.slakkAssets.delete}

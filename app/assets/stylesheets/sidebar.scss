@@ -97,7 +97,7 @@
   float: right;
   position: relative;
   top: 5px;
-  filter: invert(63%);
+  filter: invert(45%);
 }
 
 .channels img:hover {
@@ -112,4 +112,25 @@
 .selected {
   background-color: #4c9689;
   color: #fff;
+}
+
+.direct-message span {
+  background-color: #746572;
+  padding: 0px 3px 1px 2px;
+  color: #3e313c;
+  border-radius: 2px;
+  font-size: 11px;
+}
+
+li.direct-message.selected span {
+  background-color: #a5cac4;
+  color: #6ca99e;
+}
+
+li.selected span {
+  color: #a7cec2;
+  display: block;
+  width: 6px;
+  margin: 4px 4px 0px 0px;
+  float: left;
 }
