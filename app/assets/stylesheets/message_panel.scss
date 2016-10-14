@@ -171,7 +171,7 @@ button.cancel:hover {
   background-color: #ededed;
 }
 
-.message-content:hover span {
+.message-content.condensed-message:hover span {
   display: block;
   position: absolute;
   bottom: 3px;
@@ -187,6 +187,8 @@ button.cancel:hover {
 
 .condensed-message {
   margin: 5px 0px;
+  position: relative;
+  bottom: 10px;
 }
 
 .author-thumbnail {
