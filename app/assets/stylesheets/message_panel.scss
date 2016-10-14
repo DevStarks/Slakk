@@ -171,6 +171,16 @@ button.cancel:hover {
   background-color: #ededed;
 }
 
+.message-content:hover span {
+  display: block;
+  position: absolute;
+  bottom: 3px;
+  left: 12px;
+  color: #828181;
+  font-weight: 200;
+  font-size: 12px;
+}
+
 .message-content-spacer {
   height: 45px;
 }
