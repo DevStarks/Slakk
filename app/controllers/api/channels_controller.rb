@@ -31,9 +31,8 @@ class Api::ChannelsController < ApplicationController
 
   def search
     @channels = Channel.where("channels.name LIKE ?", "%#{params[:search_data]}%")
-      .select("channels.*, count(users.id) as user_count")
-      .joins(:users)
-      .group("channels.id")
+
+
     render :index
   end
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getChannelCount } from '../../actions/channel_actions';
+import { getChannelCount, disconnectChannel } from '../../actions/channel_actions';
 import Channels from './channels';
 
 const mapStateToProps = ({ channels }) => ({
@@ -10,6 +10,7 @@ const mapStateToProps = ({ channels }) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   changeConversation: ownProps.changeConversation,
   currentConversation: ownProps.currentConversation,
+  disconnectChannel: id => dispatch(disconnectChannel(id)),
   getChannelCount: () => dispatch(getChannelCount())
 });
 

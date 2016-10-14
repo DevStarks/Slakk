@@ -25,8 +25,9 @@ const ChannelReducer = (oldState = defaultChannelState, action) => {
     case ACT.RECEIVE_CHANNEL_RESULTS:
       return Object.assign({}, oldState, { searchResults: action.channelResults });
     case ACT.REMOVE_CHANNEL:
+
       if (!action.channel.direct_message) {
-        const newState = Object.assign({}, oldState);
+        const newState = merge({}, oldState);
         delete newState.userChannels[action.channel.id];
         return newState;
       } else {
