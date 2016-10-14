@@ -50,7 +50,7 @@ class ChannelBrowse extends React.Component {
           />
         );
       });
-    } 
+    }
   }
 
   render() {

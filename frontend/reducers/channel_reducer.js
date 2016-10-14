@@ -5,7 +5,7 @@ import merge from 'lodash/merge';
 
 const defaultChannelState = {
   userChannels: {},
-  searchResults: {},
+  searchResults: [],
   channelCount: null
 };
 
