@@ -7,7 +7,7 @@ c3 = Channel.create(name: "other", purpose: "#{Faker::ChuckNorris.fact}")
 c4 = Channel.create(name: "Chuck Norris", purpose: "#{Faker::Hipster.sentence}")
 c5 = Channel.create(name: "#{Faker::Space.agency}", purpose: "#{Faker::Hipster.sentence}")
 c6 = Channel.create(name: "#{Faker::Music.instrument}", purpose: "#{Faker::Hipster.sentence}")
-c7 = Channel.create(name: "#{Faker::Food.ingredient}", purpose: "#{Faker::Hipster.sentence}")
+c7 = Channel.create(name: "#{Faker::Name.first_name}", purpose: "#{Faker::Hipster.sentence}")
 c8 = Channel.create(name: "other", purpose: "#{Faker::Hipster.sentence}")
 
 
