@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <main className="login">
       <header className="auth-header">
-        <a className="logo">I'm a logo</a>
+        <a className="logo">S(lakk)</a>
         <HeaderAuthButton />
       </header>
 
