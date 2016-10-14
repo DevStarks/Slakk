@@ -25,12 +25,19 @@ class Channels extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.props.getChannelCount();
-    if (this.props.userChannels !== newProps.userChannels) {
+
+    const oldChannels= Object.keys(this.props.userChannels);
+    const newChannels= Object.keys(newProps.userChannels);
+    if (oldChannels.length < newChannels.length) {
       const channels = hashToArray(newProps.userChannels);
       const newConversation = channels[channels.length - 1];
       this.props.changeConversation(newConversation);
+    } else if (oldChannels.length > newChannels.length) {
+      const channelsArr = hashToArray(newProps.userChannels);
+      newProps.changeConversation(channelsArr[channelsArr.length - 1]);
     }
   }
+
 
   classNameHelper(channel) {
     if (channel.id === this.props.currentConversation.id) {
@@ -38,6 +45,13 @@ class Channels extends React.Component {
     } else {
       return "";
     }
+  }
+
+  handleDisconnect(id) {
+    return (e) => {
+      e.stopPropagation();
+      this.props.disconnectChannel(id);
+    };
   }
 
   allChannels(channels) {
@@ -49,6 +63,12 @@ class Channels extends React.Component {
           onClick={this.handleClick(channel)}
         >
           <span>#</span> {channel.name}
+
+          <img
+            className="delete"
+            src={window.slakkAssets.delete}
+            onClick={this.handleDisconnect(channel.id)}
+          />
         </li>
       );
     });
