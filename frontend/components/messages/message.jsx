@@ -14,6 +14,7 @@ class Message extends React.Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.unmountEdit = this.unmountEdit.bind(this);
     this.menuOn = this.menuOn.bind(this);
+    this.buttonHelper = this.buttonHelper.bind(this);
 
     this.state = {
       type: "show"
