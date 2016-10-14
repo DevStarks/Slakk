@@ -53,10 +53,13 @@ class MessageForm extends React.Component {
   }
 
   placeholderHelper() {
+    const conversation = this.props.currentConversation;
     if (this.props.type === "edit") {
       return "";
+    } else if (conversation.direct_message) {
+      return "Message #" + this.props.directMessages[conversation.id].name;
     } else {
-      return "Message #" + this.props.currentConversation.name;
+      return "Message #" + conversation.name;
     }
   }
 
