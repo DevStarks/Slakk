@@ -2,6 +2,7 @@ main {
   position: absolute;
   display: block;
   width: 100%;
+  min-height: 665px;
   height: 100%;
 }
 
@@ -90,7 +91,6 @@ a.logo {
   width: 367px;
   color: #fff;
   font-size: 20px;
-  // text-shadow: 0px 0.5px 0.3px #1e1c1c;
 }
 
 .base-form button:hover {
@@ -108,7 +108,7 @@ b {
   justify-content: space-between;
   border-top: 2px solid #eee;
   padding: 16px;
-  background-color: #blue;
+  background-color: #ffffff;
   bottom: 0;
   color: #2ab27b;
 }
