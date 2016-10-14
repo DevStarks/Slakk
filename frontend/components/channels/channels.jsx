@@ -24,6 +24,7 @@ class Channels extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    this.props.getChannelCount();
     if (this.props.userChannels !== newProps.userChannels) {
       const channels = hashToArray(newProps.userChannels);
       const newConversation = channels[channels.length - 1];

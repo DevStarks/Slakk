@@ -1,11 +1,11 @@
 import React from 'react';
 import MessagesContainer from '../messages/messages_container';
-import ConversationHeader from './conversation_header';
+import ConversationHeaderContainer from './conversation_header_container';
 
 const Conversation = ({ currentConversation }) => {
   return (
     <div>
-      <ConversationHeader currentConversation={currentConversation}/>
+      <ConversationHeaderContainer currentConversation={currentConversation}/>
       <MessagesContainer currentConversation={currentConversation}/>
     </div>
   );

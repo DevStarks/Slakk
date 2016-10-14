@@ -63,17 +63,28 @@
 }
 
 .channels li {
-  padding: 2.5px 20px 5px 20px;
+  padding: 2.5px 22px 5px 20px;
   border-radius: 0px 5px 5px 0px;
   font-size: 16px;
   font-weight: 300;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
 }
 
 .channels li:hover {
   background-color: #3e313c;
+}
+
+.channels img.delete {
+  display: none;
+  position: absolute;
+  left: 185px;
+}
+
+.channels li:hover .delete {
+  display: block;
 }
 
 
@@ -82,7 +93,7 @@
 }
 
 .channels img {
-  height: 16px; 
+  height: 16px;
   float: right;
   position: relative;
   top: 5px;

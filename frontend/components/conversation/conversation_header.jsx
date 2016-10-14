@@ -1,16 +1,16 @@
 import React from 'react';
 
-const ConversationHeader = ({
-  currentConversation: { name, purpose, memberCount} }) => {
+const ConversationHeader = ({ conversation, directMessages }) => {
   return (
     <header className="conversation-header">
-      <h2>#{name}</h2>
-      {memberCountHelper(memberCount)}
+      <h2>#{conversation.name || directMessages[conversation.id].name}</h2>
+      {memberCountHelper(conversation.memberCount)}
       <span className="divider">|</span>
-      <p>{purpose}</p>
+      <p>{conversation.purpose}</p>
     </header>
   );
 };
+
 
 const memberCountHelper = (memberCount) => {
   if (memberCount && (memberCount > 1)) {
