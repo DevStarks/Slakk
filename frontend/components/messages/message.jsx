@@ -15,6 +15,7 @@ class Message extends React.Component {
     this.unmountEdit = this.unmountEdit.bind(this);
     this.menuOn = this.menuOn.bind(this);
     this.buttonHelper = this.buttonHelper.bind(this);
+    this.authorInfoHelper = this.authorInfoHelper.bind(this);
 
     this.state = {
       type: "show"
@@ -66,16 +67,37 @@ class Message extends React.Component {
     }
   }
 
+  authorInfoHelper(author, created_at) {
+    if (this.props.type === "condensed") {
+      return (
+        <section className="condensed">
+        <img className="author-thumbnail hidden" src={author.image_url}></img>
+        <h3 className="hidden">{author.username} </h3>
+        <span className="hidden">{timeFromDateObj(created_at)}</span>
+        </section>
+      );
+    } else {
+      return (
+        <section>
+        <img className="author-thumbnail" src={author.image_url}></img>
+        <h3>{author.username} </h3>
+        <span>{timeFromDateObj(created_at)}</span>
+        <br />
+        </section>
+      );
+    }
+
+  }
+
   render() {
     const { info: { body, created_at, author } } = this.props;
 
     if (this.state.type === "show") {
       return (
         <article className="message-content group">
-          <img className="author-thumbnail" src={author.image_url}></img>
-          <h3>{author.username} </h3>
-          <span>{timeFromDateObj(created_at)}</span>
-          <br/>
+
+          {this.authorInfoHelper(author, created_at)}
+
           <div>
             <p>{body}</p>
           </div>
