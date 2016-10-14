@@ -16,6 +16,7 @@ class Message extends React.Component {
     this.menuOn = this.menuOn.bind(this);
     this.buttonHelper = this.buttonHelper.bind(this);
     this.authorInfoHelper = this.authorInfoHelper.bind(this);
+    this.articleClassNameHelper = this.articleClassNameHelper.bind(this);
 
     this.state = {
       type: "show"
@@ -89,12 +90,20 @@ class Message extends React.Component {
 
   }
 
+  articleClassNameHelper() {
+    if (this.props.type === "condensed") {
+      return "message-content group condensed-message";
+    } else {
+      return "message-content group";
+    }
+  }
+
   render() {
     const { info: { body, created_at, author } } = this.props;
 
     if (this.state.type === "show") {
       return (
-        <article className="message-content group">
+        <article className={this.articleClassNameHelper()}>
 
           {this.authorInfoHelper(author, created_at)}
 
