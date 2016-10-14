@@ -74,6 +74,7 @@ class DirectMessages extends React.Component {
         >
           <span>#</span> {dMessage.name}
           <img
+            className="delete"
             src={window.slakkAssets.delete}
             onClick={this.handleDisconnect(dMessage.id)}
           />
@@ -99,7 +100,10 @@ class DirectMessages extends React.Component {
           </span>
         </h2>
 
-        <img onClick={this.openDirectMessageForm} src={slakkAssets.newSign} />
+        <img
+          onClick={this.openDirectMessageForm}
+          src={slakkAssets.newSign}
+        />
 
         <ul>
           {this.allDirectMessages()}

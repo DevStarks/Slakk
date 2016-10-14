@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { createMessage, editMessage } from "../../actions/message_actions";
 import MessageForm from './message_form';
 
-const mapStateToProps = ({ session, errors }) => ({
+const mapStateToProps = ({ session, errors, directMessages }) => ({
   currentUser: session.currentUser,
-  errors: errors.messageErrors
+  errors: errors.messageErrors,
+  directMessages
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
