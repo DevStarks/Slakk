@@ -23,8 +23,10 @@ User.delete_all
     password: Faker::Internet.password(10, 20)
   )
   user.channel_ids += [c1.id, c2.id]
-  user.channel_ids += [c3.id] if rand(2) == 1
 
+  Channel.all[2..-1].each do |channel|
+    user.channel_ids += [channel.id] if rand(2) == 1
+  end
 
   user.image = File.open("app/assets/images/avatar#{rand(11) + 1}.png")
   user.save!
@@ -37,21 +39,38 @@ guest = User.create(
   password: "password"
 )
 
-guest.channel_ids += [c1.id, c2.id, c3.id, c4.id]
+guest.channel_ids += [c1.id, c2.id, c3.id, c4.id, c5.id]
 
 
 dm1 = Channel.create(direct_message: true, user_ids: [1,2,3,guest.id])
-dm2 = Channel.create(direct_message: true, user_ids: [4,5,6,guest.id])
+dm2 = Channel.create(direct_message: true, user_ids: [4,5,2,3,6,guest.id])
 dm3 = Channel.create(direct_message: true, user_ids: [7,10,2,guest.id])
 dm4 = Channel.create(direct_message: true, user_ids: [4,11,8,guest.id])
 
 Message.delete_all
 
-User.all.shuffle.each do |user|
-  10.times do
-    user.channels.sample.messages.create(
-      body: Faker::Hipster.sentences(rand(4) + 1).join(" "),
+sentence_beginnings = [
+  "What if ",
+  "Don't you think ",
+  "Maybe ",
+  "Was that you that was telling me about ",
+  "Could it be that ",
+  "Please you can't even tell me ",
+  "Yesterday I",
+  "Chuck Norris used to ",
+  "Ahhhhhhhhhhhhh!!!! Duhh..."
+]
+
+4.times do
+  User.all.shuffle.each do |user|
+    user.channels.each do |channel|
+      channel.messages.create(
+      body: sentence_beginnings.sample +
+        Faker::Hipster.sentences(rand(4) + 1).map do |sent|
+          sent[0..-2] + ["?", "!"].sample
+        end.join("  "),
       author_id: user.id
-    )
+      )
+    end
   end
 end
