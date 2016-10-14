@@ -56,7 +56,7 @@ sentence_beginnings = [
   "Was that you that was telling me about ",
   "Could it be that ",
   "Please you can't even tell me ",
-  "Yesterday I",
+  "Yesterday I ",
   "Chuck Norris used to ",
   "Ahhhhhhhhhhhhh!!!! Duhh..."
 ]
