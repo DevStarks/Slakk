@@ -57,7 +57,9 @@ class Message extends React.Component {
   }
 
   buttonHelper() {
-    if (this.props.currentUser.id === this.props.info.author.id) {
+    if (this.props.currentUser &&
+       (this.props.currentUser.id ===
+        this.props.info.author.id)) {
       return (
         <button ref="actionsButton" onClick={this.menuOn}>...</button>
       );
