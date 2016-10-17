@@ -52,9 +52,8 @@ class Message extends React.Component {
       if (messageComponent.state.type === "show") {
         messageComponent.refs.messageActions.className = "message-actions hidden";
         messageComponent.refs.actionsButton.style.className = "hidden";
-      } else {
-        messageComponent.unmountEdit();
       }
+      messageComponent.unmountEdit();
     });
   }
 

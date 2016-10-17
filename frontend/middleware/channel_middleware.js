@@ -24,7 +24,6 @@ const ChannelMiddleware = ({ dispatch }) => next => action => {
     case ACT.SEARCH_CHANNELS:
       const searchSuccess = channels => {
         dispatch(ACT.receiveChannelResults(channels));
-        // return next(action);
       };
       return searchChannels(action.searchData, searchSuccess, error);
     case ACT.CONNECT_TO_CHANNEL:

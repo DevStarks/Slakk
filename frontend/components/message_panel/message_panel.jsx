@@ -25,7 +25,7 @@ class MessagePanel extends React.Component {
     if (!nextProps.currentUser) { hashHistory.push("/"); }
   }
 
-  
+
   usernameHelper() {
     return this.props.currentUser ? this.props.currentUser.username : "";
   }
@@ -83,5 +83,3 @@ class MessagePanel extends React.Component {
 }
 
 export default MessagePanel;
-
-// asdfsdfsafaadsf
