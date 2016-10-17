@@ -22,7 +22,7 @@ const MessageMiddleware = ({ dispatch }) => next => action => {
     case ACT.EDIT_MESSAGE:
       const editMessageSuccess = messageData => {
         dispatch(ACT.receiveMessages(messageData));
-        action.callback(); //TODO changed this from action.callback
+        action.callback(); 
       };
       return API.editMessage(action.message, getMessageSuccess, error);
     default:

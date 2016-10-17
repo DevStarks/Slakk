@@ -28,7 +28,6 @@ class PasswordSignup extends React.Component {
   handleChange(e) {
     this.setState({ password: e.currentTarget.value });
     this.props.clearSessionErrors();
-    // this.disabled = this.validPassword();
   }
 
   validPassword() {

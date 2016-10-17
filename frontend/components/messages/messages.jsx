@@ -57,7 +57,6 @@ class Messages extends React.Component {
   allMessages() {
     const messages = hashToArray(this.props.messages);
     return hashToArray(this.props.messages).map( (message, i) => {
-
       let type;
       if (i > 0 && messages[i - 1].author.id === message.author.id) {
         type = "condensed";
