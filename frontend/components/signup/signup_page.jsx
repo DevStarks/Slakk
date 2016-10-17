@@ -20,7 +20,7 @@ class SignupPage extends React.Component {
           {this.props.children}
         </aside>
 
-        <a className="logo">S(lakk)</a>
+        <a className="signup-logo">S(lakk)</a>
       </main>
     );
   }

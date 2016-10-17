@@ -24,6 +24,15 @@ a.logo {
   color: #2ab27b;
 }
 
+a.signup-logo {
+  position: absolute;
+  left: calc(50% + 50px);
+  top: 38vh;
+  color: #e0f5f3;
+  font-size: 92px;
+  font-weight: 800;
+}
+
 .signup-button {
   display: block;
   height: 42px;

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { timeFromDateObj } from '../../utils/helpers';
 import MessageFormContainer from './message_form_container';
+import Linkify from 'react-linkify';
 
 
 
@@ -107,9 +108,12 @@ class Message extends React.Component {
 
           {this.authorInfoHelper(author, created_at)}
 
-          <div>
-            <p>{body}</p>
-          </div>
+          <Linkify>
+            <div>
+              <p>{body}</p>
+            </div>
+          </Linkify>
+
           {this.buttonHelper()}
 
           <ul ref="messageActions" className="message-actions hidden">

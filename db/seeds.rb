@@ -3,14 +3,7 @@ Channel.delete_all
 
 c1 = Channel.create(name: "general", purpose: "This channel is for team-wide communication and announcements. All team members are in this channel.")
 c2 = Channel.create(name: "random", purpose: "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.")
-c3 = Channel.create(name: "other", purpose: "#{Faker::ChuckNorris.fact}")
-c4 = Channel.create(name: "Chuck Norris", purpose: "#{Faker::Hipster.sentence}")
-c5 = Channel.create(name: "#{Faker::Space.agency}", purpose: "#{Faker::Hipster.sentence}")
-c6 = Channel.create(name: "#{Faker::Music.instrument}", purpose: "#{Faker::Hipster.sentence}")
-c7 = Channel.create(name: "#{Faker::Name.first_name}", purpose: "#{Faker::Hipster.sentence}")
-c8 = Channel.create(name: "other", purpose: "#{Faker::Hipster.sentence}")
-
-
+c3 = Channel.create(name: "other", purpose: "Another space for users to communicate")
 
 
 User.delete_all
@@ -24,9 +17,7 @@ User.delete_all
   )
   user.channel_ids += [c1.id, c2.id]
 
-  Channel.all[2..-1].each do |channel|
-    user.channel_ids += [channel.id] if rand(2) == 1
-  end
+  user.channel_ids += [c3.id] if rand(2) == 1
 
   user.image = File.open("app/assets/images/avatar#{rand(11) + 1}.png")
   user.save!
@@ -39,38 +30,46 @@ guest = User.create(
   password: "password"
 )
 
-guest.channel_ids += [c1.id, c2.id, c3.id, c4.id, c5.id]
+guest2 = User.create(
+  username: "OtherGuest",
+  first_name: "Other",
+  last_name: "Guest",
+  password: "password"
+)
+
+guest.channel_ids += [c1.id, c2.id, c3.id]
+guest2.channel_ids += [c1.id, c2.id, c3.id]
 
 
-dm1 = Channel.create(direct_message: true, user_ids: [1,2,3,guest.id])
-dm2 = Channel.create(direct_message: true, user_ids: [4,5,2,3,6,guest.id])
-dm3 = Channel.create(direct_message: true, user_ids: [7,10,2,guest.id])
-dm4 = Channel.create(direct_message: true, user_ids: [4,11,8,guest.id])
+dm1 = Channel.create(direct_message: true, user_ids: [1,2,3,guest.id, guest2.id])
+dm2 = Channel.create(direct_message: true, user_ids: [4,5,2,3,6,guest.id, guest2.id])
+dm3 = Channel.create(direct_message: true, user_ids: [7,10,2,guest.id, guest2.id])
 
 Message.delete_all
 
-sentence_beginnings = [
-  "What if ",
-  "Don't you think ",
-  "Maybe ",
-  "Was that you that was telling me about ",
-  "Could it be that ",
-  "Please you can't even tell me ",
-  "Yesterday I ",
-  "Chuck Norris used to ",
-  "Ahhhhhhhhhhhhh!!!! Duhh..."
+sentences = [
+  "Check out Devin's github page at https://github.com/DevStarks",
+  "This app feels just like Slack, I almost thought it was the real thing!",
+  "The repo for this app is located at https://github.com/DevStarks/Slakk",
+  "Link to Devin Starks on LinkedIn: https://www.linkedin.com/in/devin-starks-37905642 ",
+  "This site was built using Ruby on Rails and React.js",
+  "Thank god for asynchronous javascript requests...otherwise I wouldn't be able to click on anything while messages are loading!",
+  "Welcome to Slakk!!!!",
+  "In case you accidentally delete a channel you can always rejoin by clicking the Channels header in the sidebar",
+  "You can only edit or delete messages written by the current user, the message actions button to right of messages doesn't even appear otherwise.",
+  "If you want to create a new direct-message just click the plus next to the direct-messages header in the sidebar. You can select as many users you want and search for specific users using the search bar.",
+  "Messages sent to any DM or channel will pop up automatically -- no need to refresh!",
+  "If you're signed in as a guest user and would like to make your own account feel free! Don't worry, your password will be protected using BCrypt's hashing technology.",
+  "Slakk is a clone of the popular messaging app, Slack",
+  "Hey there Slakker!!"
 ]
 
-4.times do
-  User.all.shuffle.each do |user|
-    user.channels.each do |channel|
-      channel.messages.create(
-      body: sentence_beginnings.sample +
-        Faker::Hipster.sentences(rand(4) + 1).map do |sent|
-          sent[0..-2] + ["?", "!"].sample
-        end.join("  "),
-      author_id: user.id
-      )
-    end
+
+User.all.shuffle.each do |user|
+  user.channels.each do |channel|
+    channel.messages.create(
+    body: sentences.sample,
+    author_id: user.id
+    )
   end
 end

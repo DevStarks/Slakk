@@ -5,14 +5,36 @@
 
 Slakk is a full-stack web application modeled after Slack.  It is built using a Ruby on Rails backend, and a React/Redux frontend.
 
+### Screenshots
+
+###### Sign Up Page
+![sign-up](./docs/screenshots/sign-up.jpg)
+
+
+###### Main Page
+![main](./docs/screenshots/main.jpg)
+
+
+###### Direct-Message Form
+![direct-message-form](./docs/screenshots/direct-message-form.jpg)
+
 ### Features
   - Account Creation
   - Log in/ Log out
   - Real-time live messaging
-  - Creation/Deletion of Channels
-  - Search for channels created by other users
-  - Creation/Deletion of Direct-Messages
-  - Search and add users to a new direct-message
+  - Separation of conversations through Channels
+  - Search for and join channels created by other users
+  - Private Direct-Messaging with any number of users
+  - Search for and add users new direct-messages
+
+### Technologies Used
+ - Ruby on Rails
+ - React.js
+ - Redux
+ - JSON API
+ - PostgreSQL
+ - Pusher
+ - Heroku
 
 ## Main Feature Implementation
 
@@ -23,11 +45,23 @@ Slakk is a full-stack web application modeled after Slack.  It is built using a 
 
   The real-time updating of messages on the front-end is implemented using Pusher, a technology that uses websocket protocol. When a message is created and persisted on the back-end, an event is triggered on a specific channel which notifies the Messages component to re-fetch messages belonging to the associated channel/DM.
 
+```javascript
+subscribeToPusher(props) {
+  this.pusher = new Pusher('##################', { encrypted: true });
+  const conversationID = props.currentConversation.id;
+  const channel = this.pusher.subscribe(`conversation-${conversationID}`);
+  channel.bind('message_created', () => {
+    props.getMessages(props.currentConversation.id);
+  });
+}
+```
+
 ### Channels
 
-  Channels are stored in the database with columns for `name`, `purpose`, and `direct_message` -- a boolean that determines whether a channel is being utilized as a direct-message or not. Because their relationship to users is many-to-many, the association is made through the join table `channel_memberships`.
+Channels are stored in the database with columns for `name`, `purpose`, and `direct_message` -- a boolean that determines whether a channel is being utilized as a direct-message or not. Because their relationship to users is many-to-many, the association is made through the join table `channel_memberships`.
 
-  A users channels are rendered in a `MessagePanel` component nested within the `Home` component. The `MessagePanel` component's state controls what channel is currently in view. This information is passed the the `Messages` component which creates an action to fetch the corresponding messages. The `MessagePanel` also passes the current channel's information to the `ConversationHeader` which displays the name, purpose, and member count of the channel.
+A users channels are rendered in a `MessagePanel` component nested within the `Home` component. The `MessagePanel` component's state controls what channel is currently in view. This information is passed the the `Messages` component which creates an action to fetch the corresponding messages. The `MessagePanel` also passes the current channel's information to the `ConversationHeader` which displays the name, purpose, and member count of the channel.
+
 
 
 ### Direct-Messages
@@ -38,13 +72,23 @@ Similar to channels, a users direct-messages are rendered in the `MessagePanel` 
 
 Because direct-message creation requires that the user include other users, the `DirectMessageForm` component implements a user search. The `DirectMessageForm` makes an API call that retrieves all users and renders them as list-items showing their thumbnail and user info. Once users are selected their ids are sent back to the server which associates all of their ids with the new direct-message.
 
+``` javascript
+handleSubmit(e) {
+  e.preventDefault();
+  const selectedIDs = this.state.selectedUsers.map(user => user.id);
+  this.props.createChannel({ user_ids: selectedIDs, direct_message: true });
+  this.props.closeDirectMessageForm();
+}
+```
 
-## Future Plans for the Project
+## Future Plans for this Project
 
 ### MessageSearch
 
-The next feature I'll implement is a general search. This search will go through message content, users, channels, and direct-messages.  
+The next feature I'll implement is a general search. This search will query across message content, users, channels, and direct-messages.  
 
 ### Notifications
 
-I also plan on implementing new message notifications for each channel/DM using a `unread` column in the `messages` table for notification persistence between sessions and Pusher for mid-session live notifications.
+I plan on implementing new message notifications for each channel/DM using a `unread` column in the `messages` table for notification persistence between sessions and Pusher for mid-session live notifications.
+
+[Original Design Docs](./docs/README.md)
