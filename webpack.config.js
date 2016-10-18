@@ -1,5 +1,6 @@
 
 const path = require("path");
+import webpack from 'webpack';
 
 module.exports = {
   context: __dirname,
@@ -8,6 +9,18 @@ module.exports = {
     path: "./app/assets/javascripts",
     filename: "bundle.js"
   },
+  plugins:[
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress:{
+        warnings: false
+      }
+    })
+  ],
   module: {
     loaders: [
       {
