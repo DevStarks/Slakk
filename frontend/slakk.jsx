@@ -6,7 +6,6 @@ import configureStore from './store/store';
 import { arrayToHash } from './utils/helpers';
 import Modal from 'react-modal';
 
-process.env.NODE_ENV = 'production';
 
 document.addEventListener("DOMContentLoaded", () => {
   const rootNode = document.getElementById('root');
