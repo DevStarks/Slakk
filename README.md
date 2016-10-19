@@ -1,6 +1,6 @@
 # Slakk
 
-![Slakk live](http://www.slakk.co/)
+[Slakk live](http://www.slakk.co/)
 
 
 Slakk is a full-stack web application modeled after Slack.  It is built using a Ruby on Rails backend, and a React/Redux frontend.
