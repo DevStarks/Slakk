@@ -13,8 +13,7 @@ const RootMiddleware = applyMiddleware(
   MessageMiddleware,
   ChannelMiddleware,
   DirectMessageMiddleware,
-  UserBaseMiddleware,
-  (process.env.NODE_ENV !== "production" ? LoggerMiddleware : null)
+  UserBaseMiddleware
 );
 
 export default RootMiddleware;
