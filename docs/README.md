@@ -23,6 +23,7 @@ By 10/14, this app will demonstrate the following features with production-quali
 - [DB Schema](./docs/schema.md)
 - [Redux Structure](./docs/redux-structure.md)
 - [Sample State](./docs/sample-state.md)
+
 ---
 ### Implementation Timeline
 
