@@ -179,7 +179,7 @@ button.cancel:hover {
   background-color: #ededed;
 }
 
-.message-content.condensed-message:hover span {
+.message-content.condensed-message:hover .created-at {
   display: block;
   position: absolute;
   bottom: 3px;
