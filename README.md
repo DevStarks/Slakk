@@ -1,8 +1,16 @@
 # Slakk
 
+<<<<<<< HEAD
 Slakk is a full-stack web application modeled after Slack, the group messaging app.  It is built using a Ruby on Rails backend, a React/Redux frontend, and a PostgreSQL database.
 
 [Checkout the live version here!](http://www.slakk.co/)
+=======
+![Slakk live][http://www.slakk.co/]
+
+
+Slakk is a full-stack web application modeled after Slack.  It is built using a Ruby on Rails backend, and a React/Redux frontend.
+
+>>>>>>> c211137d1ea63d7ce85c49869016a51d6bb77f61
 ### Screenshots
 
 ###### Sign Up Page

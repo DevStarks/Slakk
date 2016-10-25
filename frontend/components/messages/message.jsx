@@ -75,7 +75,7 @@ class Message extends React.Component {
         <section className="condensed">
         <img className="author-thumbnail hidden" src={author.image_url}></img>
         <h3 className="hidden">{author.username} </h3>
-        <span className=" created-at hidden">{timeFromDateObj(created_at)}</span>
+        <span className="created-at hidden">{timeFromDateObj(created_at)}</span>
         </section>
       );
     } else {
