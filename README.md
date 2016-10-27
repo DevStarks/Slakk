@@ -27,7 +27,7 @@ Slakk is a full-stack web application modeled after Slack, the group messaging a
   - Private Direct-Messaging with any number of users
   - Search for and add users new direct-messages
 
-### Technologies Used
+### Technology Used
  - Ruby on Rails
  - React.js
  - Redux
