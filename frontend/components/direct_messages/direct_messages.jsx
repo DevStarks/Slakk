@@ -18,7 +18,7 @@ class DirectMessages extends React.Component {
 
   componentWillMount() {
     this.props.getUserCount();
-    this.props.getDirectMessageNames(Object.keys(this.props.directMessages));
+    // this.props.getDirectMessageNames(Object.keys(this.props.directMessages));
   }
 
   componentWillUpdate(nextProps) {
@@ -64,6 +64,16 @@ class DirectMessages extends React.Component {
     };
   }
 
+  nameHelper(dMessage) {
+    let name = "";
+    dMessage.members.forEach( (member, i) => {
+      if (member.id !== this.props.currentUser.id) {
+        name += (i === 0) ? member.username : `, ${member.username}`;
+      }
+    });
+    return name;
+  }
+
   allDirectMessages() {
     return hashToArray(this.props.directMessages).map( dMessage => {
       return (
@@ -72,7 +82,7 @@ class DirectMessages extends React.Component {
           key={dMessage.id}
           onClick={this.handleClick(dMessage)}
         >
-          <span>{dMessage.memberCount}</span> {dMessage.name}
+          <span>{dMessage.members.length}</span> {this.nameHelper(dMessage)}
           <img
             className="delete"
             src={window.slakkAssets.delete}

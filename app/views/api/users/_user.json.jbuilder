@@ -13,17 +13,21 @@ json.channels do
       json.id channel.id
       json.name channel.name
       json.purpose channel.purpose
-      json.memberCount channel.user_count
+      json.members do
+        json.count channel.user_count
+      end
   end
 end
 
 json.direct_messages do
-  json.array! user.direct_messages
-    .select("channels.*, count(users.id) as user_count")
-    .joins(:users)
-    .group("channels.id") do |dm|
+  json.array! user.direct_messages do |dm|
       json.id dm.id
       json.name dm.name
-      json.memberCount dm.user_count
+      json.members do
+        json.array! dm.users do |user|
+          json.id user.id
+          json.username user.username
+        end
+      end
   end
 end

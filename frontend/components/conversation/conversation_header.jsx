@@ -1,10 +1,11 @@
 import React from 'react';
 
 const ConversationHeader = ({ conversation, directMessages }) => {
+debugger
   return (
     <header className="conversation-header">
       <h2>#{conversation.name || directMessages[conversation.id].name}</h2>
-      {memberCountHelper(conversation.memberCount)}
+      {memberCountHelper(conversation.members.count)}
       <span className="divider">|</span>
       <p>{conversation.purpose}</p>
     </header>

@@ -7,7 +7,7 @@ const ChannelItem = ({ channelData, selectChannel }) => {
       <h3><span>#</span> {channelData.name}</h3>
       <span className="creation-info"><i>Created on {channelData.created_at}</i></span>
       <span className="other-info">{channelData.purpose}</span>
-      <span className="member-count">{channelData.memberCount}</span>
+      <span className="member-count">{channelData.members.count}</span>
     </article>
   );
 };
