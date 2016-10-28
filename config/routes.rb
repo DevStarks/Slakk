@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     get '/channels/search/', to: 'channels#search'
     post '/channels/connect/', to: 'channels#connect'
     post '/channels/disconnect/', to: 'channels#disconnect'
-    get '/channels/dm-names/', to: 'channels#dm_names'
     resources :messages, only: [:create, :update, :destroy, :index, :show]
   end
 end

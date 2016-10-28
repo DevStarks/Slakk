@@ -23,6 +23,7 @@ json.direct_messages do
   json.array! user.direct_messages do |dm|
       json.id dm.id
       json.name dm.name
+      json.directMessage dm.direct_message
       json.members do
         json.array! dm.users do |user|
           json.id user.id

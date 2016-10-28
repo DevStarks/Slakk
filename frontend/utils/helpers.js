@@ -20,3 +20,13 @@ export const arrayToHash = arr => {
 export const hashToArray = hash => {
   return Object.keys(hash).map( id => hash[id]);
 };
+
+export const dmNameHelper = (dMessage, currentUser) => {
+  let name = "";
+  dMessage.members.forEach( (member, i) => {
+    if (member.id !== currentUser.id) {
+      name += (i === 0) ? member.username : `, ${member.username}`;
+    }
+  });
+  return name;
+};

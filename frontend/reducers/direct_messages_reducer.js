@@ -10,8 +10,6 @@ const DirectMessageReducer = (oldState = {}, action) => {
     case ACT.RECEIVE_DIRECT_MESSAGE:
       const newDirectMessage = { [action.directMessage.id]: action.directMessage };
       return merge({}, oldState, newDirectMessage);
-    case ACT.RECEIVE_DIRECT_MESSAGE_NAMES:
-      return merge({}, oldState, action.names);
     case RECEIVE_CURRENT_USER:
       return arrayToHash(action.currentUser.direct_messages);
     case REMOVE_CHANNEL:

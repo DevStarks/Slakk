@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { hashToArray } from '../../utils/helpers';
+import { hashToArray, dmNameHelper } from '../../utils/helpers';
 import DirectMessageFormContainer from './direct_message_form_container';
 
 class DirectMessages extends React.Component {
@@ -18,7 +18,6 @@ class DirectMessages extends React.Component {
 
   componentWillMount() {
     this.props.getUserCount();
-    // this.props.getDirectMessageNames(Object.keys(this.props.directMessages));
   }
 
   componentWillUpdate(nextProps) {
@@ -26,7 +25,6 @@ class DirectMessages extends React.Component {
     const newDirectMessages = Object.keys(nextProps.directMessages);
 
     if (oldDirectMessages.length < newDirectMessages.length) {
-      this.props.getDirectMessageNames(Object.keys(nextProps.directMessages));
       const directMessages = hashToArray(nextProps.directMessages);
       const newConversation = directMessages[directMessages.length - 1];
       this.props.changeConversation(newConversation);
@@ -64,15 +62,7 @@ class DirectMessages extends React.Component {
     };
   }
 
-  nameHelper(dMessage) {
-    let name = "";
-    dMessage.members.forEach( (member, i) => {
-      if (member.id !== this.props.currentUser.id) {
-        name += (i === 0) ? member.username : `, ${member.username}`;
-      }
-    });
-    return name;
-  }
+
 
   allDirectMessages() {
     return hashToArray(this.props.directMessages).map( dMessage => {
@@ -82,7 +72,8 @@ class DirectMessages extends React.Component {
           key={dMessage.id}
           onClick={this.handleClick(dMessage)}
         >
-          <span>{dMessage.members.length}</span> {this.nameHelper(dMessage)}
+          <span>{dMessage.members.length}</span>
+            &nbsp;{dmNameHelper(dMessage, this.props.currentUser)}
           <img
             className="delete"
             src={window.slakkAssets.delete}

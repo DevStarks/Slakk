@@ -1,5 +1,6 @@
 import React from 'react';
 import Errors from '../errors';
+import { dmNameHelper } from '../../utils/helpers';
 
 class MessageForm extends React.Component {
   constructor(props) {
@@ -56,8 +57,11 @@ class MessageForm extends React.Component {
     const conversation = this.props.currentConversation;
     if (this.props.type === "edit") {
       return "";
-    } else if (conversation.direct_message) {
-      return "Message #" + this.props.directMessages[conversation.id].name;
+    } else if (conversation.directMessage) {
+      return "Message #" + dmNameHelper(
+        this.props.directMessages[conversation.id],
+        this.props.currentUser
+      );
     } else {
       return "Message #" + conversation.name;
     }

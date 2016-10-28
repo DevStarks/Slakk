@@ -48,10 +48,6 @@ class Api::ChannelsController < ApplicationController
     render :show
   end
 
-  def dm_names
-    render json: Channel.get_direct_message_names(current_user.id, params[:direct_message_ids])
-  end
-
   private
 
   def channel_params

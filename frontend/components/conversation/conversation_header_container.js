@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import ConversationHeader from './conversation_header';
 
 
-const mapStateToProps = ({ directMessages }) => ({
-  directMessages
+const mapStateToProps = ({ directMessages, session }) => ({
+  directMessages,
+  currentUser: session.currentUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
