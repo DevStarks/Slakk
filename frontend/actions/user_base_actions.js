@@ -12,9 +12,8 @@ export const receiveUserCount = userCount => ({
   userCount
 });
 
-export const searchUsers = searchData => ({
-  type: SEARCH_USERS,
-  searchData
+export const searchUsers = () => ({
+  type: SEARCH_USERS
 });
 
 export const receiveUserResults = userResults => ({

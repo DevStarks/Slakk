@@ -9,7 +9,7 @@ const UserBaseMiddleware = ({ dispatch }) => next => action => {
         next(action);
       });
     case ACT.SEARCH_USERS:
-      return searchUsers( action.searchData, searchResults => {
+      return searchUsers(searchResults => {
         dispatch(ACT.receiveUserResults(searchResults));
         next(action);
       });

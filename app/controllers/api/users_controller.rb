@@ -23,14 +23,7 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    search_data = params[:search_data]
-    t = User.arel_table
-    @users = User.where(
-      t[:username].matches("%#{search_data}%")
-      .or(t[:first_name].matches("%#{search_data}%"))
-      .or(t[:last_name].matches("%#{search_data}%"))
-    ).where.not(id: current_user.id)
-    @users = @users.sort_by { |user| user.username }
+    @users = User.all.sort_by { |user| user.username.downcase }
     render :search_results
   end
 

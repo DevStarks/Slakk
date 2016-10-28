@@ -10,7 +10,7 @@ const mapStateToProps = ({ errors, userBase }) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   createChannel: directMessageData => dispatch(createChannel(directMessageData)),
-  searchUsers: searchData => dispatch(searchUsers(searchData)),
+  searchUsers: () => dispatch(searchUsers()),
   closeDirectMessageForm: ownProps.closeDirectMessageForm
 });
 

@@ -6,12 +6,11 @@ export const getUserCount = success => {
   });
 };
 
-export const searchUsers = ({ searchData }, success) => {
+export const searchUsers = (success) => {
 
   $.ajax({
     method: 'GET',
     url: 'api/users/search',
-    data: { search_data: searchData },
     success
   });
 };

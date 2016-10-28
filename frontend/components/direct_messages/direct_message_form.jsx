@@ -22,19 +22,20 @@ class DirectMessageForm extends React.Component {
   }
 
   componentWillMount() {
-    this.props.searchUsers(this.state);
+    this.props.searchUsers();
   }
 
-  handleChange(e) {
-    const newState = { searchData: e.currentTarget.value };
-    this.setState(newState);
-    this.props.searchUsers(newState);
+  componentWillReceiveProps(newProps) {
+    this.setState({ searchResults: newProps.searchResults });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const selectedIDs = this.state.selectedUsers.map(user => user.id);
-    this.props.createChannel({ user_ids: selectedIDs, direct_message: true });
+    this.props.createChannel({
+      user_ids: selectedIDs,
+      direct_message: true
+    });
     this.props.closeDirectMessageForm();
   }
 
@@ -69,8 +70,8 @@ class DirectMessageForm extends React.Component {
   }
 
   searchResults() {
-    if (this.props.searchResults) {
-      const results = this.props.searchResults;
+    if (this.state.searchResults) {
+      const results = this.state.searchResults;
       return this.removeSelectedFromResults(results).map( user => {
         return (
           <UserResultItem
@@ -100,6 +101,24 @@ class DirectMessageForm extends React.Component {
     });
   }
 
+  filterResults(searchData) {
+    return this.props.searchResults.filter( user => {
+      return (
+        [user.username, user.first_name, user.last_name].map( str => {
+          return str.toLowerCase();
+        }).some( str => str.includes(searchData.toLowerCase()))
+      );
+    });
+  }
+
+  handleChange(e) {
+    const searchData = e.currentTarget.value;
+    const newState = {
+      searchData,
+      searchResults: this.filterResults(searchData)
+    };
+    this.setState(newState);
+  }
 
   render() {
     return (
