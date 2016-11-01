@@ -4,6 +4,7 @@ import MessageReducer from './message_reducer';
 import ChannelReducer from './channel_reducer';
 import ErrorReducer from './error_reducer';
 import DirectMessagesReducer from './direct_messages_reducer';
+import CurrentConversationReducer from './current_conversation_reducer';
 import UserBaseReducer from './user_base_reducer';
 
 const RootReducer = combineReducers({
@@ -12,6 +13,7 @@ const RootReducer = combineReducers({
   messages: MessageReducer,
   channels: ChannelReducer,
   directMessages: DirectMessagesReducer,
+  currentConversation: CurrentConversationReducer,
   userBase: UserBaseReducer
 });
 
