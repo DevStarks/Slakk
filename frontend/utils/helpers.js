@@ -13,7 +13,9 @@ export const timeFromDateObj = dateObj => {
 
 export const arrayToHash = arr => {
   const hash = {};
-  arr.forEach( e => hash[e.id] = e);
+  arr.forEach( e => {
+    hash[e.id] = e;
+  });
   return hash;
 };
 
@@ -22,6 +24,8 @@ export const hashToArray = hash => {
 };
 
 export const dmNameHelper = (dMessage, currentUser) => {
+  if (!currentUser) { return; }
+
   let name = "";
   dMessage.members.forEach( (member, i) => {
     if (member.id !== currentUser.id) {

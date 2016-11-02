@@ -32,7 +32,6 @@ class Api::ChannelsController < ApplicationController
   def search
     @channels = Channel.where("channels.name LIKE ?", "%#{params[:search_data]}%")
 
-
     render :index
   end
 
