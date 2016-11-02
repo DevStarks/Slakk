@@ -7,7 +7,6 @@ import { hashHistory } from 'react-router';
 
 
 class Messages extends React.Component {
-
   constructor(props) {
     super(props);
     this.subscribeToPusher = this.subscribeToPusher.bind(this);
@@ -35,6 +34,9 @@ class Messages extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    if (this.props.currentConversation.id !== newProps.currentConversation.id) {
+      newProps.getMessages(newProps.currentConversation.id);
+    }
 
     const messages = this.refs.messages;
     this.shouldScrollBottom = (
@@ -81,7 +83,6 @@ class Messages extends React.Component {
         </ul>
 
         <MessageFormContainer
-          currentConversation={this.props.currentConversation}
           updateScroll={this.updateScroll.bind(this)}
           type="new"
         />

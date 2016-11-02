@@ -31,7 +31,7 @@ class ChannelBrowse extends React.Component {
   selectChannel(channel) {
     return () => {
       if (this.props.userChannels[channel.id]) {
-        this.props.changeConversation(channel);
+        this.props.setCurrentConverstion(channel);
       } else {
         this.props.connectToChannel(channel.id);
       }

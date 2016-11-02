@@ -31,10 +31,10 @@ class Channels extends React.Component {
     if (oldChannels.length < newChannels.length) {
       const channels = hashToArray(newProps.userChannels);
       const newConversation = channels[channels.length - 1];
-      this.props.changeConversation(newConversation);
+      this.props.setCurrentConverstion(newConversation);
     } else if (oldChannels.length > newChannels.length) {
       const channelsArr = hashToArray(newProps.userChannels);
-      newProps.changeConversation(channelsArr[channelsArr.length - 1]);
+      newProps.setCurrentConverstion(channelsArr[channelsArr.length - 1]);
     }
   }
 
@@ -76,7 +76,7 @@ class Channels extends React.Component {
 
   handleClick(channel) {
     return () => {
-      this.props.changeConversation(channel);
+      this.props.setCurrentConverstion(channel);
     };
   }
 
@@ -146,7 +146,6 @@ class Channels extends React.Component {
         >
           <ChannelBrowseContainer
             closeChannelBrowse={this.closeChannelBrowse}
-            changeConversation={this.props.changeConversation}
           />
         </Modal>
 

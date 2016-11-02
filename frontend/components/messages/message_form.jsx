@@ -6,7 +6,10 @@ class MessageForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { body: "" };
+    this.state = {
+      body: "",
+      placeholder: this.placeholderHelper()
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,6 +26,19 @@ class MessageForm extends React.Component {
   componentDidMount() {
     if (this.props.type === "edit") {
       this.setState({ body: this.props.messageInfo.body });
+    }
+  }
+
+  componentDidUpdate(newProps) {
+    // debugger
+    if (
+      (this.props.currentConversation.id !==
+      newProps.currentConversation.id) ||
+      (Object.keys(this.props.directMessages).length !==
+      Object.keys(newProps.directMessages).length)) {
+      this.setState({
+        placeholder: this.placeholderHelper()
+      });
     }
   }
 
@@ -55,11 +71,13 @@ class MessageForm extends React.Component {
 
   placeholderHelper() {
     const conversation = this.props.currentConversation;
+
     if (this.props.type === "edit") {
       return "";
-    } else if (conversation.directMessage) {
+    } else if (conversation.direct_message) {
+
       return "Message #" + dmNameHelper(
-        this.props.directMessages[conversation.id],
+        this.props.currentConversation,
         this.props.currentUser
       );
     } else {
@@ -77,7 +95,7 @@ class MessageForm extends React.Component {
         <input
           type="text"
           value={this.state.body}
-          placeholder={this.placeholderHelper()}
+          placeholder={this.state.placeholder}
           onChange={this.handleChange}
         />
         <Errors errorInfo={this.props.errors}/>

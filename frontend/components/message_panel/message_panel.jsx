@@ -10,16 +10,16 @@ class MessagePanel extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { currentConversation: null };
-
     this.usernameHelper = this.usernameHelper.bind(this);
-    this.changeConversation = this.changeConversation.bind(this);
     this.menuOn = this.menuOn.bind(this);
   }
 
   componentWillMount() {
-    this.changeConversation(hashToArray(this.props.channels)[0]);
+    const firstConversation = hashToArray(this.props.channels)[0];
+    this.props.setCurrentConverstion(firstConversation);
+    this.props.getMessages(firstConversation.id);
   }
+
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.currentUser) { hashHistory.push("/"); }
@@ -30,10 +30,6 @@ class MessagePanel extends React.Component {
     return this.props.currentUser ? this.props.currentUser.username : "";
   }
 
-  changeConversation(conversation) {
-    this.setState({ currentConversation: conversation });
-    this.props.getMessages(conversation.id);
-  }
 
   menuOn() {
     const sidebarMenu = this.refs.sidebarMenu;
@@ -61,21 +57,13 @@ class MessagePanel extends React.Component {
             <li onClick={this.props.logout}>Log out</li>
           </ul>
 
-          <ChannelsContainer
-            changeConversation={this.changeConversation}
-            currentConversation={this.state.currentConversation}
-          />
+          <ChannelsContainer />
 
-          <DirectMessagesContainer
-            changeConversation={this.changeConversation}
-            currentConversation={this.state.currentConversation}
-          />
+          <DirectMessagesContainer />
         </aside>
 
         <section className="conversation">
-          <Conversation
-            currentConversation={this.state.currentConversation}
-          />
+          <Conversation />
         </section>
       </section>
     );

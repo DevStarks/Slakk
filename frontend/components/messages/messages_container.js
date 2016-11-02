@@ -6,14 +6,14 @@ import Messages from './messages';
 const mapStateToProps = (store) => ({
   messages: store.messages,
   errors: store.errors.messageErrors,
-  channels: store.channels
+  channels: store.channels,
+  currentConversation: store.currentConversation
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getMessages: conversationID => dispatch(getMessages(conversationID)),
-    deleteMessage: () => dispatch(deleteMessage()),
-    currentConversation: ownProps.currentConversation
+    deleteMessage: () => dispatch(deleteMessage())
   };
 };
 

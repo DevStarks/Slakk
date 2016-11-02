@@ -27,7 +27,7 @@ class DirectMessages extends React.Component {
     if (oldDirectMessages.length < newDirectMessages.length) {
       const directMessages = hashToArray(nextProps.directMessages);
       const newConversation = directMessages[directMessages.length - 1];
-      this.props.changeConversation(newConversation);
+      this.props.setCurrentConverstion(newConversation);
     } else if (oldDirectMessages.length > newDirectMessages.length) {
       this.changeToLastConversation(nextProps);
     }
@@ -38,7 +38,7 @@ class DirectMessages extends React.Component {
     const channels = hashToArray(props.userChannels);
     const allConversations = channels.concat(directMessages);
     const lastConversation = allConversations[allConversations.length - 1];
-    props.changeConversation(lastConversation);
+    props.setCurrentConverstion(lastConversation);
   }
 
   classNameHelper(dMessage) {
@@ -51,17 +51,16 @@ class DirectMessages extends React.Component {
 
   handleClick(dMessage) {
     return () => {
-      this.props.changeConversation(dMessage);
+      this.props.setCurrentConverstion(dMessage);
     };
   }
 
   handleDisconnect(id) {
-    return (e) => {
+    return e => {
       this.props.disconnectChannel(id);
       e.stopPropagation();
     };
   }
-
 
 
   allDirectMessages() {
@@ -127,7 +126,6 @@ class DirectMessages extends React.Component {
         >
           <DirectMessageFormContainer
             closeDirectMessageForm={this.closeDirectMessageForm}
-            changeConversation={this.props.changeConversation}
           />
         </Modal>
       </section>
